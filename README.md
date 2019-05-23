@@ -6,6 +6,7 @@
 <h5> Minimal Requirements </h5>
 <ul>
   <li>
+    TEXT TEXT TEXT
     <h6> Breakdown </h6>
     <ul>
       <li> </li>
@@ -14,6 +15,7 @@
     </ul>
   </li>
   <li>
+    TEXT TEXT TEXT
     <h6> Breakdown </h6>
     <ul>
       <li> </li>
@@ -22,6 +24,7 @@
     </ul>
   </li>
   <li>
+    TEXT TEXT TEXT
     <h6> Breakdown </h6>
     <ul>
       <li> </li>
@@ -39,7 +42,7 @@
   <li> </li>
   <li> </li>
   <li> </li>
-<ul>
+</ul>
 <h5> Stretch Requirements </h5>
 <ul>
   <li> </li>
@@ -47,4 +50,4 @@
   <li> </li>
   <li> </li>
   <li> </li>
-<ul>
+</ul>
