@@ -5,33 +5,35 @@
 <h5> Minimal Requirements </h5>
 <ul>
   <li>
-    TEXT TEXT TEXT
+    Create Website Front-End
     <h6> Breakdown </h6>
     <ul>
-      <li> </li>
-      <li> </li>
-      <li> </li>
+      <li> Acquire HTML starter code, begin modification</li>
+      <li> Design CSS/React (long time!) </li>
+      <li> Hook it up to the backend (javascript?) </li>
+      <li> Create log-in page to interact with MongoDB, plus user data </li>
     </ul>
   </li>
   <li>
-    TEXT TEXT TEXT
+    Create MongoDB Database
     <h6> Breakdown </h6>
     <ul>
-      <li> </li>
-      <li> </li>
-      <li> </li>
+      <li> Sign up for an account on MongoDB Atlas (?) </li>
+      <li> Create necessary collections, starter schema if necessary </li>
+      <li> Hook it up to the backend (javascript?) </li>
+      <li> Prepare static data (e.g. basketball teams and ID table)</li>
     </ul>
   </li>
   <li>
-    TEXT TEXT TEXT
+    Create Backend
     <h6> Breakdown </h6>
     <ul>
-      <li> </li>
-      <li> </li>
-      <li> </li>
+      <li> Connect it with basic functions on the website </li>
+      <li> Apply API calls to basketball databases to grab data </li>
+      <li> Write functions for login and retrieving data, and also setters to mongoDB </li>
     </ul>
   </li>
-  <li> </li>
+  <li> Create Necessary Assets for Website (images and etc) </li>
   <li> </li>
 </ul>
 <h5> Standard Requirements </h5>
@@ -51,3 +53,4 @@
   <li> </li>
 </ul>
 <h4> Prototypes </h4>
+<h6> Team Members: Peter Han, Yuting Wen, Tony Chen </h6>
