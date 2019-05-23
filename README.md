@@ -14,6 +14,7 @@
       <li> Create log-in page to interact with MongoDB, plus user data </li>
     </ul>
   </li>
+  <br>
   <li>
     Create MongoDB Database
     <h6> Breakdown </h6>
@@ -24,6 +25,7 @@
       <li> Prepare static data (e.g. basketball teams and ID table)</li>
     </ul>
   </li>
+  <br>
   <li>
     Create Backend
     <h6> Breakdown </h6>
@@ -33,7 +35,9 @@
       <li> Write functions for login and retrieving data, and also setters to mongoDB </li>
     </ul>
   </li>
+  <br>
   <li> Create Necessary Assets for Website (images and etc) </li>
+  <br>
   <li> Allow users to sort by teams and players, and display basic stats (W/L, win%)</li>
 </ul>
 <h5> Standard Requirements </h5>
