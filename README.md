@@ -8,8 +8,8 @@
     Create Website Front-End
     <h6> Breakdown </h6>
     <ul>
-      <li> Acquire HTML starter code, begin modification</li>
-      <li> Design CSS/React (long time!) </li>
+      <li> Acquire HTML starter code, begin modification and home page + stats pages + login page </li>
+      <li> Design CSS/React make sure the website looks good (long time!), for home page and stats pages  </li>
       <li> Hook it up to the backend (javascript?) </li>
       <li> Create log-in page to interact with MongoDB, plus user data </li>
     </ul>
@@ -34,7 +34,7 @@
     </ul>
   </li>
   <li> Create Necessary Assets for Website (images and etc) </li>
-  <li> </li>
+  <li> Allow users to sort by teams and players, and display basic stats (W/L, win%)</li>
 </ul>
 <h5> Standard Requirements </h5>
 <ul>
