@@ -6,54 +6,59 @@ Our website will be a Basketball statistics database, with options for the user 
 <h5> Minimal Requirements </h5>
 <ul>
   <li>
-    Create Website Front-End
+    Create Website: Main Page, Stats Page, Login Page as per prototype
     <h6> Breakdown </h6>
     <ul>
-      <li> Acquire HTML starter code, begin modification and home page + stats pages + login page </li>
-      <li> Design CSS/React make sure the website looks good (long time!), for home page and stats pages  </li>
-      <li> Hook it up to the backend (javascript?) </li>
-      <li> Create log-in page to interact with MongoDB, plus user data </li>
+      <li> Main page: user's favorite teams, upcoming matches, other cool information </li>
+      <li> Stats page: player and team stats (e.g. win-loss record, shooting percentage, points)  </li>
+      <li> Login page: allow user to create username + password, which allows them to log in with the stored information </li>
+      <li> Design and write CSS for all required pages (no JS for now) </li>
     </ul>
   </li>
   <br>
   <li>
-    Create MongoDB Database
+    Write Website JavaScript
     <h6> Breakdown </h6>
     <ul>
-      <li> Sign up for an account on MongoDB Atlas (?) </li>
-      <li> Create necessary collections, starter schema if necessary </li>
-      <li> Hook it up to the backend (javascript?) </li>
-      <li> Prepare static data (e.g. basketball teams and ID table)</li>
+      <li> Landing/main page: API calls to retrieve basic information </li>
+      <li> Stats page: more API calls, find ways to efficiently store/retrieve information to prevent unnecessary API calls </li>
+      <li> Login page: write JavaScript that stores the user's credentials (with hashed password) into MongoDB (to come next) </li>
+      <li> Create animations as needed, and more fluid switching between tabs </li>
     </ul>
   </li>
   <br>
   <li>
-    Create Backend
+    Create Website MongoDB
     <h6> Breakdown </h6>
     <ul>
-      <li> Connect it with basic functions on the website </li>
-      <li> Apply API calls to basketball databases to grab data </li>
-      <li> Write functions for login and retrieving data, and also setters to mongoDB </li>
+      <li> Create a MongoDB Atlas account (or another platform), and set up collections (e.g. matches, players, teams) </li>
+      <li> Store static information from API calls for past seasons (to prevent extra calls) </li>
+      <li> Store user credentials, and their favorite team </li>
+      <li> Apply MongoDB connection strings to JavaScript </li>
     </ul>
   </li>
   <br>
   <li> Create Necessary Assets for Website (images and etc) </li>
   <br>
-  <li> Allow users to sort by teams and players, and display basic stats (W/L, win%)</li>
+  <li> Allow users to view all teams and players, providing visualization for very basic statistics (points, shooting percentage) </li>
 </ul>
 <h5> Standard Requirements </h5>
 <ul>
   <li> Graphing requested data, performing percentage calculations and other types of analysis </li>
-  <li> Allow the user to log in, and select a favorite team(s), which prioritize the display of news and stats revolving around those teams. </li>
   <li> Provide live match scores to live games. </li>
   <li> Allow the user to log in without Username/Password, such as using Facebook OAuth (will look further into it) </li>
   <li> Allow a message board on previous and live games, on which users may interact and chat about the games. </li>
   <li> On future match pages, provide statistics such as player's past stats over the past few games, and the win streaks of each team. </li>
+  <li> Statistic comparisons between players and teams, for users looking to see how two teams match up. </li>
+  <li> Creating a data filter for stats (e.g. order by points per game, order by games played) </li>
 </ul>
 <h5> Stretch Requirements </h5>
 <ul>
+  <li> Tailor homepage to user's favorite team (e.g. player twitter, logo, customized background) </li>
+  <li> Implement useful iframes such as ticket sales </li>
   <li> Draw heatmaps for players based on player performance and court activity. </li>
   <li> Implement a fantasy draft system for users to play around with statistics from previous seasons. </li>
+
 </ul>
 <h4> Prototypes </h4>
 <h6> Home Page </h6>
