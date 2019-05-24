@@ -3,6 +3,11 @@
 <h4> Description </h4>
 <h4> Task Requirements </h4>
 <h5> Minimal Requirements </h5>
+<p style="width: 50%"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer euismod elit non nibh condimentum, blandit molestie lacus euismod. Aliquam ut est nec nibh feugiat tempor nec eu ipsum. Vivamus cursus erat non urna consectetur laoreet. Nulla vel vestibulum ligula. Sed at dictum tellus, id venenatis metus. Sed arcu nisl, faucibus non nisi eu, feugiat efficitur lectus. Mauris posuere turpis sed ex tempor aliquam. Proin aliquet euismod gravida. Nunc rutrum sed nunc ut sodales. Sed cursus ut nunc et elementum. Donec ullamcorper vulputate nulla.
+
+In hac habitasse platea dictumst. Nunc placerat arcu vitae justo tincidunt, id eleifend lacus tincidunt. Nam velit erat, posuere cursus mollis et, commodo sit amet eros. Nulla suscipit feugiat facilisis. Praesent sit amet urna rutrum enim semper consequat ac a magna. In a nisl neque. Curabitur efficitur elementum ex. Maecenas nec massa vel nulla posuere interdum. Mauris faucibus felis ac efficitur pellentesque.
+
+In finibus lectus non nisi ultrices, quis mattis metus molestie. Nulla posuere ornar</p>
 <ul>
   <li>
     Create Website Front-End
