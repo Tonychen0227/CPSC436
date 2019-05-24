@@ -56,7 +56,7 @@ Our website will be a Basketball statistics database, with options for the user 
   <li> Implement a fantasy draft system for users to play around with statistics from previous seasons. </li>
 </ul>
 <h4> Prototypes </h4>
-<img src="assets/HomePage.png" alt="Home Page">
-<img src="assets/StatsPage.jpg" alt="Stats Page">
-<img src="assets/AccountPage.jpg" alt="Account Page">
+<img src="assets/HomePage.png" alt="Home Page" style="width: 400px">
+<img src="assets/StatsPage.jpg" alt="Stats Page" style="width: 400px">
+<img src="assets/AccountPage.jpg" alt="Account Page" style="width: 400px">
 <h6> Team Members: Peter Han, Yuting Wen, Tony Chen </h6>
