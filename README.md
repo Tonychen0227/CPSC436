@@ -57,9 +57,9 @@ Our website will be a Basketball statistics database, with options for the user 
 </ul>
 <h4> Prototypes </h4>
 <h6> Home Page </h6>
-<img src="assets/HomePage.png" alt="Home Page" style="width: 150px">
+<img src="assets/HomePage.png" alt="Home Page" style="width:75%">
 <h6> Stats Page </h6>
-<img src="assets/StatsPage.jpg" alt="Stats Page" style="width: 150px">
+<img src="assets/StatsPage.jpg" alt="Stats Page" style="width:75%">
 <h6> Account Page </h6>
-<img src="assets/AccountPage.jpg" alt="Account Page" style="width: 150px">
+<img src="assets/AccountPage.jpg" alt="Account Page" style="width:75%">
 <h6> Team Members: Peter Han, Yuting Wen, Tony Chen </h6>
