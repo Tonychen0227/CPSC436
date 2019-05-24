@@ -1,7 +1,7 @@
 # Basketball Statistics Database
 <a href="https://996.icu"><img src="https://img.shields.io/badge/link-996.icu-red.svg" alt="996.icu" /></a>
 <h4> Description </h4>
-Our website will be a Basketball statistics database, with options for the user to select a favorite set of teams to focus on. It will contain live match data, past match statistics, and player statistics as needed by the user, who is most likely an avid follower of the NBA. With the data stored (player data, team data, user data), it will generate all kinds of analytics and data, all of which are tailored based on the user's needs. If time is allowed, there may be additional functionalities created involving the user, such as heatmaps for the user's favorite players, and a player draft system revolving past season results.
+Our website will be a Basketball statistics database, with options for the user to select a favorite set of teams to focus on. It will contain live match data, past match statistics, and player statistics as needed by the user, who is most likely an avid follower of the NBA. With the data stored (player data, team data, user data), it will generate all kinds of analytics (such as shooting%, head-to-head results), all of which are tailored based on the user's needs. If time is allowed, there may be additional functionalities created involving the user, such as heatmaps for the user's favorite players, and a player fantasy game/system revolving past seasons' results.
 <h4> Task Requirements </h4>
 <h5> Minimal Requirements </h5>
 <ul>
@@ -56,4 +56,7 @@ Our website will be a Basketball statistics database, with options for the user 
   <li> Implement a fantasy draft system for users to play around with statistics from previous seasons. </li>
 </ul>
 <h4> Prototypes </h4>
+<img src="assets/HomePage.jpg" alt="Home Page">
+<img src="assets/StatsPage.jpg" alt="Stats Page">
+<img src="assets/AccountPage.jpg" alt="Account Page">
 <h6> Team Members: Peter Han, Yuting Wen, Tony Chen </h6>
