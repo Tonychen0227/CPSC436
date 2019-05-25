@@ -66,5 +66,5 @@ Our website will be a Basketball statistics database, with options for the user 
 <h6> Stats Page </h6>
 <img src="assets/StatsPage.jpg" alt="Stats Page" style="width:75%">
 <h6> Account Page </h6>
-<img src="assets/AccountPage.jpg" alt="Account Page" style="width:75%">
+<img src="assets/UserPage.png" alt="Account Page" style="width:75%">
 <h6> Team Members: Peter Han, Yuting Wen, Tony Chen </h6>
