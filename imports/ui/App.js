@@ -1,14 +1,46 @@
 import React from 'react';
-import './App.css';
+import '../css/App.css';
 import Button from './Button';
+import Info from './Info';
+import LogIn from './LogIn';
+import NavBar from './NavBar';
+import AboutUs from './AboutUs';
+import { connect } from 'react-redux';
 
-const App = () => {   //this is how you make a functional component
-	return (
-<div><Button/></div>
-);
+class App extends React.Component {
+	render() {
+		var dynamicComponent;
+		switch(this.props.pageNum) {
+		  case 1:
+		    // code block
+				dynamicComponent = <Button/>
+		    break;
+		  case 2:
+		    // code block
+				dynamicComponent = <Info/>
+		    break;
+			case 3:
+				dynamicComponent = <LogIn/>
+				break;
+		  default:
+				dynamicComponent = <AboutUs/>
+		}
+		return (
+	<div>
+	<NavBar/>
+	{dynamicComponent}
+	</div>
+	);
+	}
 }
 
-export default App;
+const mapStateToProps = (state) => { //name is by convention
+	//state has entire state of app!!
+  return { pageNum: state.pageNum }; //now it will appear as props
+}
+
+
+export default connect(mapStateToProps)(App);
 
 /*
 function App() {

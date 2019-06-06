@@ -5,3 +5,10 @@ export const increment = amount => {
     payload: amount
   };
 };
+
+export const flipPage = newPage => {
+  return {
+    type: 'NEW_PAGE',
+    payload: newPage
+  }
+}
