@@ -1,7 +1,7 @@
 import React from 'react';
 import '../css/App.css';
 import Button from './Button';
-import Info from './Info';
+import Stats from './Stats';
 import LogIn from './LogIn';
 import NavBar from './NavBar';
 import AboutUs from './AboutUs';
@@ -17,7 +17,7 @@ class App extends React.Component {
 		    break;
 		  case 2:
 		    // code block
-				dynamicComponent = <Info/>
+				dynamicComponent = <Stats/>
 		    break;
 			case 3:
 				dynamicComponent = <LogIn/>
