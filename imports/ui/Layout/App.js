@@ -1,10 +1,10 @@
 import React from 'react';
-import '../css/App.css';
-import Home from './Home';
-import Stats from './Stats';
-import LogIn from './LogIn';
+import '../../css/App.css';
+import Home from '../Home/Home';
+import Stats from '../Stats/Stats';
+import LogIn from '../LogIn/LogIn';
 import NavBar from './NavBar';
-import AboutUs from './AboutUs';
+import About from '../About/About';
 import { connect } from 'react-redux';
 
 class App extends React.Component {
@@ -23,7 +23,7 @@ class App extends React.Component {
 				dynamicComponent = <LogIn/>
 				break;
 		  default:
-				dynamicComponent = <AboutUs/>
+				dynamicComponent = <About/>
 		}
 		return (
 	<div>

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import '../css/NavBar.css';
+import '../../css/NavBar.css';
 import {Navbar, Nav} from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { flipPage } from '../actions';
+import { flipPage } from '../../actions';
 
 class NavBar extends Component {
   constructor() {

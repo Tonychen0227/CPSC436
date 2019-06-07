@@ -1,15 +1,15 @@
 import React from 'react';
 import LoremIpsum from '../LoremIpsum';
 
-class PlayerStats extends React.Component {
+class StatsPlayersTable extends React.Component {
 	render() {
 		return (
 			<div>
-			<h4> Home Team Player Stats </h4>
+			<h4> This is player stats display table </h4>
 			<LoremIpsum/>
 			</div>
 );
 	}
 }
 
-export default PlayerStats;
+export default StatsPlayersTable;

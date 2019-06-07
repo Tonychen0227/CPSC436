@@ -1,10 +1,10 @@
 import React from 'react';
 import Fragment from 'react';
-import UserDetails from './LogIn/UserDetails';
-import NewsDashboard from './LogIn/NewsDashboard';
-import PlayerStats from './LogIn/PlayerStats';
-import MatchInformation from './LogIn/MatchInformation';
-import '../css/LogIn.css';
+import UserDetails from './UserDetails';
+import NewsDashboard from './NewsDashboard';
+import PlayerStats from './PlayerStats';
+import MatchInformation from './MatchInformation';
+import '../../css/LogIn.css';
 
 class LogIn extends React.Component {
 	render() {

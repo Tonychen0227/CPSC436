@@ -2,7 +2,7 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import App from '/imports/ui/App';
+import App from '/imports/ui/Layout/App';
 import { createStore } from 'redux';
 import reducers from '../imports/reducers';
 
