@@ -31,3 +31,28 @@
     transform: rotate(360deg);
   }
 }
+
+.home_team_score {
+  width: 982px;
+  height: 227px;
+  border: solid 1px #979797;
+  background-color: #d8d8d8;
+  margin: 0 auto;
+}
+
+.home_team_news {
+  width: 982px;
+  height: 167px;
+  border-radius: 2px;
+  border: solid 1px #979797;
+  background-color: #d8d8d8;
+  margin: 0 auto;
+}
+
+.home_team_stats {
+  width: 982px;
+  height: 324px;
+  border: solid 1px #979797;
+  background-color: #d8d8d8;
+  margin: 0 auto;
+}

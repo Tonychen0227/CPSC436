@@ -1,19 +1,24 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { increment } from '../actions';
+import News from './News';
+import Score from './Score';
+import '../css/App.css';
 
 class Button extends React.Component {
 	render() {
 		return (<div>
-			<h1>The number is: {this.props.count}</h1>
-<button onClick={() => this.props.increment(5)}>
-Click Me!
-</button>
-<button onClick={() => this.props.increment(-5)}>
-Click Me Decrease!
-</button>
-</div>
-);
+							<h1>The number is: {this.props.count}</h1>
+								<button onClick={() => this.props.increment(5)}>
+								Click Me!
+								</button>
+								<button onClick={() => this.props.increment(-5)}>
+								Click Me Decrease!
+								</button>
+								<News className = "home_team_news"/>
+								<Score className = "home_team_score"/>
+					</div>
+					);
 	}
 }
 
