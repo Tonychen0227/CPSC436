@@ -1,6 +1,6 @@
 import React from 'react';
 import '../css/App.css';
-import Button from './Button';
+import Home from './Home';
 import Stats from './Stats';
 import LogIn from './LogIn';
 import NavBar from './NavBar';
@@ -13,7 +13,7 @@ class App extends React.Component {
 		switch(this.props.pageNum) {
 		  case 1:
 		    // code block
-				dynamicComponent = <Button/>
+				dynamicComponent = <Home/>
 		    break;
 		  case 2:
 		    // code block
