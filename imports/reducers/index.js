@@ -1,7 +1,7 @@
 import {combineReducers} from 'redux';
 const MongoClient = require('mongodb').MongoClient;
 
-const mongoConnectionString = "mongodb+srv://admin:@cpsc436-basketball-kbwxu.mongodb.net/test?retryWrites=true"
+const mongoConnectionString = "mongodb+srv://admin:admin@cpsc436-basketball-kbwxu.mongodb.net/test?retryWrites=true"
 
 /*
 MongoClient.connect(mongoConnectionString, function(err, client) {
