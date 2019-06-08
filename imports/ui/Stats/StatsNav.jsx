@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, Route } from 'react-router-dom';
 import StatsPlayers from "./StatsPlayers";
 import StatsTeams from "./StatsTeams";
+import '../../css/Stats'
 
 class StatsNav extends React.Component {
   render() {
