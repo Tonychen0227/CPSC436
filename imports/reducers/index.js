@@ -19,7 +19,6 @@ const currentPageNumber = (pageNum = 1, action) => {
 }
 
 export default combineReducers ({
-  count: counterReducer,
   pageNum: currentPageNumber
   //anotherKey: anotherReducer (all your reducers should be combined)
 });
