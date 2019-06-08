@@ -8,6 +8,7 @@ class MyTeam extends React.Component {
     return(
       <div>
         <h4 className = "myTeam">display info of my team</h4>
+        <h5>choose a home team here, basic info of that team will be displayed here</h5>
         <LoremIpsum/>
       </div>
     );

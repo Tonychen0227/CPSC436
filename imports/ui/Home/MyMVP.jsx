@@ -8,6 +8,7 @@ class MyMVP extends React.Component{
     return (
       <div>
         <h4 className = "myMVP">display info of my MVP</h4>
+        <h5>choose one star as your home player, the info the player will be displayed here</h5>
         <LoremIpsum/>
       </div>
     );
