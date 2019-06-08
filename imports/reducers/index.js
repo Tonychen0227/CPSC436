@@ -11,13 +11,6 @@ MongoClient.connect(mongoConnectionString, function(err, client) {
 });
 */
 
-const counterReducer = (count = 0, action) => {
-  if (action.type === 'INCREMENT_COUNTER') {
-    return count + action.payload;
-  }
-  return count;
-}
-
 const currentPageNumber = (pageNum = 1, action) => {
   if (action.type === 'NEW_PAGE') {
     return pageNum = action.payload;
