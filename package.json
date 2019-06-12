@@ -13,11 +13,13 @@
     "jquery": "^3.4.1",
     "meteor-node-stubs": "^0.4.1",
     "mongodb": "^3.2.7",
+    "namor": "^1.1.2",
     "react": "^16.5.0",
     "react-bootstrap": "^1.0.0-beta.9",
     "react-dom": "^16.5.0",
     "react-redux": "^7.0.3",
     "react-router-dom": "^5.0.1",
+    "react-table": "^6.10.0",
     "redux": "^4.0.1"
   },
   "meteor": {
