@@ -20,16 +20,18 @@ const currentPageNumber = (pageNum = 1, action) => {
 
 const newsStore = (news = [], action) => {
   if(action.type === "LOAD_NEWS") {
-    var key = 0;
-    var topSixNews = action.payload;
+    /*var key = 0;
+    var topSixNews = action.payload.articles; // to to get the array
     Array.from(topSixNews).forEach((currentNews) =>{
-        news.push({key: ++(this.key), image: currentNews.articles.images.url, description: currentNews.articles.description, link: currentNews.articles.links.web.href});
+        news.push({key: key, image: currentNews.images[0].url, headline: currentNews.headline, link: currentNews.links.web.href});
+        key++;
         console.log("from the loop")
         console.log(news);
-    });
+    });*/
     console.log("from the reducer: ")
     console.log(news);
-    return news;
+    return action.payload;
+    //return action.payload;
   }
   return news;
 }

@@ -12,6 +12,6 @@ export const loadNews = (news) => {
   console.log(news);
   return {
     type:'LOAD_NEWS',
-    payload: news
+    payload: news.articles
   }
 }
