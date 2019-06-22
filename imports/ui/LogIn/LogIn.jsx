@@ -1,35 +1,103 @@
 import React from 'react';
 import Fragment from 'react';
-import UserDetails from './UserDetails';
-import NewsDashboard from './NewsDashboard';
-import PlayerStats from './PlayerStats';
-import MatchInformation from './MatchInformation';
+import MyAccount from './MyAccount';
+import { connect } from 'react-redux';
+import { userLogIn } from '../../actions';
 import '../../css/LogIn.css';
 
+var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
 class LogIn extends React.Component {
+	constructor() {
+		super();
+		this.state = {jwt: '', email: '', password: '', validEmail: false, validPassword: false};
+		this.handleChangePassword = this.handleChangePassword.bind(this);
+		this.handleChangeEmail = this.handleChangeEmail.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
+		this.checkValidity = this.checkValidity.bind(this);
+	}
+
+	handleChangeEmail(e) {
+		this.setState({
+			email: event.target.value
+		});
+		this.checkValidity(event.target.value, this.state.password)
+	}
+
+	handleChangePassword(e) {
+		this.setState({
+			password: event.target.value
+		});
+		this.checkValidity(this.state.email, event.target.value);
+	}
+
+	handleSubmit(e) {
+		e.preventDefault();
+		this.props.userLogIn(this.state.email, this.state.password, this.state.jwt)
+	}
+
+	checkValidity(email, password) {
+		var match = re.test(email)
+		console.log(match)
+		if (match) {
+			console.log("setting true")
+			this.setState({
+				validEmail: true
+			})
+		} else {
+			console.log("setting false")
+			this.setState({
+				validEmail: false
+			})
+		}
+		if (password.length >= 8) {
+			this.setState({
+				validPassword: true
+			})
+		} else {
+			this.setState({
+				validPassword: false
+			})
+		}
+	}
+
 	render() {
-		return (
-			<div className="main">
-				<h1> Welcome to your account page </h1>
-				<div className="left">
-					<div className="playerStats inner">
-						<PlayerStats/>
-					</div>
-					<div className="newsDashboard inner">
-						<NewsDashboard/>
-					</div>
-				</div>
-				<div className="right">
-					<div className="userDetails inner">
-						<UserDetails/>
-					</div>
-					<div className="matchInformation inner">
-						<MatchInformation/>
-					</div>
-				</div>
-			</div>
-		);
+		if (!this.props.isLoggedIn) {
+			return (
+				<div>
+					<h1> Welcome to login page! </h1>
+					<h3> Login: </h3>
+					<form onSubmit={this.handleSubmit} className="InputField">
+		        <label>
+		          Email:
+		          <input type="text" onChange={this.handleChangeEmail}/>
+							<span>{!this.state.validEmail ? "Input valid email pls":""}</span>
+		        </label>
+						<br/>
+						<label>
+							Password:
+							<input type="text" onChange={this.handleChangePassword}/>
+							<span>{!this.state.validPassword ? "Input valid password pls (8+ chars)":""}</span>
+						</label>
+						<br/>
+		        <input disabled={!this.state.validEmail || !this.state.validPassword} type="submit" value="Log Me In" />
+						<span>{this.props.loginAttempted > 0 ? "Login failed, attempted " + this.props.loginAttempted + " times, try again":""}</span>
+		      </form>
+		</div>
+			);
+		} else {
+			return (
+				<MyAccount/>
+			);
+		}
 	};
 }
 
-export default LogIn;
+const mapStateToProps = (state) => { //name is by convention
+	//state has entire state of app!!
+return { isLoggedIn: state.isLoggedIn,
+	loginAttempted: state.loginAttempted
+ }; //now it will appear as props
+}
+
+export default connect(mapStateToProps, {userLogIn})(LogIn);
