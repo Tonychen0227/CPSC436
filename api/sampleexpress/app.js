@@ -67,8 +67,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.post('/users/login', handlers.login);
-app.post('/users', middleware.checkToken);
+//app.post('/users/login', handlers.login);
+//app.post('/users', middleware.checkToken);
 app.use('/', indexRouter);
 app.use('/users', userRouter);
 

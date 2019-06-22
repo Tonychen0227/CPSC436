@@ -30,6 +30,9 @@ router.post('/register', function(req, res, next) {
   }
   var email = req.body.email
   var password = req.body.password
+  if (password.length < 8) {
+    throw new Error("Password is too short")
+  }
   var hash = sha256.create();
   for (var x = 0; x < users.length; x++) {
     if (users[x]["email"] == req.body.email) {
