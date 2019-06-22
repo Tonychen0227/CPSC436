@@ -12,6 +12,7 @@ const range = len => {
 const newPerson = () => {
   const statusChance = Math.random();
   return {
+    whatever: Math.floor(Math.random() * 30),
     fg2PtAtt: Math.floor(Math.random() * 30),
     fg2PtAttPerGame: Math.floor(Math.random() * 30),
     fg2PtMade: Math.floor(Math.random() * 30),
