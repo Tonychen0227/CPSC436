@@ -1,4 +1,5 @@
 import {combineReducers} from 'redux';
+import data from './data';
 const MongoClient = require('mongodb').MongoClient;
 
 const mongoConnectionString = "mongodb+srv://admin:admin@cpsc436-basketball-kbwxu.mongodb.net/test?retryWrites=true"
@@ -19,6 +20,7 @@ const currentPageNumber = (pageNum = 1, action) => {
 }
 
 export default combineReducers ({
-  pageNum: currentPageNumber
+  pageNum: currentPageNumber,
+  data
   //anotherKey: anotherReducer (all your reducers should be combined)
 });
