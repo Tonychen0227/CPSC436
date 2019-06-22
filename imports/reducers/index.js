@@ -19,8 +19,30 @@ const currentPageNumber = (pageNum = 1, action) => {
   return pageNum;
 }
 
+const newsStore = (news = [], action) => {
+  if(action.type === "LOAD_NEWS") {
+    /*var key = 0;
+    var topSixNews = action.payload.articles; // to to get the array
+    Array.from(topSixNews).forEach((currentNews) =>{
+        news.push({key: key, image: currentNews.images[0].url, headline: currentNews.headline, link: currentNews.links.web.href});
+        key++;
+        console.log("from the loop")
+        console.log(news);
+    });*/
+    console.log("from the reducer: ")
+    console.log(news);
+    return action.payload;
+    //return action.payload;
+  }
+  return news;
+}
+
 export default combineReducers ({
   pageNum: currentPageNumber,
+<<<<<<< HEAD
   data
+=======
+  news: newsStore
+>>>>>>> 9086fe5bf18d78aa5b11fc6627a79cc432f430e8
   //anotherKey: anotherReducer (all your reducers should be combined)
 });
