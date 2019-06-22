@@ -5,7 +5,6 @@ import MyMVP from './MyMVP';
 import MyTeam from './MyTeam';
 import MyMVPStats from './MyMVPStats';
 import MyTeamStats from './MyTeamStats';
-import News from './News'
 import '../../css/App.css';
 
 class Home extends React.Component {
@@ -13,11 +12,6 @@ class Home extends React.Component {
 		return (
 			<div className="Home">
 				<h1> Welcome to your home page </h1>
-				<div className="top">
-					<div className="News">
-						<News />
-					</div>
-				</div>
 				<div className="left">
 					<div className="myMVP">
 							<MyMVP />

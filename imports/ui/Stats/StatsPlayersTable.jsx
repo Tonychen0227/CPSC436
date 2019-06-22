@@ -15,53 +15,55 @@ class StatsPlayersTable extends React.Component {
 	      Header: "First Name",
 	      accessor: "firstName",
 	      show: true,
-	      width: 150,
-				filterMethod: (filter, row) =>
-					row[filter.id] == filter.value
+	      width: 150
 	    },
 	    {
 	      Header: "Last Name",
 	      accessor: "lastName",
 	      show: true,
-	      width: 150,
-				filterMethod: (filter, row) =>
-					row[filter.id] == filter.value
+	      width: 150
 	    },
 	    {
 	      Header: "Age",
 	      accessor: "age",
 	      show: true,
-	      width: 50
+	      width: 50,
+				filterable: true
 	    },
 	    {
 	      Header: "2-Points-Attempt",
 	      accessor: "fg2PtAtt",
 	      show: true,
-	      width: 100
+	      width: 100,
+				filterable: true
 	    },
 	    {
 	      Header: "2-Points-Attempt/Game",
 	      accessor: "fg2PtAttPerGame",
 	      show: true,
-	      width: 100
+	      width: 100,
+				filterable: true
 	    },
 	    {
 	      Header: "2-Point-Made",
 	      accessor: "fg2PtMade",
 	      show: true,
-	      width: 100
+	      width: 100,
+				filterable: true
 	    },
 	    {
 	      Header: "2-Point-Made/Game",
 	      accessor: "fg2PtMadePerGame",
 	      show: true,
-	      width: 100
+	      width: 100,
+				filterable: true
 	    },
 	    {
 	      Header: "2-Point%",
 	      accessor: "fg2PtPct",
 	      show: true,
-	      width: 100
+	      width: 100,
+				filterable: true
 	    }
 	  ]
 	}
@@ -93,7 +95,6 @@ class StatsPlayersTable extends React.Component {
           rows={this.data}
           columns={this.state.columns}
           defaultPageSize={20}
-          filterable
           defaultFilterMethod={(filter, row) =>
             row[filter.id] >= filter.value}
           className="-striped -highlight"

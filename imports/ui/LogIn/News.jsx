@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { loadNews } from '../../actions/index'
-import '../../css/News.css'
+import '../../css/News.css';
 class News extends React.Component {
 
   componentDidMount(){
