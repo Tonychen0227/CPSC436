@@ -7,12 +7,11 @@ var makeData = function(len) {
   var arr = [];
   for (i=0; i<len; i++){
     arr[i] = newPerson();
-    }
-    return arr
+  };
+  return arr;
 }
 
 const newPerson = () => {
-  const statusChance = Math.random();
   return {
     fg2PtAtt: Math.floor(Math.random() * 30),
     fg2PtAttPerGame: Math.floor(Math.random() * 30),

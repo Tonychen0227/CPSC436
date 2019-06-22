@@ -15,13 +15,17 @@ class StatsPlayersTable extends React.Component {
 	      Header: "First Name",
 	      accessor: "firstName",
 	      show: true,
-	      width: 150
+	      width: 150,
+				filterMethod: (filter, row) =>
+					row[filter.id] == filter.value
 	    },
 	    {
 	      Header: "Last Name",
 	      accessor: "lastName",
 	      show: true,
-	      width: 150
+	      width: 150,
+				filterMethod: (filter, row) =>
+					row[filter.id] == filter.value
 	    },
 	    {
 	      Header: "Age",
