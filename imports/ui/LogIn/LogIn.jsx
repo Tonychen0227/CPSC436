@@ -73,7 +73,7 @@ class LogIn extends React.Component {
 						<br/>
 						<label>
 							Password:
-							<input type="text" onChange={this.handleChangePassword}/>
+							<input type="password" onChange={this.handleChangePassword}/>
 							<span>{!this.state.validPassword ? "Input valid password pls (8+ chars)":""}</span>
 						</label>
 						<br/>
