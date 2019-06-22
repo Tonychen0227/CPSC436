@@ -38,14 +38,11 @@ class LogIn extends React.Component {
 
 	checkValidity(email, password) {
 		var match = re.test(email)
-		console.log(match)
 		if (match) {
-			console.log("setting true")
 			this.setState({
 				validEmail: true
 			})
 		} else {
-			console.log("setting false")
 			this.setState({
 				validEmail: false
 			})

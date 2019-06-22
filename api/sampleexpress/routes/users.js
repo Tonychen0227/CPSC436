@@ -16,7 +16,6 @@ router.post('/', function(req, res, next){
 });
 
 router.post('/login', function(req, res, next) {
-  console.log('very nice');
 })
 
 router.post('/register', function(req, res, next) {
