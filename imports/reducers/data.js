@@ -1,18 +1,18 @@
-import React from "react";
+import { FETCH_Data_BEGIN, FETCH_Data_SUCCESS, FETCH_Data_FAILURE } from '../actions';
 import namor from "namor";
+import React from "react";
 
-const range = len => {
-  const arr = [];
-  for (let i = 0; i < len; i++) {
-    arr.push(i);
-  }
+var makeData = function(len) {
+  console.log(len)
+  var arr = [];
+  for (i=0; i<len; i++){
+    arr[i] = newPerson();
+  };
   return arr;
-};
+}
 
 const newPerson = () => {
-  const statusChance = Math.random();
   return {
-    whatever: Math.floor(Math.random() * 30),
     fg2PtAtt: Math.floor(Math.random() * 30),
     fg2PtAttPerGame: Math.floor(Math.random() * 30),
     fg2PtMade: Math.floor(Math.random() * 30),
@@ -34,10 +34,20 @@ const newPerson = () => {
   };
 };
 
-export function makeData(len = 5553) {
-  return range(len).map(d => {
-    return {
-      ...newPerson()
-    };
-  });
-}
+const range = len => {
+  const arr = [];
+  for (let i = 0; i < len; i++) {
+    arr.push(i);
+  }
+  return arr;
+};
+
+const initialState = {
+  playersData: makeData(100),
+  fetching: false,
+  error: null,
+};
+
+export default function data(state = initialState, action) {
+      return state;
+  }
