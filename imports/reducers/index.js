@@ -39,10 +39,7 @@ const newsStore = (news = [], action) => {
 
 export default combineReducers ({
   pageNum: currentPageNumber,
-<<<<<<< HEAD
-  data
-=======
+  data,
   news: newsStore
->>>>>>> 9086fe5bf18d78aa5b11fc6627a79cc432f430e8
   //anotherKey: anotherReducer (all your reducers should be combined)
 });
