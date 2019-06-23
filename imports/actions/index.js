@@ -13,11 +13,12 @@ export const logOut = () => {
   }
 }
 
-export const userLogIn = (email, password) => {
+export const userLogIn = (email, password, jwt) => {
   return {
     type: 'LOG_IN',
     payloadEmail: email,
-    payloadPassword: password
+    payloadPassword: password,
+    payloadJwt: jwt
   }
 }
 

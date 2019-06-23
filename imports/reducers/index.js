@@ -20,7 +20,7 @@ const currentPageNumber = (pageNum = 1, action) => {
   return pageNum;
 }
 
-const validateLogin = (email, password) => {
+const validateLogin = (email, password, jwt) => {
   var hash = sha256.create();
   hash.update(password);
   hash = hash.hex();
@@ -34,7 +34,7 @@ const validateLogin = (email, password) => {
 const userLogIn = (
   isLoggedIn = false, action) => {
   if (action.type === 'LOG_IN') {
-    isLoggedIn = validateLogin(action.payloadEmail, action.payloadPassword)
+    isLoggedIn = validateLogin(action.payloadEmail, action.payloadPassword, action.payloadJwt)
   }
   if (action.type === 'LOG_OUT') {
     isLoggedIn = false;
