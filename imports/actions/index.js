@@ -7,6 +7,12 @@ export const flipPage = newPage => {
   }
 }
 
+export const logOut = () => {
+  return {
+    type: 'LOG_OUT'
+  }
+}
+
 export const userLogIn = (email, password) => {
   return {
     type: 'LOG_IN',

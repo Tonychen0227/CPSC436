@@ -3,18 +3,23 @@ import 'bootstrap/dist/css/bootstrap.css';
 import '../../css/NavBar.css';
 import {Navbar, Nav} from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { flipPage } from '../../actions';
+import { flipPage, logOut } from '../../actions';
 
 class NavBar extends Component {
   constructor() {
 		super();
 		this.handleClick = this.handleClick.bind(this);
+    this.handleLogOut = this.handleLogOut.bind(this);
     }
 
 	handleClick(e) {
 		event.preventDefault();
     this.props.flipPage(e);
 	}
+
+  handleLogOut() {
+    this.props.logOut();
+  }
 
   render() {
     return (
@@ -28,7 +33,8 @@ class NavBar extends Component {
           <Nav className="mr-auto">
             <Nav.Link className="button" onClick={() => this.handleClick(1)}>Home</Nav.Link>
             <Nav.Link className="button" onClick={() => this.handleClick(2)}>Stats</Nav.Link>
-            <Nav.Link className="button" onClick={() => this.handleClick(3)}>Log in</Nav.Link>
+            <Nav.Link className="button" onClick={() => this.handleClick(3)}>{this.props.isLoggedIn ? "My Account" : "Log In"} <br/>
+            <button hidden={!this.props.isLoggedIn} onClick={this.handleLogOut}> Log Out </button> </Nav.Link>
             <Nav.Link className="button" onClick={() => this.handleClick(69420)}>About GGPanda</Nav.Link>
           </Nav>
         </Navbar.Collapse>
@@ -40,7 +46,7 @@ class NavBar extends Component {
 
 const mapStateToProps = (state) => { //name is by convention
 	//state has entire state of app!!
-  return { pageNum: state.pageNum }; //now it will appear as props
+  return { pageNum: state.pageNum, isLoggedIn: state.isLoggedIn }; //now it will appear as props
 }
 
-export default connect(mapStateToProps, {flipPage})(NavBar);
+export default connect(mapStateToProps, {flipPage, logOut})(NavBar);

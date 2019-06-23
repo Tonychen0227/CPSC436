@@ -36,12 +36,18 @@ const userLogIn = (
   if (action.type === 'LOG_IN') {
     isLoggedIn = validateLogin(action.payloadEmail, action.payloadPassword)
   }
+  if (action.type === 'LOG_OUT') {
+    isLoggedIn = false;
+  }
   return isLoggedIn
 }
 
 const loginAttempted = (loginAttempted = 0, action) => {
   if (action.type === 'LOG_IN') {
     loginAttempted = loginAttempted + 1
+  }
+  if (action.type === 'LOG_OUT') {
+    loginAttempted = 0;
   }
   return loginAttempted
 }
