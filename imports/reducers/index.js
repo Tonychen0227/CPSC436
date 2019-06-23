@@ -2,9 +2,11 @@ import {combineReducers} from 'redux';
 import data from './data';
 const MongoClient = require('mongodb').MongoClient;
 var sha256 = require('js-sha256');
+const axios = require('axios');
 
 const mongoConnectionString = "mongodb+srv://admin:admin@cpsc436-basketball-kbwxu.mongodb.net/test?retryWrites=true"
 
+const apiUrl = "http:/localhost:3001"
 /*
 MongoClient.connect(mongoConnectionString, function(err, client) {
   console.log(err);
