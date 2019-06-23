@@ -8,7 +8,7 @@ import reducers from '../imports/reducers';
 import thunk from 'redux-thunk';
 
 Meteor.startup(() => {
-  render(<Provider store={createStore(reducers, applyMiddleware(...[thunk]))}>
+  render(<Provider store={createStore(reducers, applyMiddleware(thunk))}>
   <App />
   </Provider>, document.getElementById('react-target'));
 });

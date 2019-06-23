@@ -97,4 +97,12 @@ return { isLoggedIn: state.isLoggedIn,
  }; //now it will appear as props
 }
 
-export default connect(mapStateToProps, {userLogIn})(LogIn);
+const mapDispatchToProps = dispatch => {
+  return {
+    userLogIn: (email, password, jwt) => {
+      dispatch(userLogIn(email, password, jwt));
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LogIn);

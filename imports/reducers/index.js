@@ -72,11 +72,43 @@ const newsStore = (news = [], action) => {
   return news;
 }
 
+const initialState = {
+  loading: false,
+  todos: [],
+  error: null
+};
+
+const todosReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case "ADD_TODO_STARTED":
+      return {
+        ...state,
+        loading: true
+      };
+    case "ADD_TODO_SUCCESS":
+      return {
+        ...state,
+        loading: false,
+        error: null,
+        todos: [...state.todos, action.payload]
+      };
+    case "ADD_TODO_FAILURE":
+      return {
+        ...state,
+        loading: false,
+        error: action.payload.error
+      };
+    default:
+      return state;
+  }
+}
+
 export default combineReducers ({
   pageNum: currentPageNumber,
   data,
   news: newsStore,
   isLoggedIn: userLogIn,
-  loginAttempted: loginAttempted
+  loginAttempted: loginAttempted,
+  todosReducer: todosReducer
   //anotherKey: anotherReducer (all your reducers should be combined)
 });
