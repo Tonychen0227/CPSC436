@@ -5,6 +5,7 @@ import MyMVP from './MyMVP';
 import MyTeam from './MyTeam';
 import MyMVPStats from './MyMVPStats';
 import MyTeamStats from './MyTeamStats';
+import SearchBar from './SearchBar';
 import '../../css/App.css';
 
 class Home extends React.Component {
@@ -27,6 +28,7 @@ class Home extends React.Component {
 						<MyMVPStats />
 					</div>
 					<div className="myTeamStats">
+						<SearchBar />
 						<MyTeamStats />
 					</div>
 				</div>
