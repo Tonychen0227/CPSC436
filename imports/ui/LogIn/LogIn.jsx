@@ -60,7 +60,7 @@ class LogIn extends React.Component {
 
 	render() {
 		console.log(this.props.userState);
-		if (!this.props.isLoggedIn) {
+		if (!this.props.userState.isLoggedIn) {
 			return (
 				<div>
 					<h1> Welcome to login page! </h1>
@@ -79,7 +79,7 @@ class LogIn extends React.Component {
 						</label>
 						<br/>
 		        <input disabled={!this.state.validEmail || !this.state.validPassword} type="submit" value="Log Me In" />
-						<span>{this.props.loginAttempted > 0 ? "Login failed, attempted " + this.props.loginAttempted + " times, try again":""}</span>
+						<span>{this.props.userState.loginAttempted > 0 ? "Login failed, attempted " + this.props.userState.loginAttempted + " times, try again":""}</span>
 		      </form>
 		</div>
 			);
@@ -93,9 +93,9 @@ class LogIn extends React.Component {
 
 const mapStateToProps = (state) => { //name is by convention
 	//state has entire state of app!!
-return { isLoggedIn: state.isLoggedIn,
-	loginAttempted: state.loginAttempted,
-	userState: state.userState
+return {
+	userState: state.userState,
+	ensureRefresh: state.ensureRefresh
  }; //now it will appear as props
 }
 

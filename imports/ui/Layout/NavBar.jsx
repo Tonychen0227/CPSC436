@@ -46,7 +46,7 @@ class NavBar extends Component {
 
 const mapStateToProps = (state) => { //name is by convention
 	//state has entire state of app!!
-  return { pageNum: state.pageNum, isLoggedIn: state.isLoggedIn }; //now it will appear as props
+  return { pageNum: state.pageNum, isLoggedIn: state.userState.isLoggedIn, ensureRefresh: state.ensureRefresh}; //now it will appear as props
 }
 
 export default connect(mapStateToProps, {flipPage, logOut})(NavBar);

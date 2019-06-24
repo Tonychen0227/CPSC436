@@ -33,6 +33,11 @@ const validateLogin = (email, password, jwt) => {
   }
 }
 
+const ensureRefresh = (ensureRefresh = false, action) => {
+  ensureRefresh = !ensureRefresh;
+  return ensureRefresh;
+}
+
 const userState = (userState={isLoggedIn: false, loginAttempted: 0}, action) => {
   if (action.type === 'LOG_IN') {
     userState.isLoggedIn = validateLogin(action.payloadEmail, action.payloadPassword, action.payloadJwt)
@@ -43,27 +48,6 @@ const userState = (userState={isLoggedIn: false, loginAttempted: 0}, action) => 
     userState.loginAttempted = 0;
   }
   return userState
-}
-
-const userLogIn = (
-  isLoggedIn = false, action) => {
-  if (action.type === 'LOG_IN') {
-    isLoggedIn = validateLogin(action.payloadEmail, action.payloadPassword, action.payloadJwt)
-  }
-  if (action.type === 'LOG_OUT') {
-    isLoggedIn = false;
-  }
-  return isLoggedIn
-}
-
-const loginAttempted = (loginAttempted = 0, action) => {
-  if (action.type === 'LOG_IN') {
-    loginAttempted = loginAttempted + 1
-  }
-  if (action.type === 'LOG_OUT') {
-    loginAttempted = 0;
-  }
-  return loginAttempted
 }
 
 const newsStore = (news = [], action) => {
@@ -119,9 +103,8 @@ export default combineReducers ({
   pageNum: currentPageNumber,
   data,
   news: newsStore,
-  isLoggedIn: userLogIn,
-  loginAttempted: loginAttempted,
   todosReducer: todosReducer,
-  userState: userState
+  userState: userState,
+  ensureRefresh: ensureRefresh
   //anotherKey: anotherReducer (all your reducers should be combined)
 });
