@@ -1,14 +1,5 @@
 import React, { Component } from 'react';
-import LoremIpsum from '../LoremIpsum';
-import {
-  Radar,
-	RadarChart,
-	PolarGrid,
-	PolarAngleAxis,
-	PolarRadiusAxis,
-	Tooltip,
-	Legend,
-} from 'recharts';
+import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Tooltip, Legend, } from 'recharts';
 
 const CustomTooltip = ({ active, payload, label }) => {
   if (active) {

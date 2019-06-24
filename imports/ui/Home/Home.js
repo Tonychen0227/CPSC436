@@ -12,21 +12,9 @@ class Home extends React.Component {
 		return (
 			<div className="Home">
 				<PlayerSelector />
-				<div className="left">
-					<div className="myMVP">
-							<MyMVP />
-					</div>
-				</div>
-
-				<div className="right">
-					<div className="myMVPStats">
-						<MyMVPStats />
-					</div>
-					<div className="myTeamStats">
-						<SearchBar />
-						<MyTeamStats />
-					</div>
-				</div>
+				<MyMVPStats />
+				<SearchBar />
+				<MyTeamStats />
 			</div>
 		);
 	}

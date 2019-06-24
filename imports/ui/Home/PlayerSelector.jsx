@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 import SelectSearch from 'react-select-search';
+import MyMVP from './MyMVP';
 import '../../css/PlayerSelector.css';
 
 export default class PlayerSelector extends Component {
     state = {
-        playerPlaceHolder: 'Lebron James',
+        selectedOption: 'Lebron James',
         players: [
           {name: 'Stephen Curry', value: 'AF'},
           {name: 'Klay Thompson', value: 'AX'},
@@ -18,16 +19,23 @@ export default class PlayerSelector extends Component {
         ]
     };
 
+    handleChange = (selectedOption) => {
+      this.setState({ selectedOption });
+      console.log(selectedOption);
+    }
+
     render() {
         return (
             <div>
                 <SelectSearch
                     name="player"
                     mode="input"
-                    value={this.state.playerPlaceHolder}
+                    value={this.state.selectedOption}
                     options={this.state.players}
-                    placeholder="choose a player"
+                    placeholder="switch"
+                    onChange={this.handleChange}
                 />
+                <MyMVP />
             </div>
         );
     }
