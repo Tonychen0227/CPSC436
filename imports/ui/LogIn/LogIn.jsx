@@ -59,6 +59,7 @@ class LogIn extends React.Component {
 	}
 
 	render() {
+		console.log(this.props.userState);
 		if (!this.props.isLoggedIn) {
 			return (
 				<div>
@@ -93,7 +94,8 @@ class LogIn extends React.Component {
 const mapStateToProps = (state) => { //name is by convention
 	//state has entire state of app!!
 return { isLoggedIn: state.isLoggedIn,
-	loginAttempted: state.loginAttempted
+	loginAttempted: state.loginAttempted,
+	userState: state.userState
  }; //now it will appear as props
 }
 
