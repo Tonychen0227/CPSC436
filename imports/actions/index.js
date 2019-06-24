@@ -1,4 +1,7 @@
 const axios = require('axios');
+var sha256 = require('js-sha256');
+
+var url = 'http://localhost:3001'
 
 export const flipPage = newPage => {
   return {
@@ -13,9 +16,10 @@ export const logOut = () => {
   }
 }
 
-const loginSuccess = todo => ({
+const loginSuccess = (data, jwt) => ({
   type: "LOG_IN_SUCCESS",
-  payload: todo
+  payload: data,
+  payloadJWT: jwt
 });
 
 const loginStarted = () => ({
@@ -27,16 +31,28 @@ const loginFailure = error => ({
   payload: error
 });
 
+const validateLogin = (email, password) => {
+  return new Promise(function(resolve, reject) {
+    console.log("begin delay")
+    setTimeout(function() {
+      console.log("end delay")
+      if (email == "admin@admin.com" && password == "d82494f05d6917ba02f7aaa29689ccb444bb73f20380876cb05d1f37537b7892") {
+        resolve(true)
+      } else {
+        reject(false)
+      }
+    }, 2000)
+  })
+}
+
 export const userLogIn = (email, password, jwt) => {
-  return {
-    type: 'LOG_IN',
-    payloadEmail: email,
-    payloadPassword: password,
-    payloadJwt: jwt
-    }
+  var hash = sha256.create();
+  hash.update(password);
+  password = hash.hex();
 
   return dispatch => {
     dispatch(loginStarted());
+    /*
     axios
       .post(url, {
         email: email,
@@ -44,8 +60,10 @@ export const userLogIn = (email, password, jwt) => {
         jwt: jwt,
         completed: false
       })
+      */
+    validateLogin(email, password)
       .then(res => {
-        dispatch(loginSuccess(res.data));
+        dispatch(loginSuccess(res.data, ""));
       })
       .catch(err => {
         dispatch(loginFailure(err.message));

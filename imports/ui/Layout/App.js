@@ -6,6 +6,7 @@ import LogIn from '../LogIn/LogIn';
 import NavBar from './NavBar';
 import About from '../About/About';
 import { connect } from 'react-redux';
+import LoadingOverlay from 'react-loading-overlay';
 
 class App extends React.Component {
 	render() {
@@ -26,43 +27,23 @@ class App extends React.Component {
 				dynamicComponent = <About/>
 		}
 		return (
-	<div>
-	<NavBar/>
-	{dynamicComponent}
-	</div>
+	<LoadingOverlay
+		active={this.props.loading}
+		spinner
+		text='Loading your content...'>
+		<div>
+		<NavBar/>
+		{dynamicComponent}
+		</div>
+		</LoadingOverlay>
 	);
 	}
 }
 
 const mapStateToProps = (state) => { //name is by convention
 	//state has entire state of app!!
-  return { pageNum: state.pageNum }; //now it will appear as props
+  return { pageNum: state.pageNum, loading: state.loading }; //now it will appear as props
 }
 
 
 export default connect(mapStateToProps)(App);
-
-/*
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
-
-export default App;
-*/

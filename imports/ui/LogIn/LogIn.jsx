@@ -62,26 +62,26 @@ class LogIn extends React.Component {
 		console.log(this.props.userState);
 		if (!this.props.userState.isLoggedIn) {
 			return (
-				<div>
-					<h1> Welcome to login page! </h1>
-					<h3> Login: </h3>
-					<form onSubmit={this.handleSubmit} className="InputField">
-		        <label>
-		          Email:
-		          <input type="text" onChange={this.handleChangeEmail}/>
-							<span>{!this.state.validEmail ? "Input valid email pls":""}</span>
-		        </label>
-						<br/>
-						<label>
-							Password:
-							<input type="password" onChange={this.handleChangePassword}/>
-							<span>{!this.state.validPassword ? "Input valid password pls (8+ chars)":""}</span>
-						</label>
-						<br/>
-		        <input disabled={!this.state.validEmail || !this.state.validPassword} type="submit" value="Log Me In" />
-						<span>{this.props.userState.loginAttempted > 0 ? "Login failed, attempted " + this.props.userState.loginAttempted + " times, try again":""}</span>
-		      </form>
-		</div>
+					<div>
+						<h1> Welcome to login page! </h1>
+						<h3> Login: </h3>
+						<form onSubmit={this.handleSubmit} className="InputField">
+			        <label>
+			          Email:
+			          <input type="text" onChange={this.handleChangeEmail}/>
+								<span>{!this.state.validEmail ? "Input valid email pls":""}</span>
+			        </label>
+							<br/>
+							<label>
+								Password:
+								<input type="password" onChange={this.handleChangePassword}/>
+								<span>{!this.state.validPassword ? "Input valid password pls (8+ chars)":""}</span>
+							</label>
+							<br/>
+			        <input disabled={!this.state.validEmail || !this.state.validPassword} type="submit" value="Log Me In" />
+							<span>{this.props.userState.loginAttempted > 0 ? "Login failed, attempted " + this.props.userState.loginAttempted + " times, try again":""}</span>
+			      </form>
+						</div>
 			);
 		} else {
 			return (
@@ -95,7 +95,8 @@ const mapStateToProps = (state) => { //name is by convention
 	//state has entire state of app!!
 return {
 	userState: state.userState,
-	ensureRefresh: state.ensureRefresh
+	ensureRefresh: state.ensureRefresh,
+	loading: state.loading
  }; //now it will appear as props
 }
 

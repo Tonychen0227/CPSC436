@@ -1,19 +1,9 @@
 import {combineReducers} from 'redux';
 import data from './data';
-const MongoClient = require('mongodb').MongoClient;
 var sha256 = require('js-sha256');
 const axios = require('axios');
 
-const mongoConnectionString = "mongodb+srv://admin:admin@cpsc436-basketball-kbwxu.mongodb.net/test?retryWrites=true"
-
 const apiUrl = "http:/localhost:3001"
-/*
-MongoClient.connect(mongoConnectionString, function(err, client) {
-  console.log(err);
-  console.log("Connected successfully to server");
-  client.close();
-});
-*/
 
 const currentPageNumber = (pageNum = 1, action) => {
   if (action.type === 'NEW_PAGE') {
@@ -22,26 +12,37 @@ const currentPageNumber = (pageNum = 1, action) => {
   return pageNum;
 }
 
-const validateLogin = (email, password, jwt) => {
-  var hash = sha256.create();
-  hash.update(password);
-  hash = hash.hex();
-  if (email == "admin@admin.com" && hash == "d82494f05d6917ba02f7aaa29689ccb444bb73f20380876cb05d1f37537b7892") {
-    return true
-  } else {
-    return false
-  }
-}
-
 const ensureRefresh = (ensureRefresh = false, action) => {
   ensureRefresh = !ensureRefresh;
   return ensureRefresh;
 }
 
-const userState = (userState={isLoggedIn: false, loginAttempted: 0}, action) => {
+const loading = (loading = false, action) => {
+  if (action.type.indexOf('STARTED') != -1) {
+    loading = true
+  }
+  else {
+    loading = false
+  }
+  return loading
+}
+
+const userState = (userState={isLoggedIn: false, loginAttempted: 0, userData: {}, jwt: ""}, action) => {
   if (action.type === 'LOG_IN') {
     userState.isLoggedIn = validateLogin(action.payloadEmail, action.payloadPassword, action.payloadJwt)
     userState.loginAttempted = userState.loginAttempted + 1
+  }
+  if (action.type === 'LOG_IN_STARTED') {
+  }
+  if (action.type === 'LOG_IN_SUCCESS') {
+    userState.isLoggedIn = true;
+    userState.loginAttempted = 0;
+    userState.userData = action.payload;
+    userState.jwt = action.payloadJWT;
+  }
+  if (action.type === 'LOG_IN_FAILURE') {
+    userState.isLoggedIn = false;
+    userState.loginAttempted = userState.loginAttempted + 1;
   }
   if (action.type === 'LOG_OUT') {
     userState.isLoggedIn = false;
@@ -68,43 +69,12 @@ const newsStore = (news = [], action) => {
   return news;
 }
 
-const initialState = {
-  loading: false,
-  todos: [],
-  error: null
-};
-
-const todosReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case "ADD_TODO_STARTED":
-      return {
-        ...state,
-        loading: true
-      };
-    case "ADD_TODO_SUCCESS":
-      return {
-        ...state,
-        loading: false,
-        error: null,
-        todos: [...state.todos, action.payload]
-      };
-    case "ADD_TODO_FAILURE":
-      return {
-        ...state,
-        loading: false,
-        error: action.payload.error
-      };
-    default:
-      return state;
-  }
-}
-
 export default combineReducers ({
   pageNum: currentPageNumber,
   data,
   news: newsStore,
-  todosReducer: todosReducer,
   userState: userState,
-  ensureRefresh: ensureRefresh
+  ensureRefresh: ensureRefresh,
+  loading: loading
   //anotherKey: anotherReducer (all your reducers should be combined)
 });
