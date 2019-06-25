@@ -31,20 +31,6 @@ const loginFailure = error => ({
   payload: error
 });
 
-const validateLogin = (email, password) => {
-  return new Promise(function(resolve, reject) {
-    console.log("begin delay")
-    setTimeout(function() {
-      console.log("end delay")
-      if (email == "admin@admin.com" && password == "d82494f05d6917ba02f7aaa29689ccb444bb73f20380876cb05d1f37537b7892") {
-        resolve(true)
-      } else {
-        reject(false)
-      }
-    }, 2000)
-  })
-}
-
 export const userLogIn = (email, password, jwt) => {
   var hash = sha256.create();
   hash.update(password);
@@ -52,21 +38,53 @@ export const userLogIn = (email, password, jwt) => {
 
   return dispatch => {
     dispatch(loginStarted());
-    /*
     axios
-      .post(url, {
+      .post(url + '/users/login', {
         email: email,
         password: password,
-        jwt: jwt,
-        completed: false
+        jwt: jwt
       })
-      */
-    validateLogin(email, password)
       .then(res => {
-        dispatch(loginSuccess(res.data, ""));
+        dispatch(loginSuccess(res.data, res.data.JWTToken));
       })
       .catch(err => {
         dispatch(loginFailure(err.message));
+      });
+  };
+};
+
+const registerSuccess = (data, jwt) => ({
+  type: "REGISTER_SUCCESS",
+  payload: data,
+  payloadJWT: jwt
+});
+
+const registerStarted = () => ({
+  type: "REGISTER_STARTED"
+});
+
+const registerFailure = error => ({
+  type: "REGISTER_FAILURE",
+  payload: error
+});
+
+export const userRegister = (email, password) => {
+  var hash = sha256.create();
+  hash.update(password);
+  password = hash.hex();
+
+  return dispatch => {
+    dispatch(registerStarted());
+    axios
+      .post(url + '/users/register', {
+        email: email,
+        password: password
+      })
+      .then(res => {
+        dispatch(registerSuccess(res.data, res.data.JWTToken));
+      })
+      .catch(err => {
+        dispatch(registerFailure(err.message));
       });
   };
 };

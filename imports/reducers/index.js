@@ -22,22 +22,32 @@ const loading = (loading = false, action) => {
   return loading
 }
 
-const userState = (userState={isLoggedIn: false, loginAttempted: 0, userData: {}, jwt: ""}, action) => {
-  if (action.type === 'LOG_IN_STARTED') {
+const userState = (userState={isLoggedIn: false, loginAttempted: 0, userData: {}, jwt: "", errorMessage: null}, action) => {
+  if (action.type === 'LOG_IN_STARTED' || action.type === 'REGISTER_STARTED') {
   }
-  if (action.type === 'LOG_IN_SUCCESS') {
+  if (action.type === 'LOG_IN_SUCCESS' || action.type === 'REGISTER_SUCCESS') {
     return { ...userState, 
       isLoggedIn: true,
       loginAttempted: 0,
       userData: action.payload,
-      jwt: action.payloadJWT};
+      jwt: action.payloadJWT,
+      errorMessage: null};
   }
   if (action.type === 'LOG_IN_FAILURE') {
     return { ...userState, 
       isLoggedIn: false,
       loginAttempted: userState.loginAttempted + 1,
       userData: null,
-      jwt: ""};
+      jwt: "",
+      errorMessage: action.payload + " (at " + new Date().toUTCString() + " UTC)"};
+  }
+  if (action.type === 'REGISTER_FAILURE') {
+    return { ...userState, 
+      isLoggedIn: false,
+      loginAttempted: 0,
+      userData: null,
+      jwt: "",
+      errorMessage: action.payload + " (at " + new Date().toUTCString() + " UTC)"};
   }
   if (action.type === 'LOG_OUT') {
     userState.isLoggedIn = false;

@@ -2,7 +2,7 @@ import React from 'react';
 import Fragment from 'react';
 import MyAccount from './MyAccount';
 import { connect } from 'react-redux';
-import { userLogIn } from '../../actions';
+import { userLogIn, userRegister } from '../../actions';
 import '../../css/LogIn.css';
 
 var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -15,6 +15,7 @@ class LogIn extends React.Component {
 		this.handleChangeEmail = this.handleChangeEmail.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.checkValidity = this.checkValidity.bind(this);
+		this.handleRegister = this.handleRegister.bind(this);
 	}
 
 	handleChangeEmail(e) {
@@ -58,6 +59,10 @@ class LogIn extends React.Component {
 		}
 	}
 
+	handleRegister() {
+		this.props.userRegister(this.state.email, this.state.password)
+	}
+
 	render() {
 		console.log(this.props.userState);
 		if (!this.props.userState.isLoggedIn) {
@@ -79,8 +84,11 @@ class LogIn extends React.Component {
 							</label>
 							<br/>
 			        <input disabled={!this.state.validEmail || !this.state.validPassword} type="submit" value="Log Me In" />
-							<span>{this.props.userState.loginAttempted > 0 ? "Login failed, attempted " + this.props.userState.loginAttempted + " times, try again":""}</span>
-			      </form>
+					<span>{this.props.userState.loginAttempted > 0 ? "Login failed, attempted " + this.props.userState.loginAttempted + " times, try again":""}</span>
+				  </form>
+				  <p> or.... </p>
+					<button disabled={!this.state.validEmail || !this.state.validPassword} onClick={this.handleRegister} text="Sign me up">Sign me up </button>
+					<span>{this.props.userState.errorMessage ? "Error:" + this.props.userState.errorMessage :""}</span>
 						</div>
 			);
 		} else {
@@ -102,7 +110,10 @@ const mapDispatchToProps = dispatch => {
   return {
     userLogIn: (email, password, jwt) => {
       dispatch(userLogIn(email, password, jwt));
-    }
+	},
+	userRegister: (email, password) => {
+	dispatch(userRegister(email, password));
+	}
   };
 };
 
