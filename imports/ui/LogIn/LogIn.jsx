@@ -94,9 +94,7 @@ class LogIn extends React.Component {
 const mapStateToProps = (state) => { //name is by convention
 	//state has entire state of app!!
 return {
-	userState: state.userState,
-	ensureRefresh: state.ensureRefresh,
-	loading: state.loading
+	userState: state.userState
  }; //now it will appear as props
 }
 

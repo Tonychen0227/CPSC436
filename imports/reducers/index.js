@@ -12,11 +12,6 @@ const currentPageNumber = (pageNum = 1, action) => {
   return pageNum;
 }
 
-const ensureRefresh = (ensureRefresh = false, action) => {
-  ensureRefresh = !ensureRefresh;
-  return ensureRefresh;
-}
-
 const loading = (loading = false, action) => {
   if (action.type.indexOf('STARTED') != -1) {
     loading = true
@@ -28,27 +23,32 @@ const loading = (loading = false, action) => {
 }
 
 const userState = (userState={isLoggedIn: false, loginAttempted: 0, userData: {}, jwt: ""}, action) => {
-  if (action.type === 'LOG_IN') {
-    userState.isLoggedIn = validateLogin(action.payloadEmail, action.payloadPassword, action.payloadJwt)
-    userState.loginAttempted = userState.loginAttempted + 1
-  }
   if (action.type === 'LOG_IN_STARTED') {
   }
   if (action.type === 'LOG_IN_SUCCESS') {
-    userState.isLoggedIn = true;
-    userState.loginAttempted = 0;
-    userState.userData = action.payload;
-    userState.jwt = action.payloadJWT;
+    return { ...userState, 
+      isLoggedIn: true,
+      loginAttempted: 0,
+      userData: action.payload,
+      jwt: action.payloadJWT};
   }
   if (action.type === 'LOG_IN_FAILURE') {
-    userState.isLoggedIn = false;
-    userState.loginAttempted = userState.loginAttempted + 1;
+    return { ...userState, 
+      isLoggedIn: false,
+      loginAttempted: userState.loginAttempted + 1,
+      userData: null,
+      jwt: ""};
   }
   if (action.type === 'LOG_OUT') {
     userState.isLoggedIn = false;
     userState.loginAttempted = 0;
+    return { ...userState, 
+      isLoggedIn: false,
+      loginAttempted: 0,
+      userData: null,
+      jwt: ""};
   }
-  return userState
+  return userState;
 }
 
 const newsStore = (news = [], action) => {
@@ -74,7 +74,6 @@ export default combineReducers ({
   data,
   news: newsStore,
   userState: userState,
-  ensureRefresh: ensureRefresh,
   loading: loading
   //anotherKey: anotherReducer (all your reducers should be combined)
 });
