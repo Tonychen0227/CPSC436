@@ -1,17 +1,9 @@
 import {combineReducers} from 'redux';
 import data from './data';
-const MongoClient = require('mongodb').MongoClient;
 var sha256 = require('js-sha256');
+const axios = require('axios');
 
-const mongoConnectionString = "mongodb+srv://admin:admin@cpsc436-basketball-kbwxu.mongodb.net/test?retryWrites=true"
-
-/*
-MongoClient.connect(mongoConnectionString, function(err, client) {
-  console.log(err);
-  console.log("Connected successfully to server");
-  client.close();
-});
-*/
+const apiUrl = "http:/localhost:3001"
 
 const currentPageNumber = (pageNum = 1, action) => {
   if (action.type === 'NEW_PAGE') {
@@ -20,30 +12,43 @@ const currentPageNumber = (pageNum = 1, action) => {
   return pageNum;
 }
 
-const validateLogin = (email, password) => {
-  var hash = sha256.create();
-  hash.update(password);
-  hash = hash.hex();
-  if (email == "admin@admin.com" && hash == "d82494f05d6917ba02f7aaa29689ccb444bb73f20380876cb05d1f37537b7892") {
-    return true
-  } else {
-    return false
+const loading = (loading = false, action) => {
+  if (action.type.indexOf('STARTED') != -1) {
+    loading = true
   }
+  else {
+    loading = false
+  }
+  return loading
 }
 
-const userLogIn = (
-  isLoggedIn = false, action) => {
-  if (action.type === 'LOG_IN') {
-    isLoggedIn = validateLogin(action.payloadEmail, action.payloadPassword)
+const userState = (userState={isLoggedIn: false, loginAttempted: 0, userData: {}, jwt: ""}, action) => {
+  if (action.type === 'LOG_IN_STARTED') {
   }
-  return isLoggedIn
-}
-
-const loginAttempted = (loginAttempted = 0, action) => {
-  if (action.type === 'LOG_IN') {
-    loginAttempted = loginAttempted + 1
+  if (action.type === 'LOG_IN_SUCCESS') {
+    return { ...userState, 
+      isLoggedIn: true,
+      loginAttempted: 0,
+      userData: action.payload,
+      jwt: action.payloadJWT};
   }
-  return loginAttempted
+  if (action.type === 'LOG_IN_FAILURE') {
+    return { ...userState, 
+      isLoggedIn: false,
+      loginAttempted: userState.loginAttempted + 1,
+      userData: null,
+      jwt: ""};
+  }
+  if (action.type === 'LOG_OUT') {
+    userState.isLoggedIn = false;
+    userState.loginAttempted = 0;
+    return { ...userState, 
+      isLoggedIn: false,
+      loginAttempted: 0,
+      userData: null,
+      jwt: ""};
+  }
+  return userState;
 }
 
 const newsStore = (news = [], action) => {
@@ -68,7 +73,7 @@ export default combineReducers ({
   pageNum: currentPageNumber,
   data,
   news: newsStore,
-  isLoggedIn: userLogIn,
-  loginAttempted: loginAttempted
+  userState: userState,
+  loading: loading
   //anotherKey: anotherReducer (all your reducers should be combined)
 });
