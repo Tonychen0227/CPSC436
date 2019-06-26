@@ -5,35 +5,7 @@ let jwt = require('jsonwebtoken');
 const Users = require('../mongo/users');
 const config = require('../config.js');
 
-//TODO: Correct error message propagation
-const checkToken = (jwtToken) => {
-  let token = jwtToken
-  if (token.startsWith('Bearer ')) {
-    // Remove Bearer from string
-    token = token.slice(7, token.length);
-  }
-
-  if (token) {
-    jwt.verify(token, config.secret, (err, decoded) => {
-      if (err) {
-        return {
-          success: false,
-          message: 'Token is not valid'
-        };
-      } else {
-        return {
-          success: true,
-          message: decoded
-        }
-      }
-    });
-  } else {
-    return {
-      success: false,
-      message: 'Auth token is not supplied'
-    };
-  }
-};
+//TODO: Correct error codes and details being sent
 
 router.get('/', function(req, res, next){
   res.json(users);
@@ -43,16 +15,28 @@ const handleUsernamePasswordLogin = (users, email, password) => {
   // password should already be hashed
   for (var x = 0; x < users.length; x++) {
     if (users[x].email == email) {
-      console.log(users[x].password, password);
       if (users[x].password == password) {
         let token = jwt.sign({email: email},
           config.secret,
           { expiresIn: '24h' // expires in 24 hours
           }
         );
-        users[x].jwtToken = token
+        users[x].JWTToken = token
         users[x].JWTIssued = new Date().toUTCString()
-        //TODO: Update entry in mongo
+        Users.updateOneUserJwt(users[x]._id, users[x].JWTToken, users[x].JWTIssued).then(success => {
+          console.log(users[x]._id, users[x].jwtToken, users[x].JWTIssued)
+          Users.getUsers().then(succ => {
+            for (var x = 0; x < succ.length; x++) {
+              if (succ[x].email == email) {
+                return succ[x]
+              }
+            }
+          }).catch(err => {
+            throw new Error(err)
+          })
+        }).catch(err => {
+          next(err)
+        })
         return users[x]
       } else {
         throw new Error("Unauthorized")
@@ -63,10 +47,18 @@ const handleUsernamePasswordLogin = (users, email, password) => {
 }
 
 const handleJWTLogin = (users, jwt) => {
+  jwt.verify(token, config.secret, (err, decoded) => {
+    if (err) {
+      throw new Error("Invalid token")
+    }
+  });
   for (var x = 0; x < users.length; x++) {
     if (users[x].jwt == jwt) {
-      if (new Date() <= users[x].JWTIssued) {
+      let date = new Date(users[x].JWTIssued)
+      if (new Date() <= date.setDate(date.getDate() + 1)) {
         return users[x]
+      } else {
+        throw new Error ("Token expired")
       }
     }
   }
@@ -86,11 +78,12 @@ router.post('/login', function(req, res, next) {
       */
       res.json(result)
     }
-    if (req.body.jwt) {
+    else if (req.body.jwt) {
       var result = handleJWTLogin(users, req.body.jwt)
       res.json(result)
+    } else {
+      throw new Error("No authentication supplied")
     }
-    throw new Error("No authentication supplied")
   }).catch(err => {
     console.log(err);
     next(err);

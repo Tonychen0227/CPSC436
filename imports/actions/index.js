@@ -48,7 +48,7 @@ export const userLogIn = (email, password, jwt) => {
         dispatch(loginSuccess(res.data, res.data.JWTToken));
       })
       .catch(err => {
-        dispatch(loginFailure(err.message));
+        dispatch(loginFailure(err));
       });
   };
 };
@@ -84,7 +84,7 @@ export const userRegister = (email, password) => {
         dispatch(registerSuccess(res.data, res.data.JWTToken));
       })
       .catch(err => {
-        dispatch(registerFailure(err.message));
+        dispatch(registerFailure(err.response.data));
       });
   };
 };
