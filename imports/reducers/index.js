@@ -26,6 +26,7 @@ const userState = (userState={isLoggedIn: false, loginAttempted: 0, userData: {}
   if (action.type === 'LOG_IN_STARTED' || action.type === 'REGISTER_STARTED') {
   }
   if (action.type === 'LOG_IN_SUCCESS' || action.type === 'REGISTER_SUCCESS') {
+    localStorage.setItem("CachedJWT", action.payloadJWT)
     return { ...userState, 
       isLoggedIn: true,
       loginAttempted: 0,
@@ -50,6 +51,7 @@ const userState = (userState={isLoggedIn: false, loginAttempted: 0, userData: {}
       errorMessage: action.payload + " (at " + new Date().toUTCString() + " UTC)"};
   }
   if (action.type === 'LOG_OUT') {
+    localStorage.removeItem("CachedJWT")
     userState.isLoggedIn = false;
     userState.loginAttempted = 0;
     return { ...userState, 

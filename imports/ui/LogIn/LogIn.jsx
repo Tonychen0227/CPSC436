@@ -63,7 +63,12 @@ class LogIn extends React.Component {
 		this.props.userRegister(this.state.email, this.state.password)
 	}
 
-	//TODO: Cache the JWT Token somehow
+	componentDidMount() {
+		if (localStorage.getItem("CachedJWT")) {
+			this.props.userLogIn(null, null, localStorage.getItem("CachedJWT"))
+		}
+	}
+
 	//TODO: Implement facebook OAuth
 	render() {
 		if (!this.props.userState.isLoggedIn) {

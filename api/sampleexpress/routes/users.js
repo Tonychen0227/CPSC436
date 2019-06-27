@@ -46,14 +46,14 @@ const handleUsernamePasswordLogin = (users, email, password) => {
   throw new Error("No corresponding user email found");
 }
 
-const handleJWTLogin = (users, jwt) => {
+const handleJWTLogin = (users, token) => {
   jwt.verify(token, config.secret, (err, decoded) => {
     if (err) {
       throw new Error("Invalid token")
     }
   });
   for (var x = 0; x < users.length; x++) {
-    if (users[x].jwt == jwt) {
+    if (users[x].JWTToken == token) {
       let date = new Date(users[x].JWTIssued)
       if (new Date() <= date.setDate(date.getDate() + 1)) {
         return users[x]

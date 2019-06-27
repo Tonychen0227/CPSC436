@@ -32,9 +32,11 @@ const loginFailure = error => ({
 });
 
 export const userLogIn = (email, password, jwt) => {
-  var hash = sha256.create();
-  hash.update(password);
-  password = hash.hex();
+  if (password) {
+    var hash = sha256.create();
+    hash.update(password);
+    password = hash.hex();
+  }
 
   return dispatch => {
     dispatch(loginStarted());
