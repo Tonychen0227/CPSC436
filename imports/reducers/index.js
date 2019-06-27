@@ -35,6 +35,7 @@ const userState = (userState={isLoggedIn: false, loginAttempted: 0, userData: {}
       errorMessage: null};
   }
   if (action.type === 'LOG_IN_FAILURE') {
+    localStorage.removeItem("CachedJWT")
     return { ...userState, 
       isLoggedIn: false,
       loginAttempted: userState.loginAttempted + 1,

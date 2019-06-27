@@ -4,10 +4,32 @@ const shortid = require('shortid');
 let jwt = require('jsonwebtoken');
 const Users = require('../mongo/users');
 const config = require('../config.js');
+const sendinblue = require('sib-api-v3-sdk');
 
-//TODO: Correct error codes and details being sent
+var mailClient = sendinblue.ApiClient.instance;
+var apiKey = mailClient.authentications['api-key'];
+apiKey.apiKey = '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';
+
+var apiInstance = new sendinblue.SMTPApi();
+
+data = { "to" : {"tony.chen@outlook.com":"to whom!"},
+		"subject" : "CPSC436 Email Activation!",
+		"html" : "This is the <h1>HTML</h1>",
+		"attachment" : ["https://domain.com/path-to-file/filename1.pdf", "https://domain.com/path-to-file/filename2.jpg"]
+  }
+  
+var sendSmtpEmail = new sendinblue.SendSmtpEmail(data); 
+
+apiInstance.sendTransacEmail(sendSmtpEmail).then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
 
 router.get('/', function(req, res, next){
+  res.status = 401;
+  res.send("Unauthorized")
+  return
   res.json(users);
 });
 
@@ -16,6 +38,12 @@ const handleUsernamePasswordLogin = (users, email, password) => {
   for (var x = 0; x < users.length; x++) {
     if (users[x].email == email) {
       if (users[x].password == password) {
+        if (!users[x].verified) {
+          /*
+            throw new Error("Verification email resent")
+            //TODO: generate verification email and then send
+          */
+        }
         let token = jwt.sign({email: email},
           config.secret,
           { expiresIn: '24h' // expires in 24 hours
@@ -24,7 +52,6 @@ const handleUsernamePasswordLogin = (users, email, password) => {
         users[x].JWTToken = token
         users[x].JWTIssued = new Date().toUTCString()
         Users.updateOneUserJwt(users[x]._id, users[x].JWTToken, users[x].JWTIssued).then(success => {
-          console.log(users[x]._id, users[x].jwtToken, users[x].JWTIssued)
           Users.getUsers().then(succ => {
             for (var x = 0; x < succ.length; x++) {
               if (succ[x].email == email) {
@@ -39,7 +66,7 @@ const handleUsernamePasswordLogin = (users, email, password) => {
         })
         return users[x]
       } else {
-        throw new Error("Unauthorized")
+        throw new Error("Unauthorized (incorrect email/password)")
       }
     }
   }
@@ -70,12 +97,6 @@ router.post('/login', function(req, res, next) {
     users = success
     if (req.body.email && req.body.password) {
       var result = handleUsernamePasswordLogin(users, req.body.email, req.body.password)
-      /*
-      if (!result.verified) {
-        throw new Error("Verification email resent")
-        //TODO: generate verification email and then send
-      }
-      */
       res.json(result)
     }
     else if (req.body.jwt) {
@@ -85,8 +106,8 @@ router.post('/login', function(req, res, next) {
       throw new Error("No authentication supplied")
     }
   }).catch(err => {
-    console.log(err);
-    next(err);
+    res.statusCode = 401;
+    res.send(err.toString());
   })
 })
 
@@ -138,8 +159,8 @@ router.post('/register', function(req, res, next) {
       throw new Error(err);
     })
   }).catch(err => {
-    console.log(err);
-    next(err);
+    res.statusCode = 403;
+    res.send(err.toString());
   })
 })
 

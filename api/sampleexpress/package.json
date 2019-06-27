@@ -16,7 +16,9 @@
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^2.2.36",
     "morgan": "~1.9.1",
+    "sendinblue-api": "^1.0.8",
     "shortid": "^2.2.14",
+    "sib-api-v3-sdk": "github:sendinblue/APIv3-nodejs-library",
     "sjcl": "^1.0.8"
   }
 }
