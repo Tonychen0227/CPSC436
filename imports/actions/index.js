@@ -91,6 +91,31 @@ export const userRegister = (email, password) => {
   };
 };
 
+const resetStarted = () => ({
+  type: "RESET_STARTED"
+});
+
+const resetFailure = error => ({
+  type: "RESET_FAILURE",
+  payload: error
+});
+
+export const userReset = (email) => {
+  return dispatch => {
+    dispatch(resetStarted());
+    axios
+      .post(url + '/users/reset', {
+        email: email
+      })
+      .then(res => {
+        dispatch(resetFailure(res.data));
+      })
+      .catch(err => {
+        dispatch(resetFailure(" " + err.response.status + " " + err.response.data));
+      });
+  };
+};
+
 export const loadNews = (news) => {
   console.log("from the action: ")
   console.log(news);

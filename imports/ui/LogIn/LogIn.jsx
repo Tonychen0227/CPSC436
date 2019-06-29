@@ -2,7 +2,7 @@ import React from 'react';
 import Fragment from 'react';
 import MyAccount from './MyAccount';
 import { connect } from 'react-redux';
-import { userLogIn, userRegister } from '../../actions';
+import { userLogIn, userRegister, userReset } from '../../actions';
 import '../../css/LogIn.css';
 
 var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -16,6 +16,7 @@ class LogIn extends React.Component {
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.checkValidity = this.checkValidity.bind(this);
 		this.handleRegister = this.handleRegister.bind(this);
+		this.handleUserReset = this.handleUserReset.bind(this);
 	}
 
 	handleChangeEmail(e) {
@@ -63,6 +64,10 @@ class LogIn extends React.Component {
 		this.props.userRegister(this.state.email, this.state.password)
 	}
 
+	handleUserReset() {
+		this.props.userReset(this.state.email)
+	}
+
 	componentDidMount() {
 		if (localStorage.getItem("CachedJWT")) {
 			this.props.userLogIn(null, null, localStorage.getItem("CachedJWT"))
@@ -81,6 +86,7 @@ class LogIn extends React.Component {
 			          Email:
 			          <input type="text" onChange={this.handleChangeEmail}/>
 								<span>{!this.state.validEmail ? "Input valid email pls":""}</span>
+								<button disabled={!this.state.validEmail} onClick={this.handleUserReset} text="Reset Password">Reset Password</button>
 			        </label>
 							<br/>
 							<label>

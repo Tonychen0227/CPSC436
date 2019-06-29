@@ -23,8 +23,6 @@ const loading = (loading = false, action) => {
 }
 
 const userState = (userState={isLoggedIn: false, loginAttempted: 0, userData: {}, jwt: "", errorMessage: null}, action) => {
-  if (action.type === 'LOG_IN_STARTED' || action.type === 'REGISTER_STARTED') {
-  }
   if (action.type === 'LOG_IN_SUCCESS' || action.type === 'REGISTER_SUCCESS') {
     localStorage.setItem("CachedJWT", action.payloadJWT)
     return { ...userState, 
@@ -43,7 +41,7 @@ const userState = (userState={isLoggedIn: false, loginAttempted: 0, userData: {}
       jwt: "",
       errorMessage: action.payload + " (at " + new Date().toUTCString() + " UTC)"};
   }
-  if (action.type === 'REGISTER_FAILURE') {
+  if (action.type === 'REGISTER_FAILURE' || action.type === 'RESET_FAILURE' || action.type === 'RESET_SUCCESS') {
     return { ...userState, 
       isLoggedIn: false,
       loginAttempted: 0,
