@@ -1,7 +1,7 @@
 const axios = require('axios');
 var sha256 = require('js-sha256');
 
-var url = 'http://localhost:3001'
+var url = 'http://cpsc436basketballapi.herokuapp.com/'
 
 export const flipPage = newPage => {
   return {
@@ -31,42 +31,62 @@ const loginFailure = error => ({
   payload: error
 });
 
-const validateLogin = (email, password) => {
-  return new Promise(function(resolve, reject) {
-    console.log("begin delay")
-    setTimeout(function() {
-      console.log("end delay")
-      if (email == "admin@admin.com" && password == "d82494f05d6917ba02f7aaa29689ccb444bb73f20380876cb05d1f37537b7892") {
-        resolve(true)
-      } else {
-        reject(false)
-      }
-    }, 2000)
-  })
-}
-
 export const userLogIn = (email, password, jwt) => {
+  if (password) {
+    var hash = sha256.create();
+    hash.update(password);
+    password = hash.hex();
+  }
+
+  return dispatch => {
+    dispatch(loginStarted());
+    axios
+      .post(url + '/users/login', {
+        email: email,
+        password: password,
+        jwt: jwt
+      })
+      .then(res => {
+        dispatch(loginSuccess(res.data, res.data.JWTToken));
+      })
+      .catch(err => {
+        dispatch(loginFailure(" " + err.response.status + " " + err.response.data));
+      });
+  };
+};
+
+const registerSuccess = (data, jwt) => ({
+  type: "REGISTER_SUCCESS",
+  payload: data,
+  payloadJWT: jwt
+});
+
+const registerStarted = () => ({
+  type: "REGISTER_STARTED"
+});
+
+const registerFailure = error => ({
+  type: "REGISTER_FAILURE",
+  payload: error
+});
+
+export const userRegister = (email, password) => {
   var hash = sha256.create();
   hash.update(password);
   password = hash.hex();
 
   return dispatch => {
-    dispatch(loginStarted());
-    /*
+    dispatch(registerStarted());
     axios
-      .post(url, {
+      .post(url + '/users/register', {
         email: email,
-        password: password,
-        jwt: jwt,
-        completed: false
+        password: password
       })
-      */
-    validateLogin(email, password)
       .then(res => {
-        dispatch(loginSuccess(res.data, ""));
+        dispatch(registerSuccess(res.data, res.data.JWTToken));
       })
       .catch(err => {
-        dispatch(loginFailure(err.message));
+        dispatch(registerFailure(" " + err.response.status + " " + err.response.data));
       });
   };
 };

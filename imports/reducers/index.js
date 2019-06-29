@@ -3,7 +3,7 @@ import data from './data';
 var sha256 = require('js-sha256');
 const axios = require('axios');
 
-const apiUrl = "http:/localhost:3001"
+const apiUrl = "http://cpsc436basketballapi.herokuapp.com/"
 
 const currentPageNumber = (pageNum = 1, action) => {
   if (action.type === 'NEW_PAGE') {
@@ -22,24 +22,37 @@ const loading = (loading = false, action) => {
   return loading
 }
 
-const userState = (userState={isLoggedIn: false, loginAttempted: 0, userData: {}, jwt: ""}, action) => {
-  if (action.type === 'LOG_IN_STARTED') {
+const userState = (userState={isLoggedIn: false, loginAttempted: 0, userData: {}, jwt: "", errorMessage: null}, action) => {
+  if (action.type === 'LOG_IN_STARTED' || action.type === 'REGISTER_STARTED') {
   }
-  if (action.type === 'LOG_IN_SUCCESS') {
+  if (action.type === 'LOG_IN_SUCCESS' || action.type === 'REGISTER_SUCCESS') {
+    localStorage.setItem("CachedJWT", action.payloadJWT)
     return { ...userState, 
       isLoggedIn: true,
       loginAttempted: 0,
       userData: action.payload,
-      jwt: action.payloadJWT};
+      jwt: action.payloadJWT,
+      errorMessage: null};
   }
   if (action.type === 'LOG_IN_FAILURE') {
+    localStorage.removeItem("CachedJWT")
     return { ...userState, 
       isLoggedIn: false,
       loginAttempted: userState.loginAttempted + 1,
       userData: null,
-      jwt: ""};
+      jwt: "",
+      errorMessage: action.payload + " (at " + new Date().toUTCString() + " UTC)"};
+  }
+  if (action.type === 'REGISTER_FAILURE') {
+    return { ...userState, 
+      isLoggedIn: false,
+      loginAttempted: 0,
+      userData: null,
+      jwt: "",
+      errorMessage: action.payload + " (at " + new Date().toUTCString() + " UTC)"};
   }
   if (action.type === 'LOG_OUT') {
+    localStorage.removeItem("CachedJWT")
     userState.isLoggedIn = false;
     userState.loginAttempted = 0;
     return { ...userState, 
