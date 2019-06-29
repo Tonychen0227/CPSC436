@@ -1,7 +1,5 @@
 import {combineReducers} from 'redux';
 import data from './data';
-var sha256 = require('js-sha256');
-const axios = require('axios');
 
 const currentPageNumber = (pageNum = 1, action) => {
   if (action.type === 'NEW_PAGE') {

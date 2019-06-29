@@ -1,5 +1,4 @@
 import React from 'react';
-import Fragment from 'react';
 import MyAccount from './MyAccount';
 import { connect } from 'react-redux';
 import { userLogIn, userRegister, userReset } from '../../actions';
@@ -84,14 +83,14 @@ class LogIn extends React.Component {
 						<form onSubmit={this.handleSubmit} className="InputField">
 			        <label>
 			          Email:
-			          <input type="text" onChange={this.handleChangeEmail}/>
+			          <input type="text" value={this.state.email} onChange={this.handleChangeEmail}/>
 								<span>{!this.state.validEmail ? "Input valid email pls":""}</span>
 								<button type="button" disabled={!this.state.validEmail} onClick={this.handleUserReset} text="Reset Password">Reset Password</button>
 			        </label>
 							<br/>
 							<label>
 								Password:
-								<input type="password" onChange={this.handleChangePassword}/>
+								<input type="password" value={this.state.password} onChange={this.handleChangePassword}/>
 								<span>{!this.state.validPassword ? "Input valid password pls (8+ chars)":""}</span>
 							</label>
 							<br/>
