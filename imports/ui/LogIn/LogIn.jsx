@@ -86,7 +86,7 @@ class LogIn extends React.Component {
 			          Email:
 			          <input type="text" onChange={this.handleChangeEmail}/>
 								<span>{!this.state.validEmail ? "Input valid email pls":""}</span>
-								<button disabled={!this.state.validEmail} onClick={this.handleUserReset} text="Reset Password">Reset Password</button>
+								<button type="button" disabled={!this.state.validEmail} onClick={this.handleUserReset} text="Reset Password">Reset Password</button>
 			        </label>
 							<br/>
 							<label>
