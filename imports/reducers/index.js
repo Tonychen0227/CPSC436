@@ -3,8 +3,6 @@ import data from './data';
 var sha256 = require('js-sha256');
 const axios = require('axios');
 
-const apiUrl = "http://cpsc436basketballapi.herokuapp.com"
-
 const currentPageNumber = (pageNum = 1, action) => {
   if (action.type === 'NEW_PAGE') {
     return pageNum = action.payload;
