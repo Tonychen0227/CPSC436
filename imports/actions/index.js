@@ -105,7 +105,8 @@ export const userReset = (email) => {
     dispatch(resetStarted());
     axios
       .post(url + '/users/reset', {
-        email: email
+        email: email,
+        passwordReset: true
       })
       .then(res => {
         dispatch(resetFailure(res.data));

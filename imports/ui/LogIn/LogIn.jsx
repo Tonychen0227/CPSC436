@@ -125,7 +125,10 @@ const mapDispatchToProps = dispatch => {
 	},
 	userRegister: (email, password) => {
 	dispatch(userRegister(email, password));
-	}
+	},
+	userReset: (email, password) => {
+		dispatch(userReset(email));
+		}
   };
 };
 
