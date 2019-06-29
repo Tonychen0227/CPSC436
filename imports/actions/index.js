@@ -2,6 +2,7 @@ const axios = require('axios');
 var sha256 = require('js-sha256');
 
 var url = 'http://cpsc436basketballapi.herokuapp.com'
+//var url = 'http://localhost:3001'
 
 export const flipPage = newPage => {
   return {
@@ -87,6 +88,32 @@ export const userRegister = (email, password) => {
       })
       .catch(err => {
         dispatch(registerFailure(" " + err.response.status + " " + err.response.data));
+      });
+  };
+};
+
+const resetStarted = () => ({
+  type: "RESET_STARTED"
+});
+
+const resetFailure = error => ({
+  type: "RESET_FAILURE",
+  payload: error
+});
+
+export const userReset = (email) => {
+  return dispatch => {
+    dispatch(resetStarted());
+    axios
+      .post(url + '/users/reset', {
+        email: email,
+        passwordReset: true
+      })
+      .then(res => {
+        dispatch(resetFailure(res.data));
+      })
+      .catch(err => {
+        dispatch(resetFailure(" " + err.response.status + " " + err.response.data));
       });
   };
 };
