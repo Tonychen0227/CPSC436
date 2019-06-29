@@ -1,7 +1,5 @@
 import React from 'react';
 import '../../css/About.css';
-import { GoLogoGithub } from 'react-icons/go'; //TODO: Make these GIT and LINKEDIN
-import { TiSocialLinkedinCircular } from 'react-icons/ti'; //TODO: Make these GIT and LINKEDIN
 import { SocialIcon } from 'react-social-icons';
 
 class About extends React.Component {
