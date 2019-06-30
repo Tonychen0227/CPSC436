@@ -1,8 +1,9 @@
 import React from 'react';
 import MyAccount from './MyAccount';
 import { connect } from 'react-redux';
-import { userLogIn, userRegister, userReset } from '../../actions';
+import { userLogIn, userRegister, userReset, facebookLogIn } from '../../actions';
 import '../../css/LogIn.css';
+import FacebookLogin from 'react-facebook-login';
 
 var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -16,6 +17,11 @@ class LogIn extends React.Component {
 		this.checkValidity = this.checkValidity.bind(this);
 		this.handleRegister = this.handleRegister.bind(this);
 		this.handleUserReset = this.handleUserReset.bind(this);
+		this.responseFacebook = this.responseFacebook.bind(this);
+	}
+
+	responseFacebook(response) {
+		this.props.facebookLogIn(response.id, response.email, response.accessToken)
 	}
 
 	handleChangeEmail(e) {
@@ -85,7 +91,7 @@ class LogIn extends React.Component {
 			          Email:
 			          <input type="text" value={this.state.email} onChange={this.handleChangeEmail}/>
 								<span>{!this.state.validEmail ? "Input valid email pls":""}</span>
-								<button type="button" disabled={!this.state.validEmail} onClick={this.handleUserReset} text="Reset Password">Reset Password</button>
+								<button type="button" className="resetButton" disabled={!this.state.validEmail} onClick={this.handleUserReset} text="Reset Password">Reset Password</button>
 			        </label>
 							<br/>
 							<label>
@@ -100,6 +106,13 @@ class LogIn extends React.Component {
 				  <p> or.... </p>
 					<button disabled={!this.state.validEmail || !this.state.validPassword} onClick={this.handleRegister} text="Sign me up">Sign me up </button>
 					<span>{this.props.userState.errorMessage ? "Error:" + this.props.userState.errorMessage :""}</span>
+					<p> or.... </p>
+					<FacebookLogin
+						appId="322151111994092"
+						autoLoad={false}
+						fields="name,email,picture"
+						cssClass="my-facebook-button-class"
+						callback={this.responseFacebook} />
 						</div>
 			);
 		} else {
@@ -127,7 +140,10 @@ const mapDispatchToProps = dispatch => {
 	},
 	userReset: (email, password) => {
 		dispatch(userReset(email));
-		}
+	},
+	facebookLogIn: (id, email, token) => {
+		dispatch(facebookLogIn(id, email, token))
+	}
   };
 };
 
