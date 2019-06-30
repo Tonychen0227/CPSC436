@@ -3,6 +3,7 @@ import MyAccount from './MyAccount';
 import { connect } from 'react-redux';
 import { userLogIn, userRegister, userReset } from '../../actions';
 import '../../css/LogIn.css';
+import FacebookLogin from 'react-facebook-login';
 
 var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -16,6 +17,11 @@ class LogIn extends React.Component {
 		this.checkValidity = this.checkValidity.bind(this);
 		this.handleRegister = this.handleRegister.bind(this);
 		this.handleUserReset = this.handleUserReset.bind(this);
+		this.responseFacebook = this.responseFacebook.bind(this);
+	}
+
+	responseFacebook(response) {
+		console.log(response)
 	}
 
 	handleChangeEmail(e) {
@@ -100,6 +106,12 @@ class LogIn extends React.Component {
 				  <p> or.... </p>
 					<button disabled={!this.state.validEmail || !this.state.validPassword} onClick={this.handleRegister} text="Sign me up">Sign me up </button>
 					<span>{this.props.userState.errorMessage ? "Error:" + this.props.userState.errorMessage :""}</span>
+					<FacebookLogin
+						appId="322151111994092"
+						autoLoad={true}
+						fields="name,email,picture"
+						onClick={console.log("clicky")}
+						callback={this.responseFacebook} />
 						</div>
 			);
 		} else {
