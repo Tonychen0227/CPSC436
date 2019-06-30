@@ -1,5 +1,7 @@
 # Basketball Statistics Database
 <a href="https://996.icu"><img src="https://img.shields.io/badge/link-996.icu-red.svg" alt="996.icu" /></a>
+<h6> Privacy Policy </h6>
+We will only store your Email, hashed password, and name/profile image URL if you are logging in via Facebook. This information will not be shared with, or viewed by anyone not on the GGPanda team or the user themselves.
 <h4> Description </h4>
 Our website will be a Basketball statistics database, with options for the user to select a favorite set of teams to focus on. It will contain live match data, past match statistics, and player statistics as needed by the user, who is most likely an avid follower of the NBA. With the data stored (player data, team data, user data), it will generate all kinds of analytics (such as shooting%, head-to-head results), all of which are tailored based on the user's needs. If time is allowed, there may be additional functionalities created involving the user, such as heatmaps for the user's favorite players, and a player fantasy game/system revolving past seasons' results.
 <h4> Task Requirements </h4>
