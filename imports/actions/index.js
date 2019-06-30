@@ -118,6 +118,29 @@ export const userReset = (email) => {
   };
 };
 
+const facebookLoginSuccess = data => ({
+  type: "FACEBOOK_LOGIN_SUCCESS",
+  payload: data
+});
+
+export const facebookLogIn = (id, email, token) => {
+  return dispatch => {
+    dispatch(loginStarted());
+    axios
+      .post(url + '/users/fbLogin', {
+        id: id,
+        email: email,
+        token: token
+      })
+      .then(res => {
+        dispatch(facebookLoginSuccess(res.data));
+      })
+      .catch(err => {
+        dispatch(loginFailure(" " + err.response.status + " " + err.response.data));
+      });
+  };
+};
+
 export const loadNews = (news) => {
   console.log("from the action: ")
   console.log(news);

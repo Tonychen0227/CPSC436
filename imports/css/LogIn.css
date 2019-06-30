@@ -38,3 +38,11 @@
 .newsDashboard {
   min-height: 300px;
 }
+
+.my-facebook-button-class {
+  width: 20%;
+}
+
+.resetButton {
+  margin: 10px
+}

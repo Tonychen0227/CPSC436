@@ -28,6 +28,14 @@ const userState = (userState={isLoggedIn: false, loginAttempted: 0, userData: {}
       jwt: action.payloadJWT,
       errorMessage: null};
   }
+  if (action.type === 'FACEBOOK_LOGIN_SUCCESS') {
+    return { ...userState, 
+      isLoggedIn: true,
+      loginAttempted: 0,
+      userData: action.payload,
+      jwt: "",
+      errorMessage: null};
+  }
   if (action.type === 'LOG_IN_FAILURE') {
     localStorage.removeItem("CachedJWT")
     return { ...userState, 
