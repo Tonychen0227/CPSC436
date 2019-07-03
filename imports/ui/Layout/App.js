@@ -11,40 +11,6 @@ import PerfectScrollbar from "perfect-scrollbar";
 
 class App extends React.Component {
 
-	constructor(props) {
-    super(props);
-    this.state = {
-      backgroundColor: "black",
-      activeColor: "info"
-    };
-    this.mainPanel = React.createRef();
-  }
-
-	componentDidMount() {
-    if (navigator.platform.indexOf("Win") > -1) {
-      ps = new PerfectScrollbar(this.mainPanel.current);
-      document.body.classList.toggle("perfect-scrollbar-on");
-    }
-  }
-  componentWillUnmount() {
-    if (navigator.platform.indexOf("Win") > -1) {
-      ps.destroy();
-      document.body.classList.toggle("perfect-scrollbar-on");
-    }
-  }
-  /*componentDidUpdate(e) {
-    if (e.history.action === "PUSH") {
-      this.mainPanel.current.scrollTop = 0;
-      document.scrollingElement.scrollTop = 0;
-    }
-  }*/
-  handleActiveClick = color => {
-    this.setState({ activeColor: color });
-  };
-  handleBgClick = color => {
-    this.setState({ backgroundColor: color });
-  };
-
 	render() {
 		var dynamicComponent;
 		switch(this.props.pageNum) {
@@ -68,10 +34,7 @@ class App extends React.Component {
 		spinner
 		text='Loading your content...'>
 		<div>
-		<NavBar
-			{...this.props}
-			bgColor={this.state.backgroundColor}
-			activeColor={this.state.activeColor}/>
+		<NavBar />
 		{dynamicComponent}
 		</div>
 		</LoadingOverlay>
