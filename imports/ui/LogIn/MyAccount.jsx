@@ -9,6 +9,7 @@ import '../../css/MyAccount.css';
 
 class MyAccount extends React.Component {
 	render() {
+		console.log("User state");
 		console.log(this.props.userState);
 		return (
 			<div className="main">

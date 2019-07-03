@@ -10,13 +10,14 @@ var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0
 class LogIn extends React.Component {
 	constructor() {
 		super();
-		this.state = {jwt: '', email: '', password: '', validEmail: false, validPassword: false};
+		this.state = {jwt: '', email: '', password: '', displayName: '', validEmail: false, validPassword: false};
 		this.handleChangePassword = this.handleChangePassword.bind(this);
 		this.handleChangeEmail = this.handleChangeEmail.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.checkValidity = this.checkValidity.bind(this);
 		this.handleRegister = this.handleRegister.bind(this);
 		this.handleUserReset = this.handleUserReset.bind(this);
+		this.handleChangeDisplayName = this.handleChangeDisplayName.bind(this);
 		this.responseFacebook = this.responseFacebook.bind(this);
 	}
 
@@ -36,6 +37,12 @@ class LogIn extends React.Component {
 			password: event.target.value
 		});
 		this.checkValidity(this.state.email, event.target.value);
+	}
+
+	handleChangeDisplayName(e) {
+		this.setState({
+			displayName: event.target.value
+		});
 	}
 
 	handleSubmit(e) {
@@ -66,7 +73,7 @@ class LogIn extends React.Component {
 	}
 
 	handleRegister() {
-		this.props.userRegister(this.state.email, this.state.password)
+		this.props.userRegister(this.state.email, this.state.password, this.state.displayName)
 	}
 
 	handleUserReset() {
@@ -105,7 +112,9 @@ class LogIn extends React.Component {
 				  </form>
 				  <p> or.... </p>
 					<button disabled={!this.state.validEmail || !this.state.validPassword} onClick={this.handleRegister} text="Sign me up">Sign me up </button>
-					<span>{this.props.userState.errorMessage ? "Error:" + this.props.userState.errorMessage :""}</span>
+					<span> Optional display name: <input type="displayName" value={this.state.displayName} onChange={this.handleChangeDisplayName}/> </span>
+					<br/>
+					<span className="error">{this.props.userState.errorMessage ? "Error:" + this.props.userState.errorMessage :""}</span>
 					<p> or.... </p>
 					<FacebookLogin
 						appId="322151111994092"
@@ -135,8 +144,8 @@ const mapDispatchToProps = dispatch => {
     userLogIn: (email, password, jwt) => {
       dispatch(userLogIn(email, password, jwt));
 	},
-	userRegister: (email, password) => {
-	dispatch(userRegister(email, password));
+	userRegister: (email, password, displayName) => {
+	dispatch(userRegister(email, password, displayName));
 	},
 	userReset: (email, password) => {
 		dispatch(userReset(email));
