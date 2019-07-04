@@ -18,7 +18,7 @@ class About extends React.Component {
 					<SocialIcon url="mailto:tony.chen@outlook.com" target="_blank"/>
 				</div>
 				<div className="profile">
-				<img className="profile" src="https://tshop.r10s.com/56f/7ac/10fc/1770/5076/0a65/eb33/11b3e98312c45444889cef.jpg"/>
+				<img className="profile" src="https://ak0.scstatic.net/1/bigimg-cdn1-cont11.sweetcouch.com/152819740841505262-saitama-sticker.png"/>
 					<br/>
 					<h6>PETER HAN</h6>
 					<p>这货不会找女朋友</p>
