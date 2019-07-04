@@ -6,7 +6,7 @@ import '../../css/PlayerSelector.css';
 
 export default class PlayerSelector extends Component {
     state = {
-        selectedOption: 'Lebron James',
+        selectedOption: {name: 'Lebron James', value: 'LB'},
         players: [
           {name: 'Stephen Curry', value: 'AF'},
           {name: 'Klay Thompson', value: 'AX'},
@@ -21,7 +21,6 @@ export default class PlayerSelector extends Component {
 
     handleChange = (selectedOption) => {
       this.setState({ selectedOption });
-      console.log(selectedOption);
     }
 
     render() {
@@ -30,12 +29,12 @@ export default class PlayerSelector extends Component {
                 <SelectSearch
                     name="player"
                     mode="input"
-                    value={this.state.selectedOption}
+                    value={this.state.selectedOption.name}
                     options={this.state.players}
                     placeholder="switch"
                     onChange={this.handleChange}
                 />
-                <MyMVP />
+                <MyMVP selectedOption={this.state.selectedOption} />
             </div>
         );
     }
