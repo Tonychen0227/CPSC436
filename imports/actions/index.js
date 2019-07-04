@@ -1,7 +1,7 @@
 const axios = require('axios');
 var sha256 = require('js-sha256');
 
-var url = 'http://cpsc436basketballapi.herokuapp.com'
+var url = 'https://cpsc436basketballapi.herokuapp.com'
 //var url = 'http://localhost:3001'
 
 export const flipPage = newPage => {
@@ -71,17 +71,20 @@ const registerFailure = error => ({
   payload: error
 });
 
-export const userRegister = (email, password) => {
+export const userRegister = (email, password, displayName) => {
   var hash = sha256.create();
   hash.update(password);
   password = hash.hex();
 
   return dispatch => {
     dispatch(registerStarted());
+    // TODO: Figure out time out
+    //setTimeout(dispatch(registerFailure("Timed out")), 5000)
     axios
       .post(url + '/users/register', {
         email: email,
-        password: password
+        password: password,
+        displayName: displayName
       })
       .then(res => {
         dispatch(registerSuccess(res.data, res.data.JWTToken));
@@ -89,7 +92,7 @@ export const userRegister = (email, password) => {
       .catch(err => {
         dispatch(registerFailure(" " + err.response.status + " " + err.response.data));
       });
-  };
+    };
 };
 
 const resetStarted = () => ({
