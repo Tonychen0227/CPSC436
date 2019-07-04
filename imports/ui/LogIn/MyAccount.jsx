@@ -15,11 +15,11 @@ class MyAccount extends React.Component {
 			<div className="main">
 				<h1> Welcome to your account page </h1>
 				<div className="left">
+				<div className="newsDashboard inner">
+					<NewsDashboard/>
+				</div>
 					<div className="playerStats inner">
 						<PlayerStats/>
-					</div>
-					<div className="newsDashboard inner">
-						<NewsDashboard/>
 					</div>
 				</div>
 				<div className="right">
@@ -46,5 +46,5 @@ const mapDispatchToProps = dispatch => {
 	return {
 	};
   };
-  
-export default connect(mapStateToProps, mapDispatchToProps)(MyAccount);  
+
+export default connect(mapStateToProps, mapDispatchToProps)(MyAccount);

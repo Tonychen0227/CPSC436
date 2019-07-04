@@ -2,7 +2,9 @@ import React from 'react';
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { loadNews } from '../../actions/index'
-import '../../css/News.css';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+var Carousel = require('react-responsive-carousel').Carousel;
+//<a style={{display: "table-cell"}} href={this.props.news[0].links.web.href} target="_blank">
 class News extends React.Component {
 
   componentDidMount(){
@@ -26,12 +28,47 @@ class News extends React.Component {
     var key = 0;
     if(this.props.news && (this.props.news).length){
       return (
-  			<div>
-          <a className = "HeadNews" style={{display: "table-cell"}} href={this.props.news[0].links.web.href} target="_blank">
-            <img src={this.props.news[0].images[0].url}></img>
-            <div>{this.props.news[0].headline}</div>
-          </a>
-  			</div>);
+        <div>
+          <Carousel showArrows={true} infiniteLoop={true} autoPlay={true} interval={5000} transitionTime={350}>
+            <div className = "HeadNews">
+              <img src={this.props.news[0].images[0].url} />
+              <a style={{display: "table-cell"}} href={this.props.news[0].links.web.href} target="_blank">
+                <p className="legend">{this.props.news[0].headline}</p>
+              </a>
+            </div>
+            <div className = "HeadNews">
+              <img src={this.props.news[1].images[0].url} />
+              <a style={{display: "table-cell"}} href={this.props.news[1].links.web.href} target="_blank">
+                <p className="legend">{this.props.news[1].headline}</p>
+              </a>
+            </div>
+            <div className = "HeadNews">
+              <img src={this.props.news[2].images[0].url} />
+              <a style={{display: "table-cell"}} href={this.props.news[2].links.web.href} target="_blank">
+                <p className="legend">{this.props.news[2].headline}</p>
+              </a>
+            </div>
+            <div className = "HeadNews">
+              <img src={this.props.news[3].images[0].url} />
+              <a style={{display: "table-cell"}} href={this.props.news[3].links.web.href} target="_blank">
+                <p className="legend">{this.props.news[3].headline}</p>
+              </a>
+            </div>
+            <div className = "HeadNews">
+              <img src={this.props.news[4].images[0].url} />
+              <a style={{display: "table-cell"}} href={this.props.news[4].links.web.href} target="_blank">
+                <p className="legend">{this.props.news[4].headline}</p>
+              </a>
+            </div>
+            <div className = "HeadNews">
+              <img src={this.props.news[5].images[0].url} />
+              <a style={{display: "table-cell"}} href={this.props.news[5].links.web.href} target="_blank">
+                <p className="legend">{this.props.news[5].headline}</p>
+              </a>
+            </div>
+          </Carousel>
+        </div>
+      );
     }else {
       return (<div>Loading News</div>);
 		}
