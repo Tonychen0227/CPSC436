@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import styled from "@emotion/styled";
 import { options } from "./options";
+import MyTeamStats from './MyTeamStats';
 import Select from "react-dropdown-select";
 
 export class DropdownSearchBar extends React.Component {
@@ -74,6 +75,7 @@ export class DropdownSearchBar extends React.Component {
             />
           </div>
         </div>
+        <MyTeamStats selectValues={this.state.selectValues} />
       </div>
     );
   }
