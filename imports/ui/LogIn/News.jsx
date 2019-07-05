@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { loadNews } from '../../actions/index'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import "../../css/News.css"
 var Carousel = require('react-responsive-carousel').Carousel;
 //<a style={{display: "table-cell"}} href={this.props.news[0].links.web.href} target="_blank">
 class News extends React.Component {
