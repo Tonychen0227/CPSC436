@@ -78,12 +78,14 @@ class NavBar extends Component {
           <div className="navbar-item">
             <Link to='/about'>About</Link>
           </div>
+          <div className="navbar-item">
+            <Link to='/myAccount'>{this.props.isLoggedIn ? "My Account" : "Log In"} </Link>
+          </div>
         </div>
 
         <div className="navbar-end">
           <div className="navbar-item">
-            <Link to='/myAccount'>{this.props.isLoggedIn ? "My Account" : "Log In"} <br/>
-            <button hidden={!this.props.isLoggedIn} onClick={this.props.logOut}>Log Out</button></Link>
+            <Link><button hidden={!this.props.isLoggedIn} onClick={this.props.logOut}>Log Out</button></Link>
           </div>
         </div>
       </div>
