@@ -7,11 +7,15 @@ class About extends React.Component {
 	render() {
 		return (
 			<div>
-			<div class="container is-fullhd">
-			  <div class="notification">
-			    About GGPanda
+			<section class="hero is-dark">
+			  <div class="hero-body">
+			    <div class="container">
+			      <h1 class="title">
+			        About GGPanda
+			      </h1>
+			    </div>
 			  </div>
-			</div>
+			</section>
 
 			<div class="tile is-ancestor">
 			  <div class="tile is-horizontal is-12">
