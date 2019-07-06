@@ -38,8 +38,8 @@ export default class MyTeamStats extends PureComponent {
       <div>
         <p> D1 </p>
         <LineChart
-          width={500}
-          height={200}
+          width={1000}
+          height={300}
           data={this.state.data}
           syncId="anyId"
           margin={{
@@ -54,8 +54,8 @@ export default class MyTeamStats extends PureComponent {
         </LineChart>
         <p> D2 </p>
         <LineChart
-          width={500}
-          height={200}
+          width={1000}
+          height={300}
           data={this.state.data}
           syncId="anyId"
           margin={{
@@ -71,8 +71,8 @@ export default class MyTeamStats extends PureComponent {
         </LineChart>
         <p> D3 </p>
         <AreaChart
-          width={500}
-          height={200}
+          width={1000}
+          height={300}
           data={this.state.data}
           syncId="anyId"
           margin={{
