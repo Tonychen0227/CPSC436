@@ -85,7 +85,7 @@ class NavBar extends Component {
 
         <div className="navbar-end">
           <div className="navbar-item">
-            <Link><button hidden={!this.props.isLoggedIn} onClick={this.props.logOut}>Log Out</button></Link>
+            <Link to='/home'><button hidden={!this.props.isLoggedIn} onClick={this.props.logOut}>Log Out</button></Link>
           </div>
         </div>
       </div>
