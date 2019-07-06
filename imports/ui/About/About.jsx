@@ -14,7 +14,7 @@ class About extends React.Component {
 			</div>
 
 			<div class="tile is-ancestor">
-			  <div class="tile is-horizontal is-8">
+			  <div class="tile is-horizontal is-12">
 			    <div class="tile">
 						<div class="tile is-parent is-horizontal">
 
@@ -58,9 +58,15 @@ class About extends React.Component {
 					</div>
 				</div>
 			</div>
-
-			<h4> Basketball terminology for the non-basketball-savvy </h4>
-			<h6> <strong>KD</strong>: Will never win a championship again </h6>
+			<footer class="footer">
+			  <div class="content has-text-centered">
+			    <p>
+						<h4> Basketball terminology for the non-basketball-savvy </h4>
+						<h6> <strong>KD</strong>: Will never win a championship again </h6>
+						<h6> <strong>KD</strong>: Get Well Soon 🙏 </h6>
+			    </p>
+			  </div>
+			</footer>
 			</div>
 );
 	}
