@@ -13,7 +13,17 @@ class MyAccount extends React.Component {
 		console.log(this.props.userState);
 		return (
 			<div className="main">
-				<h1> Welcome to your account page </h1>
+
+				<section className="hero is-link">
+				  <div className="hero-body">
+				    <div className="container">
+				      <h1 className="title">
+				        Welcome to your account page
+				      </h1>
+				    </div>
+				  </div>
+				</section>
+
 				<div className="left">
 				<div className="newsDashboard inner">
 					<NewsDashboard/>

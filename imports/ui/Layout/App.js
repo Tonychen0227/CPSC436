@@ -8,35 +8,27 @@ import About from '../About/About';
 import { connect } from 'react-redux';
 import LoadingOverlay from 'react-loading-overlay';
 import PerfectScrollbar from "perfect-scrollbar";
+import { BrowserRouter, Router, Switch, Route } from 'react-router-dom';
 
 class App extends React.Component {
 
 	render() {
-		var dynamicComponent;
-		switch(this.props.pageNum) {
-		  case 1:
-		    // code block
-				dynamicComponent = <Home/>
-		    break;
-		  case 2:
-		    // code block
-				dynamicComponent = <Stats/>
-		    break;
-			case 3:
-				dynamicComponent = <LogIn/>
-				break;
-		  default:
-				dynamicComponent = <About/>
-		}
-		return (
-	<LoadingOverlay
+	return(
+		<LoadingOverlay
 		active={this.props.loading}
 		spinner
 		text='Loading your content...'>
-		<div>
-		<NavBar />
-		{dynamicComponent}
-		</div>
+		<BrowserRouter>
+			<div>
+				<NavBar />
+			</div>
+			<Switch>
+				<Route exact path='/home' component={Home} />
+				<Route exact path='/stats' component={Stats} />
+				<Route exact path='/myAccount' component={LogIn} />
+				<Route exact path='/about' component={About} />
+			</Switch>
+		</BrowserRouter>
 		</LoadingOverlay>
 	);
 	}
