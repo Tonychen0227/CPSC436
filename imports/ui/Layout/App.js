@@ -13,43 +13,17 @@ import { BrowserRouter } from 'react-router-dom';
 class App extends React.Component {
 
 	render() {
-		/*var dynamicComponent;
-		switch(this.props.pageNum) {
-		  case 1:
-		    // code block
-				dynamicComponent = <Home/>
-		    break;
-		  case 2:
-		    // code block
-				dynamicComponent = <Stats/>
-		    break;
-			case 3:
-				dynamicComponent = <LogIn/>
-				break;
-		  default:
-				dynamicComponent = <About/>
-		}
-		return (
-	<LoadingOverlay
+	return(
+		<LoadingOverlay
 		active={this.props.loading}
 		spinner
 		text='Loading your content...'>
-		<div>
 		<BrowserRouter>
 			<div>
 				<NavBar />
 			</div>
 		</BrowserRouter>
-		{dynamicComponent}
-		</div>
 		</LoadingOverlay>
-	);*/
-	return(
-		<BrowserRouter>
-			<div>
-				<NavBar />
-			</div>
-		</BrowserRouter>
 	);
 	}
 }

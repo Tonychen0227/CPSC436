@@ -6,21 +6,6 @@ import { connect } from 'react-redux';
 class UserDetails extends React.Component {
 	render() {
 		console.log(this.props.userState)
-		/*
-		AccountCreated: "7/1/2019"
-		DisplayName: "I love JavaScript XD"
-		Email: "tonychenrocks@hotmail.com"
-		FavoriteTeam: ""
-		JWTIssued: "Mon, 01 Jul 2019 15:24:56 GMT"
-		JWTToken: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRvbnljaGVucm9ja3NAaG90bWFpbC5jb20iLCJpYXQiOjE1NjE5OTQ2OTYsImV4cCI6MTU2MjA4MTA5Nn0.dpuA49n5WSoZBlKvhfeXUgnN-WltxNaIAY6yhhDlB1g"
-		Password: "8772115f705abfa74e6ac0bd8a513bdd0e5ed58c8d899d0d3df867f51a583d1e"
-		ProfileBase64: ""
-		ResetToken: "BpSOHYI2r0"
-		SpecialPermissions: ""
-		Validated: true
-		ValidationToken: "swWaNIc9c"
-		_id: "5d1a24a69792904700c5dc1a"
-		*/
 		return (
 			<div>
 			<h4> User Details for {this.props.userState.DisplayName} </h4>
