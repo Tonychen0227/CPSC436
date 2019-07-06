@@ -63,36 +63,31 @@ class NavBar extends Component {
     return(
     <nav className="navbar">
       <div className="navbar-brand">
-        <a className="navbar-item">
+        <div className="navbar-item">
           <Link to='/home'><img className="NbaLogo" src="http://backgrounddownload.com/wp-content/uploads/2018/09/nba-logo-transparent-background.jpg" /></Link>
-        </a>
+        </div>
       </div>
-      <div class="navbar-menu is-dark">
-        <div class="navbar-start">
-          <a className="navbar-item">
+      <div className="navbar-menu">
+        <div className="navbar-start">
+          <div className="navbar-item">
             <Link to='/home'>Home</Link>
-          </a>
-          <a className="navbar-item">
+          </div>
+          <div className="navbar-item">
             <Link to='/stats'>Stats</Link>
-          </a>
-          <a className="navbar-item">
+          </div>
+          <div className="navbar-item">
             <Link to='/about'>About</Link>
-            </a>
+          </div>
         </div>
 
-        <div class="navbar-end">
-          <a className="navbar-item">
+        <div className="navbar-end">
+          <div className="navbar-item">
             <Link to='/myAccount'>{this.props.isLoggedIn ? "My Account" : "Log In"} <br/>
             <button hidden={!this.props.isLoggedIn} onClick={this.props.logOut}>Log Out</button></Link>
-          </a>
+          </div>
         </div>
       </div>
-            
-        <Route exact path='/home' component={Home}/>
-        <Route exact path='/stats' component={Stats}/>
-        <Route exact path='/myAccount' component={LogIn}/>
-        <Route exact path='/about' component={About}/>
-          
+
       </nav>
       /*
       <nav className="navbar" role="navigation" aria-label="main navigation">

@@ -8,7 +8,7 @@ import About from '../About/About';
 import { connect } from 'react-redux';
 import LoadingOverlay from 'react-loading-overlay';
 import PerfectScrollbar from "perfect-scrollbar";
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Router, Switch, Route } from 'react-router-dom';
 
 class App extends React.Component {
 
@@ -49,6 +49,12 @@ class App extends React.Component {
 			<div>
 				<NavBar />
 			</div>
+			<Switch>
+				<Route exact path='/home' component={Home} />
+				<Route exact path='/stats' component={Stats} />
+				<Route exact path='/myAccount' component={LogIn} />
+				<Route exact path='/about' component={About} />
+			</Switch>
 		</BrowserRouter>
 	);
 	}
