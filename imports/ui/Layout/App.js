@@ -8,7 +8,7 @@ import About from '../About/About';
 import { connect } from 'react-redux';
 import LoadingOverlay from 'react-loading-overlay';
 import PerfectScrollbar from "perfect-scrollbar";
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Router, Switch, Route } from 'react-router-dom';
 
 class App extends React.Component {
 
