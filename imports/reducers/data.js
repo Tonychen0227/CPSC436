@@ -4,10 +4,10 @@ import React from "react";
 
 var makeData = function(len) {
   console.log(len)
-  var arr = [];
-  for (i=0; i<len; i++){
-    arr[i] = newPerson();
-  };
+  let arr = [];
+  arr = arr.map(function(item) {
+    item = newPerson();
+  })
   return arr;
 }
 

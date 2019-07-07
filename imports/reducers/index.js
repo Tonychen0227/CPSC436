@@ -10,12 +10,12 @@ const currentPageNumber = (pageNum = 1, action) => {
 
 const loading = (loading = false, action) => {
   if (action.type.indexOf('STARTED') != -1) {
-    loading = true
+    loading = true;
   }
   else {
-    loading = false
+    loading = false;
   }
-  return loading
+  return loading;
 }
 
 const userState = (userState={isLoggedIn: false, loginAttempted: 0, userData: {}, jwt: "", errorMessage: null}, action) => {
@@ -37,7 +37,7 @@ const userState = (userState={isLoggedIn: false, loginAttempted: 0, userData: {}
       errorMessage: null};
   }
   if (action.type === 'LOG_IN_FAILURE') {
-    localStorage.removeItem("CachedJWT")
+    localStorage.removeItem("CachedJWT");
     return { ...userState, 
       isLoggedIn: false,
       loginAttempted: userState.loginAttempted + 1,
@@ -54,7 +54,7 @@ const userState = (userState={isLoggedIn: false, loginAttempted: 0, userData: {}
       errorMessage: action.payload + " (at " + new Date().toUTCString() + " UTC)"};
   }
   if (action.type === 'LOG_OUT') {
-    localStorage.removeItem("CachedJWT")
+    localStorage.removeItem("CachedJWT");
     userState.isLoggedIn = false;
     userState.loginAttempted = 0;
     return { ...userState, 
@@ -68,15 +68,15 @@ const userState = (userState={isLoggedIn: false, loginAttempted: 0, userData: {}
 
 const newsStore = (news = [], action) => {
   if(action.type === "LOAD_NEWS") {
-    /*var key = 0;
-    var topSixNews = action.payload.articles; // to to get the array
+    /*let key = 0;
+    let topSixNews = action.payload.articles; // to to get the array
     Array.from(topSixNews).forEach((currentNews) =>{
         news.push({key: key, image: currentNews.images[0].url, headline: currentNews.headline, link: currentNews.links.web.href});
         key++;
         console.log("from the loop")
         console.log(news);
     });*/
-    console.log("from the reducer: ")
+    console.log("from the reducer: ");
     console.log(news);
     return action.payload;
     //return action.payload;

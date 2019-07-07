@@ -18,7 +18,7 @@ class News extends React.Component {
   callApi = async () => {
     const response = await fetch('https://site.api.espn.com/apis/site/v2/sports/basketball/nba/news');
     const body = await response.json();
-    if(response.status !== 200){throw Error(body.message)}
+    if(response.status !== 200){throw Error(body.message);}
     console.log(body);
     return body;
   }
@@ -26,7 +26,7 @@ class News extends React.Component {
 	render() {
     console.log("In the news component");
     console.log(this.props.news);
-    var key = 0;
+    let key = 0;
     if(this.props.news && (this.props.news).length){
       return (
         <div>

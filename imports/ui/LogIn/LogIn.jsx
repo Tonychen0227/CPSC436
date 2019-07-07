@@ -22,14 +22,14 @@ class LogIn extends React.Component {
 	}
 
 	responseFacebook(response) {
-		this.props.facebookLogIn(response.id, response.email, response.accessToken)
+		this.props.facebookLogIn(response.id, response.email, response.accessToken);
 	}
 
 	handleChangeEmail(e) {
 		this.setState({
 			email: event.target.value
 		});
-		this.checkValidity(event.target.value, this.state.password)
+		this.checkValidity(event.target.value, this.state.password);
 	}
 
 	handleChangePassword(e) {
@@ -47,11 +47,11 @@ class LogIn extends React.Component {
 
 	handleSubmit(e) {
 		e.preventDefault();
-		this.props.userLogIn(this.state.email, this.state.password, this.state.jwt)
+		this.props.userLogIn(this.state.email, this.state.password, this.state.jwt);
 	}
 
 	checkValidity(email, password) {
-		var match = re.test(email)
+		let match = re.test(email);
 		if (match) {
 			this.setState({
 				validEmail: true
@@ -73,16 +73,16 @@ class LogIn extends React.Component {
 	}
 
 	handleRegister() {
-		this.props.userRegister(this.state.email, this.state.password, this.state.displayName)
+		this.props.userRegister(this.state.email, this.state.password, this.state.displayName);
 	}
 
 	handleUserReset() {
-		this.props.userReset(this.state.email)
+		this.props.userReset(this.state.email);
 	}
 
 	componentDidMount() {
 		if (localStorage.getItem("CachedJWT")) {
-			this.props.userLogIn(null, null, localStorage.getItem("CachedJWT"))
+			this.props.userLogIn(null, null, localStorage.getItem("CachedJWT"));
 		}
 	}
 
@@ -151,7 +151,7 @@ const mapDispatchToProps = dispatch => {
 		dispatch(userReset(email));
 	},
 	facebookLogIn: (id, email, token) => {
-		dispatch(facebookLogIn(id, email, token))
+		dispatch(facebookLogIn(id, email, token));
 	}
   };
 };

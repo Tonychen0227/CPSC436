@@ -34,7 +34,7 @@ const loginFailure = error => ({
 
 export const userLogIn = (email, password, jwt) => {
   if (password) {
-    var hash = sha256.create();
+    let hash = sha256.create();
     hash.update(password);
     password = hash.hex();
   }
@@ -72,7 +72,7 @@ const registerFailure = error => ({
 });
 
 export const userRegister = (email, password, displayName) => {
-  var hash = sha256.create();
+  let hash = sha256.create();
   hash.update(password);
   password = hash.hex();
 
