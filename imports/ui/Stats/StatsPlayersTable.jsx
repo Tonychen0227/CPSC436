@@ -7,6 +7,7 @@ import { makeData } from "./StatsMaker";
 import StatsPlayerDraggableTable from "./StatsPlayerDraggableTable";
 import { fetchData } from '../../actions'
 import { connect } from 'react-redux';
+import "../../../node_modules/bulma/css/bulma.css";
 
 class StatsPlayersTable extends React.Component {
 	state = {
@@ -82,15 +83,16 @@ class StatsPlayersTable extends React.Component {
     return (
 			<div>
 				<div>
-					<button onClick={() => this.displayCol(0)}>First Name</button>
-					<button onClick={() => this.displayCol(1)}>Last Name</button>
-					<button onClick={() => this.displayCol(2)}>Age</button>
-					<button onClick={() => this.displayCol(3)}>2-Points-Attempt</button>
-					<button onClick={() => this.displayCol(4)}>2-Points-Attempt/Game</button>
-					<button onClick={() => this.displayCol(5)}>2-Point-Made</button>
-					<button onClick={() => this.displayCol(6)}>2-Point-Made/Game</button>
-					<button onClick={() => this.displayCol(7)}>2-Point%</button>
+					<button className='button is-text' onClick={() => this.displayCol(0)}>First Name</button>
+					<button className='button is-text' onClick={() => this.displayCol(1)}>Last Name</button>
+					<button className='button is-text' onClick={() => this.displayCol(2)}>Age</button>
+					<button className='button is-text' onClick={() => this.displayCol(3)}>2-Points-Attempt</button>
+					<button className='button is-text' onClick={() => this.displayCol(4)}>2-Points-Attempt/Game</button>
+					<button className='button is-text' onClick={() => this.displayCol(5)}>2-Point-Made</button>
+					<button className='button is-text' onClick={() => this.displayCol(6)}>2-Point-Made/Game</button>
+					<button className='button is-text' onClick={() => this.displayCol(7)}>2-Point%</button>
 				</div>
+				<br />
         <StatsPlayerDraggableTable
           rows={this.data}
           columns={this.state.columns}

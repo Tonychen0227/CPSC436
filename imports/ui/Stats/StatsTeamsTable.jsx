@@ -83,15 +83,16 @@ class StatsTeamsTable extends React.Component {
     return (
 			<div>
 				<div>
-					<button onClick={() => this.displayCol(0)}>Title</button>
-					<button onClick={() => this.displayCol(1)}>Data1</button>
-					<button onClick={() => this.displayCol(2)}>Data2</button>
-					<button onClick={() => this.displayCol(3)}>Data3</button>
-					<button onClick={() => this.displayCol(4)}>Data4</button>
-					<button onClick={() => this.displayCol(5)}>Data5</button>
-					<button onClick={() => this.displayCol(6)}>Data6</button>
-					<button onClick={() => this.displayCol(7)}>Data7</button>
+					<button className='button is-text' onClick={() => this.displayCol(0)}>Title</button>
+					<button className='button is-text' onClick={() => this.displayCol(1)}>Data1</button>
+					<button className='button is-text' onClick={() => this.displayCol(2)}>Data2</button>
+					<button className='button is-text' onClick={() => this.displayCol(3)}>Data3</button>
+					<button className='button is-text' onClick={() => this.displayCol(4)}>Data4</button>
+					<button className='button is-text' onClick={() => this.displayCol(5)}>Data5</button>
+					<button className='button is-text' onClick={() => this.displayCol(6)}>Data6</button>
+					<button className='button is-text' onClick={() => this.displayCol(7)}>Data7</button>
 				</div>
+				<br />
         <StatsPlayerDraggableTable
           rows={this.data}
           columns={this.state.columns}
