@@ -1,16 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import MyMVP from './MyMVP';
-import PlayerSelector from './PlayerSelector';
-import DropdownSearchBar from './DropdownSearchBar';
 import '../../css/App.css';
 
 class Home extends React.Component {
 	render() {
 		return (
 			<div className="Home">
-				<PlayerSelector />
-				<DropdownSearchBar />
+				
 			</div>
 		);
 	}

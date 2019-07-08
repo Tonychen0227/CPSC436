@@ -37,3 +37,23 @@
 .playersButton:hover{
   background-color: #0079ff;
 }
+
+.analysisButton{
+  cursor:pointer;
+  width: 90px;
+  height: 40px;
+  background-color: #0253a4;
+  font-family: Helvetica;
+  font-size: 20px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  margin: 20px;
+}
+
+.analysisButton:hover{
+  background-color: #0079ff;
+}
