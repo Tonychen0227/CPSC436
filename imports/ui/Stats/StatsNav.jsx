@@ -11,11 +11,15 @@ class StatsNav extends React.Component {
     return (
       <nav className="nav-wrapper grey darken-3">
         <div className="container">
+        <div className="tabs is-boxed">
           <nav>
-            <Link to='/stats/players'><button className="button is-small is-rounded is-blue">Players</button></Link>
-            <Link to='/stats/teams'><button className="button is-small is-rounded is-blue">Teams</button></Link>
-            <Link to='/stats/analysis'><button className="button is-small is-rounded is-blue">Analysis</button></Link>
+          <ul>
+            <li><Link to='/stats/players'>Players</Link></li>
+            <li><Link to='/stats/teams'>Teams</Link></li>
+            <li><Link to='/stats/analysis'>Analysis</Link></li>
+          </ul>
           </nav>
+        </div>
           <br />
           <Route exact path='/stats/players' component={StatsPlayers} />
           <Route exact path='/stats/teams' component={StatsTeams} />
