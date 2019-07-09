@@ -4,7 +4,7 @@ import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 import { render } from "react-dom";
 import { makeData } from "./StatsMaker";
-import StatsPlayerDraggableTable from "./StatsPlayerDraggableTable";
+import StatsTeamDraggableTable from "./StatsTeamDraggableTable";
 import { fetchData } from '../../actions'
 import { connect } from 'react-redux';
 
@@ -93,7 +93,7 @@ class StatsTeamsTable extends React.Component {
 					<button className='button is-text' onClick={() => this.displayCol(7)}>Data7</button>
 				</div>
 				<br />
-        <StatsPlayerDraggableTable
+        <StatsTeamDraggableTable
           rows={this.data}
           columns={this.state.columns}
           defaultPageSize={20}

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import ReactTable, { ReactTableDefaults } from "react-table";
 import "react-table/react-table.css";
+import Popup from "reactjs-popup";
+import SinglePlayerGraph from "./SinglePlayerGraph";
 
 Object.assign(ReactTableDefaults, {
   defaultPageSize: 10,
@@ -13,7 +15,9 @@ class StatsPlayerDraggableTable extends Component {
     this.dragged = null;
     this.reorder = [];
     this.state = {
-      trigger: 0
+      trigger: 0,
+      showPopUp: false,
+      popUpData: null
     };
   }
   mountEvents() {
@@ -56,6 +60,7 @@ class StatsPlayerDraggableTable extends Component {
   componentDidUpdate() {
     this.mountEvents();
   }
+
   render() {
     const { rows, columns } = this.props;
 
@@ -70,7 +75,27 @@ class StatsPlayerDraggableTable extends Component {
     //render
     return (
       <div className="esr-table">
-        <ReactTable {...this.props} data={rows} columns={cols} />
+        <ReactTable
+          {...this.props}
+          data={rows}
+          columns={cols}
+          SubComponent={row => {
+            console.log(row)
+            var selectedInfo = row.original;
+            var newData = [];
+            Object.keys(selectedInfo).forEach((e) => {
+              if (typeof selectedInfo[e] !== 'string') {
+                newData.push({stats: e.toString(), cost: selectedInfo[e]})
+              }
+            });
+            console.log(newData);
+            return (
+              <div>
+              <SinglePlayerGraph selectedPlayerInfo={newData} />
+              </div>
+            )
+          }}
+          />
       </div>
     );
   }
