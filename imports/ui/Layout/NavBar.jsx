@@ -25,9 +25,18 @@ class NavBar extends Component {
           <div className="navbar-item">
             <Link to='/'>Home</Link>
           </div>
-          <div className="navbar-item">
-            <Link to='/stats'>Stats</Link>
+
+          <div className="navbar-item has-dropdown is-hoverable">
+            <div className="navbar-link">
+              <Link to='/stats'>Stats</Link>
+            </div>
+            <div className="navbar-dropdown is-boxed">
+                <Link to='/stats/players' className="navbar-item">Players</Link>
+                <Link to='/stats/teams' className="navbar-item">Teams</Link>
+                <Link to='/stats/analysis' className="navbar-item">Analysis</Link>
+            </div>
           </div>
+
           <div className="navbar-item">
             <Link to='/about'>About</Link>
           </div>

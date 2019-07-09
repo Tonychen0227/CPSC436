@@ -1,12 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import '../../css/App.css';
-
+import '../../css/MyAccount.css';
+import NewsDashboard from '../LogIn/NewsDashboard'
 class Home extends React.Component {
 	render() {
 		return (
 			<div className="Home">
-				
+				<div className="center">
+					<div className="newsDashboard inner">
+						<NewsDashboard/>
+					</div>
+				</div>
 			</div>
 		);
 	}

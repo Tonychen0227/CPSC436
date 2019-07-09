@@ -5,6 +5,9 @@ import Stats from '../Stats/Stats';
 import LogIn from '../LogIn/LogIn';
 import NavBar from './NavBar';
 import About from '../About/About';
+import StatsPlayers from "../Stats/StatsPlayers";
+import StatsTeams from "../Stats/StatsTeams";
+import StatsAnalysis from "../Stats/StatsAnalysis";
 import { connect } from 'react-redux';
 import LoadingOverlay from 'react-loading-overlay';
 import PerfectScrollbar from "perfect-scrollbar";
@@ -27,6 +30,9 @@ class App extends React.Component {
 				<Route exact path='/stats' component={Stats} />
 				<Route exact path='/myAccount' component={LogIn} />
 				<Route exact path='/about' component={About} />
+				<Route exact path='/stats/players' component={StatsPlayers} />
+				<Route exact path='/stats/teams' component={StatsTeams} />
+				<Route exact path='/stats/analysis' component={StatsAnalysis} />
 			</Switch>
 		</BrowserRouter>
 		</LoadingOverlay>

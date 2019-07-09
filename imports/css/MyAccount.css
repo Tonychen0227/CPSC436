@@ -16,6 +16,14 @@
   flex: none;
 }
 
+.center{
+  width: 60%;
+  margin: 0px auto;
+  -webkit-flex: none;
+  flex: none;
+}
+
+
 .right {
   -webkit-flex: 1;
   flex: 1;
