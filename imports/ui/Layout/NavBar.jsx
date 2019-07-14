@@ -6,7 +6,7 @@ import { Link, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { flipPage, logOut } from '../../actions';
 import Home from '../Home/Home';
-import Stats from '../Stats/Stats';
+
 import LogIn from '../LogIn/LogIn';
 import About from '../About/About';
 import "../../../node_modules/bulma/css/bulma.css";
@@ -28,7 +28,7 @@ class NavBar extends Component {
 
           <div className="navbar-item has-dropdown is-hoverable">
             <div className="navbar-link">
-              <Link to='/stats'>Stats</Link>
+              Stats
             </div>
             <div className="navbar-dropdown is-boxed">
                 <Link to='/stats/players' className="navbar-item">Players</Link>
