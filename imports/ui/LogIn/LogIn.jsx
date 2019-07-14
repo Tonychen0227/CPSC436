@@ -148,7 +148,7 @@ class LogIn extends React.Component {
 			                  <div className="field">
 			                    <label htmlFor className="label">Email</label>
 			                    <div className="control has-icons-left">
-			                      <input type="email" placeholder="Email" className="input" required />
+			                      <input type="email" placeholder="Email" value={this.state.email} onChange={this.handleChangeEmail} placeholder="Email" className="input" required />
 			                      <span className="icon is-small is-left">
 			                        <i className="fa fa-envelope" />
 			                      </span>
@@ -157,23 +157,33 @@ class LogIn extends React.Component {
 			                  <div className="field">
 			                    <label htmlFor className="label">Password</label>
 			                    <div className="control has-icons-left">
-			                      <input type="password" placeholder="*******" className="input" required />
+			                      <input type="password" placeholder="*******" value={this.state.password} onChange={this.handleChangePassword} className="input" required />
 			                      <span className="icon is-small is-left">
 			                        <i className="fa fa-lock" />
 			                      </span>
 			                    </div>
 			                  </div>
 			                  <div className="field">
-			                    <label htmlFor className="checkbox">
-			                      <input type="checkbox" />
-			                      Remember me
-			                    </label>
-			                  </div>
-			                  <div className="field">
-			                    <button className="button is-success">
+			                    <button className="button is-success" disabled={!this.state.validEmail || !this.state.validPassword} type="submit" value="Log Me In">
 			                      Login
 			                    </button>
+													<span> </span>
+													<button type="button" className="button" disabled={!this.state.validEmail} onClick={this.handleUserReset} text="Reset Password">
+														Reset Password
+													</button>
 			                  </div>
+
+												<button className="button"disabled={!this.state.validEmail || !this.state.validPassword} onClick={this.handleRegister} text="Sign me up">Sign me up </button>
+												<br/>
+												<span> Optional display name: <input type="displayName" value={this.state.displayName} onChange={this.handleChangeDisplayName}/> </span>
+												<br/>
+												<span className="error">{this.props.userState.errorMessage ? "Error:" + this.props.userState.errorMessage :""}</span>
+												<p> or.... </p>
+												<FacebookLogin
+													appId="322151111994092"
+													autoLoad={false}
+													fields="name,email,picture"
+													callback={this.responseFacebook} />
 			                </form>
 			              </div>
 			            </div>
