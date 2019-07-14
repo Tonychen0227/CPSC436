@@ -1,7 +1,6 @@
 import React from 'react';
 import '../../css/App.css';
 import Home from '../Home/Home';
-import Stats from '../Stats/Stats';
 import LogIn from '../LogIn/LogIn';
 import NavBar from './NavBar';
 import About from '../About/About';
@@ -28,12 +27,12 @@ class App extends React.Component {
 			</div>
 			<Switch>
 				<Route exact path='/' component={Home} />
-				<Route exact path='/stats' component={Stats} />
 				<Route exact path='/myAccount' component={LogIn} />
 				<Route exact path='/about' component={About} />
 				<Route exact path='/stats/players' component={StatsPlayers} />
 				<Route exact path='/stats/teams' component={StatsTeams} />
 				<Route exact path='/stats/analysis' component={StatsAnalysis} />
+				<Route exact path='/stats/games' component={StatsGames} />
 			</Switch>
 		</BrowserRouter>
 		</LoadingOverlay>

@@ -6,7 +6,7 @@ import { Link, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { flipPage, logOut } from '../../actions';
 import Home from '../Home/Home';
-import Stats from '../Stats/Stats';
+
 import LogIn from '../LogIn/LogIn';
 import About from '../About/About';
 import "../../../node_modules/bulma/css/bulma.css";
