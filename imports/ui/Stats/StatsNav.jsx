@@ -3,6 +3,7 @@ import { Link, Route } from 'react-router-dom';
 import StatsPlayers from "./StatsPlayers";
 import StatsTeams from "./StatsTeams";
 import StatsAnalysis from "./StatsAnalysis";
+import StatsGames from "./StatsGames";
 import "../../../node_modules/bulma/css/bulma.css";
 import '../../css/Stats.css';
 
@@ -11,14 +12,18 @@ class StatsNav extends React.Component {
     return (
       <nav className="nav-wrapper grey darken-3">
         <div className="container">
+        <div className="tabs is-boxed">
           <nav>
-          <div class="buttons">
-            <Link to='/stats/players' className="button is-small is-link is-hovered">Players</Link>
-            <Link to='/stats/teams' className="button is-small is-link is-hovered">Teams</Link>
-            <Link to='/stats/analysis' className="button is-small is-link is-hovered">Analysis</Link>
-          </div>
+          <ul>
+            <li><Link to='/stats'>Games</Link></li>
+            <li><Link to='/stats/players'>Players</Link></li>
+            <li><Link to='/stats/teams'>Teams</Link></li>
+            <li><Link to='/stats/analysis'>Analysis</Link></li>
+          </ul>
           </nav>
+        </div>
           <br />
+          <Route exact path='/stats' component={StatsGames} />
           <Route exact path='/stats/players' component={StatsPlayers} />
           <Route exact path='/stats/teams' component={StatsTeams} />
           <Route exact path='/stats/analysis' component={StatsAnalysis} />

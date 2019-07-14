@@ -8,6 +8,7 @@ import About from '../About/About';
 import StatsPlayers from "../Stats/StatsPlayers";
 import StatsTeams from "../Stats/StatsTeams";
 import StatsAnalysis from "../Stats/StatsAnalysis";
+import StatsGames from "../Stats/StatsGames";
 import { connect } from 'react-redux';
 import LoadingOverlay from 'react-loading-overlay';
 import PerfectScrollbar from "perfect-scrollbar";

@@ -1,12 +1,26 @@
-import React from 'react';
-import PlayerSelector from './PlayerSelector';
+import React, { Component } from 'react';
 import DropdownSearchBar from './DropdownSearchBar';
+import axios from 'axios';
 
-class StatsAnalysis extends React.Component {
+class StatsAnalysis extends Component {
+  state = {
+    games: []
+  }
+
+  componentDidMount() {
+    axios.get('https://cpsc436basketballapi.herokuapp.com/data/getGames')
+      .then(res => {
+        this.setState({
+          games: res.data
+        })
+      });
+  }
+
   render() {
+    const { games } = this.state;
+    console.log(games);
     return (
       <div className="statsAnalysis">
-        <PlayerSelector />
         <DropdownSearchBar />
       </div>
     )
