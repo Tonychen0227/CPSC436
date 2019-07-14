@@ -3,6 +3,7 @@ import { Link, Route } from 'react-router-dom';
 import StatsPlayers from "./StatsPlayers";
 import StatsTeams from "./StatsTeams";
 import StatsAnalysis from "./StatsAnalysis";
+import StatsGames from "./StatsGames";
 import "../../../node_modules/bulma/css/bulma.css";
 import '../../css/Stats.css';
 
@@ -14,6 +15,7 @@ class StatsNav extends React.Component {
         <div className="tabs is-boxed">
           <nav>
           <ul>
+            <li><Link to='/stats'>Games</Link></li>
             <li><Link to='/stats/players'>Players</Link></li>
             <li><Link to='/stats/teams'>Teams</Link></li>
             <li><Link to='/stats/analysis'>Analysis</Link></li>
@@ -21,6 +23,7 @@ class StatsNav extends React.Component {
           </nav>
         </div>
           <br />
+          <Route exact path='/stats' component={StatsGames} />
           <Route exact path='/stats/players' component={StatsPlayers} />
           <Route exact path='/stats/teams' component={StatsTeams} />
           <Route exact path='/stats/analysis' component={StatsAnalysis} />
