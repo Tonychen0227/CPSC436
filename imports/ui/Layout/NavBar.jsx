@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 //import 'bootstrap/dist/css/bootstrap.css';
-//import '../../css/NavBar.css';
+import '../../css/NavBar.css';
 import { Link, Route } from 'react-router-dom';
 //import {Navbar, Nav} from 'react-bootstrap';
 import { connect } from 'react-redux';
@@ -27,8 +27,8 @@ class NavBar extends Component {
           </div>
 
           <div className="navbar-item has-dropdown is-hoverable">
-            <div className="navbar-link">
-              <Link to='/stats'>Stats</Link>
+            <div className="navbar-link dropdown-trigger">
+              <a className="is-link">Stats</a>
             </div>
             <div className="navbar-dropdown is-boxed">
                 <Link to='/stats/players' className="navbar-item">Players</Link>
