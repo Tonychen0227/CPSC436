@@ -89,25 +89,41 @@ class LogIn extends React.Component {
 	//TODO: Implement facebook OAuth
 	render() {
 		if (!this.props.userState.isLoggedIn) {
-			return (
+			return (/*
 					<div>
-						<h1> Welcome to login page! </h1>
+					<section className="hero is-link">
+					  <div className="hero-body">
+					    <div className="container">
+					      <h1 className="title">
+					        Welcome to login page!
+					      </h1>
+					    </div>
+					  </div>
+					</section>
 						<h3> Login: </h3>
 						<form onSubmit={this.handleSubmit} className="InputField">
 			        <label>
-			          Email:
-			          <input type="text" value={this.state.email} onChange={this.handleChangeEmail}/>
-								<span>{!this.state.validEmail ? "Input valid email pls":""}</span>
-								<button type="button" className="resetButton" disabled={!this.state.validEmail} onClick={this.handleUserReset} text="Reset Password">Reset Password</button>
-			        </label>
+
+								<p className="control has-icons-left has-icons-right">
+				          <input type="email" className="input is-info is-medium" placeholder="Email" value={this.state.email} onChange={this.handleChangeEmail}/>
+									<span className="icon is-medium is-left">
+							      <i className="fas fa-envelope"></i>
+							    </span>
+								</p>
+							</label>
 							<br/>
 							<label>
-								Password:
-								<input type="password" value={this.state.password} onChange={this.handleChangePassword}/>
-								<span>{!this.state.validPassword ? "Input valid password pls (8+ chars)":""}</span>
+
+								<p className="control has-icons-left has-icons-right">
+									<input type="password" className="input is-info is-medium" placeholder="Password" value={this.state.password} onChange={this.handleChangePassword}/>
+									<span className="icon is-medium is-left">
+							      <i className="fas fa-lock"></i>
+							    </span>
+								</p>
 							</label>
 							<br/>
 			        <input disabled={!this.state.validEmail || !this.state.validPassword} type="submit" value="Log Me In" />
+							<button type="button" className="resetButton" disabled={!this.state.validEmail} onClick={this.handleUserReset} text="Reset Password">Reset Password</button>
 					<span>{this.props.userState.loginAttempted > 0 ? "Login failed, attempted " + this.props.userState.loginAttempted + " times, try again":""}</span>
 				  </form>
 				  <p> or.... </p>
@@ -122,7 +138,48 @@ class LogIn extends React.Component {
 						fields="name,email,picture"
 						cssClass="my-facebook-button-class"
 						callback={this.responseFacebook} />
-						</div>
+						</div>*/
+						<section className="hero is-link is-fullheight">
+			        <div className="hero-body">
+			          <div className="container">
+			            <div className="columns is-centered">
+			              <div className="column is-5-tablet is-4-desktop is-3-widescreen">
+			                <form action className="box">
+			                  <div className="field">
+			                    <label htmlFor className="label">Email</label>
+			                    <div className="control has-icons-left">
+			                      <input type="email" placeholder="Email" className="input" required />
+			                      <span className="icon is-small is-left">
+			                        <i className="fa fa-envelope" />
+			                      </span>
+			                    </div>
+			                  </div>
+			                  <div className="field">
+			                    <label htmlFor className="label">Password</label>
+			                    <div className="control has-icons-left">
+			                      <input type="password" placeholder="*******" className="input" required />
+			                      <span className="icon is-small is-left">
+			                        <i className="fa fa-lock" />
+			                      </span>
+			                    </div>
+			                  </div>
+			                  <div className="field">
+			                    <label htmlFor className="checkbox">
+			                      <input type="checkbox" />
+			                      Remember me
+			                    </label>
+			                  </div>
+			                  <div className="field">
+			                    <button className="button is-success">
+			                      Login
+			                    </button>
+			                  </div>
+			                </form>
+			              </div>
+			            </div>
+			          </div>
+			        </div>
+			      </section>
 			);
 		} else {
 			return (
