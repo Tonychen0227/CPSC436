@@ -99,16 +99,51 @@ export default class StatsGamesCharts extends Component {
     return dailyGames;
   }
 
+  getGamesData = dailyGames => {
+    console.log(dailyGames);
+    var gameData = [];
+    dailyGames.map(function (game) {
+      var homeTeam = game["schedule"]["homeTeam"]["abbreviation"];
+      var awayTeam = game["schedule"]["awayTeam"]["abbreviation"];
+      var homeQ1Score = game["score"]["quarters"]["0"]["homeScore"];
+      var homeQ2Score = game["score"]["quarters"]["1"]["homeScore"];
+      var homeQ3Score = game["score"]["quarters"]["2"]["homeScore"];
+      var homeQ4Score = game["score"]["quarters"]["3"]["homeScore"];
+      var awayQ1Score = game["score"]["quarters"]["0"]["awayScore"];
+      var awayQ2Score = game["score"]["quarters"]["1"]["awayScore"];
+      var awayQ3Score = game["score"]["quarters"]["2"]["awayScore"];
+      var awayQ4Score = game["score"]["quarters"]["3"]["awayScore"];
+      var match = homeTeam + ' VS ' +awayTeam;
+      var gameObj = {
+        ht: homeTeam,
+        at: awayTeam,
+        h1s: homeQ1Score,
+        h2s: homeQ2Score,
+        h3s: homeQ3Score,
+        h4s: homeQ4Score,
+        a1s: awayQ1Score,
+        a2s: awayQ2Score,
+        a3s: awayQ3Score,
+        a4s: awayQ4Score,
+        match: match
+      }
+      gameData.push(gameObj);
+      return;
+    });
+    return gameData;
+  }
+
   // 2018-04-14
   render() {
     const { gameDate } = this.props;
     let adjustGameDate = this.getAdjustedGameDate(gameDate);
     let dailyGames = this.getDailyGames(adjustGameDate);
-    console.log(dailyGames);
+    let gameData = this.getGamesData(dailyGames);
+    console.log(gameData);
     return (
       <BarChart
-        width={500}
-        height={300}
+        width={800}
+        height={400}
         data={data}
         margin={{
           top: 20, right: 30, left: 20, bottom: 5,
