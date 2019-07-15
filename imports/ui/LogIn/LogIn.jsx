@@ -7,10 +7,17 @@ import FacebookLogin from 'react-facebook-login';
 
 var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
+var NBATeams = ['76ers', 'blazers', 'bucks', 'bulls', 'cavaliers',
+'celtics', 'clippers', 'grizzlies', 'hawks', 'heat', 'hornets',
+'jazz', 'kings', 'knicks', 'lakers', 'magic', 'mavericks',
+'nets', 'nuggets', 'pacers', 'pelicans', 'pistons', 'raptors',
+'rockets', 'spurs', 'suns', 'thunder', 'timberwolves', 'warriors',
+'wizards']
+
 class LogIn extends React.Component {
 	constructor() {
 		super();
-		this.state = { jwt: '', email: '', password: '', displayName: '', validEmail: false, validPassword: false };
+		this.state = { jwt: '', email: '', password: '', displayName: '', favTeam: '', validEmail: false, validPassword: false };
 		this.handleChangePassword = this.handleChangePassword.bind(this);
 		this.handleChangeEmail = this.handleChangeEmail.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
