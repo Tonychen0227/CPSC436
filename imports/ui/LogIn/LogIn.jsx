@@ -91,62 +91,56 @@ class LogIn extends React.Component {
 		if (!this.props.userState.isLoggedIn) {
 			return (
 				<section className="hero is-link is-fullheight">
-					<div className="hero-body">
-						<div className="container">
-							<div className="columns is-centered">
-								<div className="column is-5-tablet is-4-desktop is-3-widescreen">
-									<form className="box" onSubmit={this.handleSubmit}>
-										<div className="field">
-											<label className="label">Email</label>
-											<div className="control has-icons-left">
-												<input type="email" placeholder="Email" value={this.state.email} onChange={this.handleChangeEmail} placeholder="Email" className="input" required />
-												<span className="icon is-small is-left">
-													<i className="fa fa-envelope" />
-												</span>
-											</div>
-										</div>
-										<div className="field">
-											<label className="label">Password</label>
-											<div className="control has-icons-left">
-												<input type="password" placeholder="*******" value={this.state.password} onChange={this.handleChangePassword} className="input" required />
-												<span className="icon is-small is-left">
-													<i className="fa fa-lock" />
-												</span>
-											</div>
-										</div>
-										<div className="field">
-											<input className="button is-success" disabled={!this.state.validEmail || !this.state.validPassword} type="submit" value="Log Me In" />
-											<span> </span>
-											<button type="button" className="button is-danger" disabled={!this.state.validEmail} onClick={this.handleUserReset} text="Reset Password">
-												Reset Password
-													</button>
-										</div>
-										<br />
-										<span>  <label className="label">
-											Optional display name: </label>
-										</span>
-										<div className="control has-icons-left">
-											<input type="displayName" className="input" value={this.state.displayName} onChange={this.handleChangeDisplayName} />
-											<span className="icon is-small is-left">
-												<i className="fa fa-user" />
-											</span>
-										</div>
-										<br />
-										<button className="button is-warning" disabled={!this.state.validEmail || !this.state.validPassword} onClick={this.handleRegister} text="Sign me up">Sign me up </button>
-										<br />
-										<span className="error">{this.props.userState.errorMessage ? "Error:" + this.props.userState.errorMessage : ""}</span>
-										<br />
-										<div> ──────  or  ──────</div>
-										<FacebookLogin
-											appId="322151111994092"
-											autoLoad={false}
-											fields="name,email,picture"
-											icon="fa-facebook"
-											callback={this.responseFacebook} />
-									</form>
+					<div className="hero-body container column is-5-tablet is-4-desktop is-3-widescreen is-centered">
+						<form className="box" onSubmit={this.handleSubmit}>
+							<div className="field">
+								<label className="label">Email</label>
+								<div className="control has-icons-left">
+									<input type="email" placeholder="Email" value={this.state.email} onChange={this.handleChangeEmail} placeholder="Email" className="input" required />
+									<span className="icon is-small is-left">
+										<i className="fa fa-envelope" />
+									</span>
 								</div>
 							</div>
-						</div>
+							<div className="field">
+								<label className="label">Password</label>
+								<div className="control has-icons-left">
+									<input type="password" placeholder="*******" value={this.state.password} onChange={this.handleChangePassword} className="input" required />
+									<span className="icon is-small is-left">
+										<i className="fa fa-lock" />
+									</span>
+								</div>
+							</div>
+							<div className="field">
+								<input className="button is-success" disabled={!this.state.validEmail || !this.state.validPassword} type="submit" value="Log Me In" />
+								<span> </span>
+								<button type="button" className="button is-danger" disabled={!this.state.validEmail} onClick={this.handleUserReset} text="Reset Password">
+									Reset Password
+										</button>
+							</div>
+							<br />
+							<span>  <label className="label">
+								Optional display name: </label>
+							</span>
+							<div className="control has-icons-left">
+								<input type="displayName" className="input" value={this.state.displayName} onChange={this.handleChangeDisplayName} />
+								<span className="icon is-small is-left">
+									<i className="fa fa-user" />
+								</span>
+							</div>
+							<br />
+							<button className="button is-warning" disabled={!this.state.validEmail || !this.state.validPassword} onClick={this.handleRegister} text="Sign me up">Sign me up </button>
+							<br />
+							<span className="error">{this.props.userState.errorMessage ? this.props.userState.errorMessage : ""}</span>
+							<br />
+							<div> ──────  or  ──────</div>
+							<FacebookLogin
+								appId="322151111994092"
+								autoLoad={false}
+								fields="name,email,picture"
+								icon="fa-facebook"
+								callback={this.responseFacebook} />
+						</form>
 					</div>
 				</section>
 			);
