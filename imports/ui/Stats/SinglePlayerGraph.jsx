@@ -31,12 +31,12 @@ import createG2 from 'g2-react';
     chart.render();
   });
 
-  export default class MyComponent extends Component{
+  export default class SinglePlayerGraph extends Component{
 
     state ={
       forceFit: true,
       width: 500,
-      height: 450,
+      height: 580,
       plotCfg: {
         margin: [35, 140, 35, 0]
       },

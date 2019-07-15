@@ -3,6 +3,7 @@ import ReactTable, { ReactTableDefaults } from "react-table";
 import "react-table/react-table.css";
 import Popup from "reactjs-popup";
 import SinglePlayerGraph from "./SinglePlayerGraph";
+import SinglePlayerFundeDataGraph from './SinglePlayerFundeDataGraph';
 
 Object.assign(ReactTableDefaults, {
   defaultPageSize: 10,
@@ -63,8 +64,6 @@ class StatsPlayerDraggableTable extends Component {
 
   render() {
     const { rows, columns } = this.props;
-    console.log(rows);
-
     const cols = columns.map(col => ({
       ...col,
       Header: <span className="draggable-header">{col.Header}</span>
@@ -81,18 +80,48 @@ class StatsPlayerDraggableTable extends Component {
           data={rows}
           columns={cols}
           SubComponent={row => {
-            console.log(row)
             var selectedInfo = row.original;
             var newData = [];
+            var playerInfo = [];
+            var foundaData = [];
             Object.keys(selectedInfo).forEach((e) => {
-              if (typeof selectedInfo[e] !== 'string') {
-                newData.push({stats: e.toString(), cost: selectedInfo[e]})
+              if (e === 'blkAgainstPerGame' || e === 'stlPerGame' || e === 'tovPerGame' ||
+                  e === 'fg2PtAttPerGame' || e === 'fg2PtMadePerGame' || e === 'fg3PtAttPerGame' ||
+                  e === 'fg3PtMadePerGame' || e === 'fgAttPerGame' || e === 'fgMadePerGame' ||
+                  e === 'ftAttPerGame' || e === 'ftMadePerGame' || e === 'astPerGame' ||
+                  e === 'ptsPerGame' || e === 'defRebPerGame' || e === 'offRebPerGame' ||
+                  e === 'rebPerGame') {
+                newData.push({stats: e.toString(), cost: selectedInfo[e]});
+              };
+              if (e === 'height' || e === 'weight' || e === 'season' ||
+                  e === 'gamesPlayed' || e === 'firstName' ||
+                  e === 'lastName' || e === 'birthDate') {
+                playerInfo.push({type: e.toString(), value: selectedInfo[e]});
+              };
+              if (e === 'blk' || e === 'stl' || e === 'pts' || e === 'ast' || e === 'reb') {
+                foundaData.push({name: e.toString(), value: selectedInfo[e]});
               }
             });
-            console.log(newData);
             return (
-              <div>
-              <SinglePlayerGraph selectedPlayerInfo={newData} />
+              <div className="row">
+                <div className="col-sm-2">
+                  <div className="card text-white bg-secondary border-secondary mb-3">
+                    <ul className="list-group list-group-flush">
+                      {playerInfo.map(info => (
+                        <li key={info.type}>{info.type} : {info.value}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="card bg-dark mb-3 text-white">
+                    <p> Fundamental Stats </p>
+                    <SinglePlayerFundeDataGraph data={foundaData} />
+                  </div>
+                </div>
+                <div className="col-sm-6">
+                  <div className="card bg-light mb-3 border-light">
+                    <SinglePlayerGraph selectedPlayerInfo={newData} />
+                  </div>
+                </div>
               </div>
             )
           }}

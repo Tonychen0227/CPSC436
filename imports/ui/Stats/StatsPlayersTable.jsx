@@ -187,7 +187,6 @@ class StatsPlayersTable extends React.Component {
 	}
 
 	createPlayerObj = players => {
-		console.log(players);
 		var playersData = []
 		players.map(function (player) {
 			playersData.push({
@@ -196,7 +195,7 @@ class StatsPlayersTable extends React.Component {
 					lastName: player["player"]["lastName"],
 					height: player["player"]["height"],
 					weight: player["player"]["weight"],
-					season: player["player"]["season"],
+					season: player["season"],
 					blk: player["stats"]["defense"]["blk"],
 					blkAgainst: player["stats"]["defense"]["blkAgainst"],
 					blkAgainstPerGame: player["stats"]["defense"]["blkAgainstPerGame"],
@@ -219,7 +218,7 @@ class StatsPlayersTable extends React.Component {
 					fgMade: player["stats"]["fieldGoals"]["fgMade"],
 					fgMadePerGame: player["stats"]["fieldGoals"]["fgMadePerGame"],
 					fgPct: player["stats"]["fieldGoals"]["fgMadePerGame"],
-					gamePlayed: player["stats"]["gamePlayed"],
+					gamesPlayed: player["stats"]["gamesPlayed"],
 					ftAtt: player["stats"]["freeThrows"]["ftAtt"],
 					ftAttPerGame: player["stats"]["freeThrows"]["ftAttPerGame"],
 					ftMade: player["stats"]["freeThrows"]["ftMade"],
@@ -238,13 +237,10 @@ class StatsPlayersTable extends React.Component {
 				});
 			return;
 		});
-		console.log(playersData);
 		return playersData;
 	}
 
   render() {
-		console.log(this.data);
-		console.log(this.state);
     return (
 			<div>
 				<div>
