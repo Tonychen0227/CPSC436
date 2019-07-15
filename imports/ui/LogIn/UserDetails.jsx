@@ -13,7 +13,7 @@ class UserDetails extends React.Component {
 			<img className="profile" src="https://www.myinstants.com/media/instants_images/1340305905201.png"/>
 				<div> 
 					<br/>
-					<p> Favorite team: {this.props.userState.FavoriteTeam} <img className="team" src='logos/raptors.png'/> </p>
+					<p> Favorite team: <img className="team" src={'logos/' + this.props.userState.FavoriteTeam + '.png'} alt={this.props.userState.FavoriteTeam}/> </p>
 					<p> Account Type: {this.props.userState.Password == "Facebook"? "Facebook":"Email/Password"} </p>
 					<br/>
 				</div>

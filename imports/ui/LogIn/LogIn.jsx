@@ -185,8 +185,8 @@ const mapDispatchToProps = dispatch => {
 		userLogIn: (email, password, jwt) => {
 			dispatch(userLogIn(email, password, jwt));
 		},
-		userRegister: (email, password, displayName) => {
-			dispatch(userRegister(email, password, displayName));
+		userRegister: (email, password, displayName, favTeam) => {
+			dispatch(userRegister(email, password, displayName, favTeam));
 		},
 		userReset: (email, password) => {
 			dispatch(userReset(email));
