@@ -89,56 +89,7 @@ class LogIn extends React.Component {
 	//TODO: Implement facebook OAuth
 	render() {
 		if (!this.props.userState.isLoggedIn) {
-			return (/*
-					<div>
-					<section className="hero is-link">
-					  <div className="hero-body">
-					    <div className="container">
-					      <h1 className="title">
-					        Welcome to login page!
-					      </h1>
-					    </div>
-					  </div>
-					</section>
-						<h3> Login: </h3>
-						<form onSubmit={this.handleSubmit} className="InputField">
-			        <label>
-
-								<p className="control has-icons-left has-icons-right">
-				          <input type="email" className="input is-info is-medium" placeholder="Email" value={this.state.email} onChange={this.handleChangeEmail}/>
-									<span className="icon is-medium is-left">
-							      <i className="fas fa-envelope"></i>
-							    </span>
-								</p>
-							</label>
-							<br/>
-							<label>
-
-								<p className="control has-icons-left has-icons-right">
-									<input type="password" className="input is-info is-medium" placeholder="Password" value={this.state.password} onChange={this.handleChangePassword}/>
-									<span className="icon is-medium is-left">
-							      <i className="fas fa-lock"></i>
-							    </span>
-								</p>
-							</label>
-							<br/>
-			        <input disabled={!this.state.validEmail || !this.state.validPassword} type="submit" value="Log Me In" />
-							<button type="button" className="resetButton" disabled={!this.state.validEmail} onClick={this.handleUserReset} text="Reset Password">Reset Password</button>
-					<span>{this.props.userState.loginAttempted > 0 ? "Login failed, attempted " + this.props.userState.loginAttempted + " times, try again":""}</span>
-				  </form>
-				  <p> or.... </p>
-					<button disabled={!this.state.validEmail || !this.state.validPassword} onClick={this.handleRegister} text="Sign me up">Sign me up </button>
-					<span> Optional display name: <input type="displayName" value={this.state.displayName} onChange={this.handleChangeDisplayName}/> </span>
-					<br/>
-					<span className="error">{this.props.userState.errorMessage ? "Error:" + this.props.userState.errorMessage :""}</span>
-					<p> or.... </p>
-					<FacebookLogin
-						appId="322151111994092"
-						autoLoad={false}
-						fields="name,email,picture"
-						cssClass="my-facebook-button-class"
-						callback={this.responseFacebook} />
-						</div>*/
+			return (
 				<section className="hero is-link is-fullheight">
 					<div className="hero-body">
 						<div className="container">
