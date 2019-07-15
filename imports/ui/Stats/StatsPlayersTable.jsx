@@ -17,13 +17,21 @@ class StatsPlayersTable extends React.Component {
 	      Header: "First Name",
 	      accessor: "firstName",
 	      show: true,
-	      width: 150
+	      width: 150,
+				filterable: true,
+				filterMethod: (filter, row) => {
+					return row[filter.id].toLowerCase().includes(filter.value)
+				}
 	    },
 	    {
 	      Header: "Last Name",
 	      accessor: "lastName",
 	      show: true,
-	      width: 150
+	      width: 150,
+				filterable: true,
+				filterMethod: (filter, row) => {
+					return row[filter.id].toLowerCase().includes(filter.value)
+				}
 	    },
 	    {
 	      Header: "2-Attempt",
@@ -272,8 +280,19 @@ class StatsPlayersTable extends React.Component {
           rows={this.createPlayerObj(this.state.players)}
           columns={this.state.columns}
           defaultPageSize={15}
-          defaultFilterMethod={(filter, row) =>
-            row[filter.id] >= filter.value}
+          defaultFilterMethod={(filter, row) => {
+						if (filter.value.includes(">=")) {
+							return row[filter.id] >= filter.value.slice(2);
+						} else if (filter.value.includes('>')) {
+							return row[filter.id] > filter.value.slice(1);
+						} else if (filter.value.includes("<=")) {
+							return row[filter.id] <= filter.value.slice(2);
+						} else if (filter.value.includes("<")) {
+							return row[filter.id] < filter.value.slice(1);
+						} else {
+							return row[filter.id] == filter.value;
+						}
+					}}
           className="-striped -highlight"
           getTableProps={() => {
             return {
