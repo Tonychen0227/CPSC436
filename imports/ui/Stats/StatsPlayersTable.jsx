@@ -279,7 +279,7 @@ class StatsPlayersTable extends React.Component {
         <StatsPlayerDraggableTable
           rows={this.createPlayerObj(this.state.players)}
           columns={this.state.columns}
-          defaultPageSize={15}
+          defaultPageSize={10}
           defaultFilterMethod={(filter, row) => {
 						if (filter.value.includes(">=")) {
 							return row[filter.id] >= filter.value.slice(2);
