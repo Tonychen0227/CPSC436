@@ -13,9 +13,7 @@ class UserDetails extends React.Component {
 			<img className="profile" src="https://www.myinstants.com/media/instants_images/1340305905201.png"/>
 				<div> 
 					<br/>
-					<p> User ID: {this.props.userState._id} </p>
-					<p> Favorite team: {this.props.userState.FavoriteTeam} <img className="team" src="../../Assets/logos/raptors.png"/> </p>
-					<p> Account Created: {this.props.userState.AccountCreated} </p>
+					<p> Favorite team: {this.props.userState.FavoriteTeam} <img className="team" src='logos/raptors.png'/> </p>
 					<p> Account Type: {this.props.userState.Password == "Facebook"? "Facebook":"Email/Password"} </p>
 					<br/>
 				</div>
