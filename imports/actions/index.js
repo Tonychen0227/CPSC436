@@ -1,8 +1,8 @@
 const axios = require('axios');
 var sha256 = require('js-sha256');
 
-var url = 'https://cpsc436basketballapi.herokuapp.com'
-//var url = 'http://localhost:3001'
+//var url = 'https://cpsc436basketballapi.herokuapp.com'
+var url = 'http://localhost:3001'
 
 export const flipPage = newPage => {
   return {
@@ -51,7 +51,7 @@ export const userLogIn = (email, password, jwt) => {
         dispatch(loginSuccess(res.data, res.data.JWTToken));
       })
       .catch(err => {
-        dispatch(loginFailure(" " + err.response.status + " " + err.response.data));
+        dispatch(loginFailure(err.response.data));
       });
   };
 };
@@ -90,7 +90,7 @@ export const userRegister = (email, password, displayName) => {
         dispatch(registerSuccess(res.data, res.data.JWTToken));
       })
       .catch(err => {
-        dispatch(registerFailure(" " + err.response.status + " " + err.response.data));
+        dispatch(registerFailure(err.response.data));
       });
     };
 };
@@ -116,7 +116,7 @@ export const userReset = (email) => {
         dispatch(resetFailure(res.data));
       })
       .catch(err => {
-        dispatch(resetFailure(" " + err.response.status + " " + err.response.data));
+        dispatch(resetFailure(err.response.data));
       });
   };
 };
@@ -139,7 +139,7 @@ export const facebookLogIn = (id, email, token) => {
         dispatch(facebookLoginSuccess(res.data));
       })
       .catch(err => {
-        dispatch(loginFailure(" " + err.response.status + " " + err.response.data));
+        dispatch(loginFailure(err.response.data));
       });
   };
 };
