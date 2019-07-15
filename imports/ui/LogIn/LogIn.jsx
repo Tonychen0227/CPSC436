@@ -144,7 +144,7 @@ class LogIn extends React.Component {
 						<div className="container">
 							<div className="columns is-centered">
 								<div className="column is-5-tablet is-4-desktop is-3-widescreen">
-									<form action className="box">
+									<form action className="box InputField" onSubmit={this.handleSubmit} className="InputField">
 										<div className="field">
 											<label htmlFor className="label">Email</label>
 											<div className="control has-icons-left">
@@ -164,9 +164,7 @@ class LogIn extends React.Component {
 											</div>
 										</div>
 										<div className="field">
-											<button className="button is-success" disabled={!this.state.validEmail || !this.state.validPassword} type="submit" value="Log Me In">
-												Login
-			                    </button>
+											<input className="button is-success" disabled={!this.state.validEmail || !this.state.validPassword} type="submit" value="Log Me In" />
 											<span> </span>
 											<button type="button" className="button is-danger" disabled={!this.state.validEmail} onClick={this.handleUserReset} text="Reset Password">
 												Reset Password
