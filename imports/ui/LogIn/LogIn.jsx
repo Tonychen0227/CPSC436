@@ -61,7 +61,7 @@ class LogIn extends React.Component {
 
 	handleSubmit(e) {
 		e.preventDefault();
-		this.props.userLogIn(this.state.email, this.state.password, this.state.jwt, this.state.favTeam)
+		this.props.userLogIn(this.state.email, this.state.password, this.state.jwt)
 	}
 
 	checkValidity(email, password) {
@@ -87,7 +87,7 @@ class LogIn extends React.Component {
 	}
 
 	handleRegister() {
-		this.props.userRegister(this.state.email, this.state.password, this.state.displayName)
+		this.props.userRegister(this.state.email, this.state.password, this.state.displayName, this.state.favTeam)
 	}
 
 	handleUserReset() {

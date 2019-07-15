@@ -45,8 +45,7 @@ export const userLogIn = (email, password, jwt) => {
       .post(url + '/users/login', {
         email: email,
         password: password,
-        jwt: jwt,
-        favTeam: favTeam
+        jwt: jwt
       })
       .then(res => {
         dispatch(loginSuccess(res.data, res.data.JWTToken));
@@ -72,7 +71,7 @@ const registerFailure = error => ({
   payload: error
 });
 
-export const userRegister = (email, password, displayName) => {
+export const userRegister = (email, password, displayName, favTeam) => {
   var hash = sha256.create();
   hash.update(password);
   password = hash.hex();
@@ -85,7 +84,8 @@ export const userRegister = (email, password, displayName) => {
       .post(url + '/users/register', {
         email: email,
         password: password,
-        displayName: displayName
+        displayName: displayName,
+        favTeam: favTeam
       })
       .then(res => {
         dispatch(registerSuccess(res.data, res.data.JWTToken));
