@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {
   BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
 } from 'recharts';
+import axios from 'axios';
 
 const data = [
   {
@@ -28,8 +29,82 @@ const data = [
 ];
 
 export default class StatsGamesCharts extends Component {
+  state = {
+    games: []
+  }
 
+  componentDidMount() {
+    axios.get('https://cpsc436basketballapi.herokuapp.com/data/getGames')
+      .then(res => {
+        this.setState({
+          games: res.data
+        })
+      });
+      console.log(this.state);
+  }
+
+  getAdjustedGameDate = originalDate => {
+    const month = originalDate.toString().slice(4,7);
+    const date = originalDate.toString().slice(8,10);
+    const year = originalDate.toString().slice(11,15);
+    let monthNum;
+    switch (month) {
+      case 'Jan':
+        monthNum = '01';
+        break;
+      case 'Feb':
+        monthNum = '02';
+        break;
+      case 'Mar':
+        monthNum = '03';
+        break;
+      case 'Apr':
+        monthNum = '04';
+        break;
+      case 'May':
+        monthNum = '05';
+        break;
+      case 'Jun':
+        monthNum = '06';
+        break;
+      case 'Jul':
+        monthNum = '07';
+        break;
+      case 'Aug':
+        monthNum = '08';
+        break;
+      case 'Sep':
+        monthNum = '09';
+        break;
+      case 'Oct':
+        monthNum = '10';
+        break;
+      case 'Nov':
+        monthNum = '11';
+        break;
+      case 'Dec':
+        monthNum = '12';
+        break;
+      default: monthNum = '07';
+    }
+    return year.concat('-',monthNum,'-',date);
+  }
+
+  getDailyGames = gameDate => {
+    var originalGames = this.state.games;
+    console.log(originalGames);
+    var dailyGames = originalGames.filter(function (game) {
+      return game["schedule"]["startTime"].includes(gameDate);
+    });
+    return dailyGames;
+  }
+
+  // 2018-04-14
   render() {
+    const { gameDate } = this.props;
+    let adjustGameDate = this.getAdjustedGameDate(gameDate);
+    let dailyGames = this.getDailyGames(adjustGameDate);
+    console.log(dailyGames);
     return (
       <BarChart
         width={500}
