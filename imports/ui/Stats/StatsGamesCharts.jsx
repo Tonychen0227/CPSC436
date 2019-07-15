@@ -135,9 +135,16 @@ export default class StatsGamesCharts extends Component {
 
   render() {
     const { gameDate } = this.props;
-    let adjustGameDate = this.getAdjustedGameDate(gameDate);
-    let dailyGames = this.getDailyGames(adjustGameDate);
-    let gameData = this.getGamesData(dailyGames);
+    let adjustGameDate;
+    let dailyGames;
+    let gameData;
+    if (gameDate !== null) {
+      adjustGameDate = this.getAdjustedGameDate(gameDate);
+      dailyGames = this.getDailyGames(adjustGameDate);
+      gameData = this.getGamesData(dailyGames);
+    } else {
+      gameData = null;
+    }
     return (
       <BarChart
         width={1200}
