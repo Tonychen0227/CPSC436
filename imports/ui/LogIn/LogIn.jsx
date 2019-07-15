@@ -17,9 +17,10 @@ var NBATeams = ['76ers', 'blazers', 'bucks', 'bulls', 'cavaliers',
 class LogIn extends React.Component {
 	constructor() {
 		super();
-		this.state = { jwt: '', email: '', password: '', displayName: '', favTeam: '', validEmail: false, validPassword: false };
+		this.state = { jwt: '', email: '', password: '', displayName: '', favTeam: 'raptors', validEmail: false, validPassword: false };
 		this.handleChangePassword = this.handleChangePassword.bind(this);
 		this.handleChangeEmail = this.handleChangeEmail.bind(this);
+		this.handleChangeTeam = this.handleChangeTeam.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.checkValidity = this.checkValidity.bind(this);
 		this.handleRegister = this.handleRegister.bind(this);
@@ -46,6 +47,12 @@ class LogIn extends React.Component {
 		this.checkValidity(this.state.email, event.target.value);
 	}
 
+	handleChangeTeam(e) {
+		this.setState({
+			favTeam: event.target.value
+		});
+	}
+
 	handleChangeDisplayName(e) {
 		this.setState({
 			displayName: event.target.value
@@ -54,7 +61,7 @@ class LogIn extends React.Component {
 
 	handleSubmit(e) {
 		e.preventDefault();
-		this.props.userLogIn(this.state.email, this.state.password, this.state.jwt)
+		this.props.userLogIn(this.state.email, this.state.password, this.state.jwt, this.state.favTeam)
 	}
 
 	checkValidity(email, password) {
@@ -135,7 +142,14 @@ class LogIn extends React.Component {
 									<i className="fa fa-user" />
 								</span>
 							</div>
+							<span>  <label className="label">
+								Your favorite team: </label>
+							</span>
+							<select onChange={this.handleChangeTeam} value={this.state.favTeam}>
+								{NBATeams.map((x) => <option key={x}>{x}</option>)}
+							</select>
 							<br />
+							<br/>
 							<button className="button is-warning" disabled={!this.state.validEmail || !this.state.validPassword} onClick={this.handleRegister} text="Sign me up">Sign me up </button>
 							<br />
 							<span className="error">{this.props.userState.errorMessage ? this.props.userState.errorMessage : ""}</span>
