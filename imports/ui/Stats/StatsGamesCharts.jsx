@@ -91,7 +91,12 @@ export default class StatsGamesCharts extends Component {
   }
 
   getDailyGames = gameDate => {
-    console.log(this.state);
+    var originalGames = this.state.games;
+    console.log(originalGames);
+    var dailyGames = originalGames.filter(function (game) {
+      return game["schedule"]["startTime"].includes(gameDate);
+    });
+    return dailyGames;
   }
 
   // 2018-04-14
