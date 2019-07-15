@@ -139,11 +139,11 @@ class LogIn extends React.Component {
 						cssClass="my-facebook-button-class"
 						callback={this.responseFacebook} />
 						</div>*/
-						<section className="hero is-link is-fullheight">
-						  <div className="hero-body">
-						    <div className="container">
-						      <div className="columns is-centered">
-						        <div className="column is-5-tablet is-4-desktop is-3-widescreen">
+				<section className="hero is-link is-fullheight">
+					<div className="hero-body">
+						<div className="container">
+							<div className="columns is-centered">
+								<div className="column is-5-tablet is-4-desktop is-3-widescreen">
 									<form action className="box" onSubmit={this.handleSubmit}>
 										<div className="field">
 											<label htmlFor className="label">Email</label>
@@ -190,6 +190,7 @@ class LogIn extends React.Component {
 											appId="322151111994092"
 											autoLoad={false}
 											fields="name,email,picture"
+											icon="fa-facebook"
 											callback={this.responseFacebook} />
 									</form>
 								</div>
