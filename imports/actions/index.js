@@ -45,7 +45,8 @@ export const userLogIn = (email, password, jwt) => {
       .post(url + '/users/login', {
         email: email,
         password: password,
-        jwt: jwt
+        jwt: jwt,
+        favTeam: favTeam
       })
       .then(res => {
         dispatch(loginSuccess(res.data, res.data.JWTToken));
