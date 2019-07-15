@@ -1,8 +1,8 @@
 const axios = require('axios');
 var sha256 = require('js-sha256');
 
-var url = 'https://cpsc436basketballapi.herokuapp.com'
-//var url = 'http://localhost:3001'
+//var url = 'https://cpsc436basketballapi.herokuapp.com'
+var url = 'http://localhost:3001'
 
 export const flipPage = newPage => {
   return {
