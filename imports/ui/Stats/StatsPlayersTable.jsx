@@ -275,7 +275,7 @@ class StatsPlayersTable extends React.Component {
         <StatsPlayerDraggableTable
           rows={this.createPlayerObj(this.state.players)}
           columns={this.state.columns}
-          defaultPageSize={20}
+          defaultPageSize={15}
           defaultFilterMethod={(filter, row) =>
             row[filter.id] >= filter.value}
           className="-striped -highlight"
@@ -284,7 +284,6 @@ class StatsPlayersTable extends React.Component {
               onScroll: e => {
                 if (this.tableScrollTop === e.target.scrollTop) {
                   let left = e.target.scrollLeft > 0 ? e.target.scrollLeft : 0;
-                  $(".ReactTable .rt-tr .frozen").css({ left: left });
                 } else {
                   this.tableScrollTop = e.target.scrollTop;
                 }
