@@ -144,9 +144,9 @@ class LogIn extends React.Component {
 						<div className="container">
 							<div className="columns is-centered">
 								<div className="column is-5-tablet is-4-desktop is-3-widescreen">
-									<form action className="box" onSubmit={this.handleSubmit}>
+									<form className="box" onSubmit={this.handleSubmit}>
 										<div className="field">
-											<label htmlFor className="label">Email</label>
+											<label className="label">Email</label>
 											<div className="control has-icons-left">
 												<input type="email" placeholder="Email" value={this.state.email} onChange={this.handleChangeEmail} placeholder="Email" className="input" required />
 												<span className="icon is-small is-left">
@@ -155,7 +155,7 @@ class LogIn extends React.Component {
 											</div>
 										</div>
 										<div className="field">
-											<label htmlFor className="label">Password</label>
+											<label className="label">Password</label>
 											<div className="control has-icons-left">
 												<input type="password" placeholder="*******" value={this.state.password} onChange={this.handleChangePassword} className="input" required />
 												<span className="icon is-small is-left">
@@ -171,7 +171,7 @@ class LogIn extends React.Component {
 													</button>
 										</div>
 										<br />
-										<span>  <label htmlFor className="label">
+										<span>  <label className="label">
 											Optional display name: </label>
 										</span>
 										<div className="control has-icons-left">
