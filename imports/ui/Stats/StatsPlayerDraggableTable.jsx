@@ -63,6 +63,7 @@ class StatsPlayerDraggableTable extends Component {
 
   render() {
     const { rows, columns } = this.props;
+    console.log(rows);
 
     const cols = columns.map(col => ({
       ...col,
