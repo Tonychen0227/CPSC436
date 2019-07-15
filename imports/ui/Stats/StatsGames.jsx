@@ -1,29 +1,18 @@
 import React from 'react';
 import DatePicker from 'react-date-picker';
-import axios from 'axios';
 import StatsGamesCharts from './StatsGamesCharts';
 
 class StatsGames extends React.Component {
 
   state = {
-    games: [],
-    date: new Date(),
+    date: new Date()
   }
 
-  componentDidMount() {
-    axios.get('https://cpsc436basketballapi.herokuapp.com/data/getGames')
-      .then(res => {
-        this.setState({
-          games: res.data
-        })
-      });
+  onChange = date => {
+    this.setState({ date })
   }
-
-  onChange = date => this.setState({ date })
 
   render() {
-    const { games, date } = this.state;
-    console.log(this.state);
     return (
       <div className="container">
         <div>
@@ -32,7 +21,7 @@ class StatsGames extends React.Component {
             value={this.state.date}
           />
         </div>
-        <StatsGamesCharts />
+        <StatsGamesCharts gameDate={this.state.date}/>
       </div>
       );
   }

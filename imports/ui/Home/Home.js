@@ -18,7 +18,7 @@ class Home extends React.Component {
 			</section>
 				<div className="center">
 					<div className="newsDashboard inner">
-						<NewsDashboard/>
+						<NewsDashboard />
 					</div>
 				</div>
 			</div>
