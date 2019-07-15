@@ -7,15 +7,15 @@ class Home extends React.Component {
 	render() {
 		return (
 			<div className="Home">
-				<section className="hero is-link">
-					<div className="hero-body">
-						<div className="container">
-							<h1 className="title">
-								Home
-			      			</h1>
-						</div>
-					</div>
-				</section>
+			<section className="hero is-link">
+			  <div className="hero-body">
+			    <div className="container">
+			      <h1 className="title">
+			        Home
+			      </h1>
+			    </div>
+			  </div>
+			</section>
 				<div className="center">
 					<div className="newsDashboard inner">
 						<NewsDashboard />
