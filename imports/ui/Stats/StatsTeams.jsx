@@ -4,7 +4,7 @@ import StatsTeamsTable from "./StatsTeamsTable";
 class StatsTeams extends React.Component {
   render() {
     return (
-      <div className="col-sm-10">
+      <div className="col-sm-12">
         <StatsTeamsTable />
     </div>
       );
