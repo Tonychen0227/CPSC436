@@ -33,6 +33,35 @@ class StatsPlayersTable extends React.Component {
 					return row[filter.id].toLowerCase().includes(filter.value)
 				}
 	    },
+			{
+				Header: "season",
+				accessor: "season",
+				show: true,
+				width: 180,
+				filterable: true,
+				filterMethod: (filter, row) => {
+					if (filter.value === "2018-19Playoff") {
+						return row[filter.id] == "2018-19Playoff";
+					} else if (filter.value === "2018-19Regular") {
+						return row[filter.id] == "2018-19Regular";
+					} else if (filter.value === "2017-18Playoff") {
+						return row[filter.id] == "2017-18Playoff";
+					} else if (filter.value === "2017-18Regular") {
+						return row[filter.id] == "2017-18Regular";
+					}
+				},
+				Filter: ({ filter, onChange}) =>
+					<select
+						onChange={event => onChange(event.target.value)}
+						style={{ width: "100%"}}
+						value={filter ? filter.value : ""}
+					>
+						<option value="2018-19Playoff">2018-19Playoff</option>
+						<option value="2018-19Regular">2018-19Regular</option>
+						<option value="2017-18Playoff">2017-18Playoff</option>
+						<option value="2017-18Regular">2017-18Regular</option>
+					</select>
+			},
 	    {
 	      Header: "2-Attempt",
 	      accessor: "fg2PtAtt",
@@ -254,26 +283,27 @@ class StatsPlayersTable extends React.Component {
 				<div>
 					<button className='button is-text' onClick={() => this.displayCol(0)}>First Name</button>
 					<button className='button is-text' onClick={() => this.displayCol(1)}>Last Name</button>
-					<button className='button is-text' onClick={() => this.displayCol(2)}>2-Attempt</button>
-					<button className='button is-text' onClick={() => this.displayCol(3)}>2-Att-Avg</button>
-					<button className='button is-text' onClick={() => this.displayCol(4)}>2-Made</button>
-					<button className='button is-text' onClick={() => this.displayCol(5)}>2-Made-Avg</button>
-					<button className='button is-text' onClick={() => this.displayCol(6)}>2-%</button>
-					<button className='button is-text' onClick={() => this.displayCol(7)}>3-Attempt</button>
-					<button className='button is-text' onClick={() => this.displayCol(8)}>3-Att-Avg</button>
-					<button className='button is-text' onClick={() => this.displayCol(9)}>3-Made</button>
-					<button className='button is-text' onClick={() => this.displayCol(10)}>3-Made-Avg</button>
-					<button className='button is-text' onClick={() => this.displayCol(11)}>3-%</button>
-					<button className='button is-text' onClick={() => this.displayCol(12)}>total-Attempt</button>
-					<button className='button is-text' onClick={() => this.displayCol(13)}>total-Att-Avg</button>
-					<button className='button is-text' onClick={() => this.displayCol(14)}>total-Made</button>
-					<button className='button is-text' onClick={() => this.displayCol(15)}>total-Made-Avg</button>
-					<button className='button is-text' onClick={() => this.displayCol(16)}>total-%</button>
-					<button className='button is-text' onClick={() => this.displayCol(17)}>1-Attempt</button>
-					<button className='button is-text' onClick={() => this.displayCol(18)}>1-Att-Avg</button>
-					<button className='button is-text' onClick={() => this.displayCol(19)}>1-Made</button>
-					<button className='button is-text' onClick={() => this.displayCol(20)}>1-Made-Avg</button>
-					<button className='button is-text' onClick={() => this.displayCol(21)}>1-%</button>
+					<button className='button is-text' onClick={() => this.displayCol(2)}>season</button>
+					<button className='button is-text' onClick={() => this.displayCol(3)}>2-Attempt</button>
+					<button className='button is-text' onClick={() => this.displayCol(4)}>2-Att-Avg</button>
+					<button className='button is-text' onClick={() => this.displayCol(5)}>2-Made</button>
+					<button className='button is-text' onClick={() => this.displayCol(6)}>2-Made-Avg</button>
+					<button className='button is-text' onClick={() => this.displayCol(7)}>2-%</button>
+					<button className='button is-text' onClick={() => this.displayCol(8)}>3-Attempt</button>
+					<button className='button is-text' onClick={() => this.displayCol(9)}>3-Att-Avg</button>
+					<button className='button is-text' onClick={() => this.displayCol(10)}>3-Made</button>
+					<button className='button is-text' onClick={() => this.displayCol(11)}>3-Made-Avg</button>
+					<button className='button is-text' onClick={() => this.displayCol(12)}>3-%</button>
+					<button className='button is-text' onClick={() => this.displayCol(13)}>total-Attempt</button>
+					<button className='button is-text' onClick={() => this.displayCol(14)}>total-Att-Avg</button>
+					<button className='button is-text' onClick={() => this.displayCol(15)}>total-Made</button>
+					<button className='button is-text' onClick={() => this.displayCol(16)}>total-Made-Avg</button>
+					<button className='button is-text' onClick={() => this.displayCol(17)}>total-%</button>
+					<button className='button is-text' onClick={() => this.displayCol(18)}>1-Attempt</button>
+					<button className='button is-text' onClick={() => this.displayCol(19)}>1-Att-Avg</button>
+					<button className='button is-text' onClick={() => this.displayCol(20)}>1-Made</button>
+					<button className='button is-text' onClick={() => this.displayCol(21)}>1-Made-Avg</button>
+					<button className='button is-text' onClick={() => this.displayCol(22)}>1-%</button>
 				</div>
 				<br />
         <StatsPlayerDraggableTable
