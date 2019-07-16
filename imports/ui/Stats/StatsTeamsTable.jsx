@@ -53,7 +53,7 @@ class StatsTeamsTable extends React.Component {
 					<select
 						onChange={event => onChange(event.target.value)}
 						style={{ width: "100%"}}
-						value={filter ? filter.value : ""}
+						value={filter ? filter.value : "2018-19Playoff"}
 					>
 						<option value="2018-19Playoff">2018-19Playoff</option>
 						<option value="2018-19Regular">2018-19Regular</option>
@@ -85,140 +85,140 @@ class StatsTeamsTable extends React.Component {
 			{
 	      Header: "2-Attempt",
 	      accessor: "fg2PtAtt",
-	      show: true,
+	      show: false,
 	      width: 100,
 				filterable: true
 	    },
 			{
 	      Header: "2-Att-Avg",
 	      accessor: "fg2PtAttPerGame",
-	      show: true,
+	      show: false,
 	      width: 100,
 				filterable: true
 	    },
 			{
 	      Header: "2-Made",
 	      accessor: "fg2PtMade",
-	      show: true,
+	      show: false,
 	      width: 100,
 				filterable: true
 	    },
 			{
 	      Header: "2-Made-Avg",
 	      accessor: "fg2PtMadePerGame",
-	      show: true,
+	      show: false,
 	      width: 100,
 				filterable: true
 	    },
 	    {
 	      Header: "2-%",
 	      accessor: "fg2PtPct",
-	      show: true,
+	      show: false,
 	      width: 100,
 				filterable: true
 	    },
 	    {
 	      Header: "3-Attempt",
 	      accessor: "fg3PtAtt",
-	      show: true,
+	      show: false,
 	      width: 100,
 				filterable: true
 	    },
 			{
 	      Header: "3-Att-Avg",
 	      accessor: "fg3PtAttPerGame",
-	      show: true,
+	      show: false,
 	      width: 100,
 				filterable: true
 	    },
 			{
 	      Header: "3-Made",
 	      accessor: "fg3PtMade",
-	      show: true,
+	      show: false,
 	      width: 100,
 				filterable: true
 	    },
 			{
 	      Header: "3-Made-Avg",
 	      accessor: "fg3PtMadePerGame",
-	      show: true,
+	      show: false,
 	      width: 100,
 				filterable: true
 	    },
 			{
 	      Header: "3-%",
 	      accessor: "fg3PtPct",
-	      show: true,
+	      show: false,
 	      width: 100,
 				filterable: true
 	    },
 			{
 	      Header: "total-Attempt",
 	      accessor: "fgAtt",
-	      show: true,
+	      show: false,
 	      width: 100,
 				filterable: true
 	    },
 			{
 	      Header: "total-Att-Avg",
 	      accessor: "fgAttPerGame",
-	      show: true,
+	      show: false,
 	      width: 100,
 				filterable: true
 	    },
 			{
 	      Header: "total-Made",
 	      accessor: "fgMade",
-	      show: true,
+	      show: false,
 	      width: 100,
 				filterable: true
 	    },
 			{
 	      Header: "total-Made-Avg",
 	      accessor: "fgMadePerGame",
-	      show: true,
+	      show: false,
 	      width: 100,
 				filterable: true
 	    },
 			{
 	      Header: "total-%",
 	      accessor: "fgPct",
-	      show: true,
+	      show: false,
 	      width: 100,
 				filterable: true
 	    },
 			{
 	      Header: "1-Attempt",
 	      accessor: "ftAtt",
-	      show: true,
+	      show: false,
 	      width: 100,
 				filterable: true
 	    },
 			{
 	      Header: "1-Att-Avg",
 	      accessor: "ftAttPerGame",
-	      show: true,
+	      show: false,
 	      width: 100,
 				filterable: true
 	    },
 			{
 	      Header: "1-Made",
 	      accessor: "ftMade",
-	      show: true,
+	      show: false,
 	      width: 100,
 				filterable: true
 	    },
 			{
 	      Header: "1-Made-Avg",
 	      accessor: "ftMadePerGame",
-	      show: true,
+	      show: false,
 	      width: 100,
 				filterable: true
 	    },
 			{
 	      Header: "1-%",
 	      accessor: "ftPct",
-	      show: true,
+	      show: false,
 	      width: 100,
 				filterable: true
 	    },
@@ -267,6 +267,104 @@ class StatsTeamsTable extends React.Component {
 			{
 				Header: "ast",
 				accessor: "ast",
+				show: false,
+				width: 100,
+				filterable: true
+			},
+			{
+				Header: "ast-Avg",
+				accessor: "astPerGame",
+				show: false,
+				width: 100,
+				filterable: true
+			},
+			{
+				Header: "pts",
+				accessor: "pts",
+				show: false,
+				width: 100,
+				filterable: true
+			},
+			{
+				Header: "pts-Avg",
+				accessor: "ptsPerGame",
+				show: false,
+				width: 100,
+				filterable: true
+			},
+			{
+				Header: "tov",
+				accessor: "tov",
+				show: false,
+				width: 100,
+				filterable: true
+			},
+			{
+				Header: "tov-Avg",
+				accessor: "tovPerGame",
+				show: false,
+				width: 100,
+				filterable: true
+			},
+			{
+				Header: "stl",
+				accessor: "stl",
+				show: false,
+				width: 100,
+				filterable: true
+			},
+			{
+				Header: "stl-Avg",
+				accessor: "stlPerGame",
+				show: false,
+				width: 100,
+				filterable: true
+			},
+			{
+				Header: "blk",
+				accessor: "blk",
+				show: false,
+				width: 100,
+				filterable: true
+			},
+			{
+				Header: "blk-Avg",
+				accessor: "blkPerGame",
+				show: false,
+				width: 100,
+				filterable: true
+			},
+			{
+				Header: "blkAgainst",
+				accessor: "blkAgainst",
+				show: false,
+				width: 100,
+				filterable: true
+			},
+			{
+				Header: "blkAgainst-Avg",
+				accessor: "blkAgainstPerGame",
+				show: false,
+				width: 100,
+				filterable: true
+			},
+			{
+				Header: "ptsAgainst",
+				accessor: "ptsAgainst",
+				show: false,
+				width: 100,
+				filterable: true
+			},
+			{
+				Header: "ptsAgainst-Avg",
+				accessor: "ptsAgainstPerGame",
+				show: false,
+				width: 100,
+				filterable: true
+			},
+			{
+				Header: "gamesBack",
+				accessor: "gamesBack",
 				show: false,
 				width: 100,
 				filterable: true
@@ -390,6 +488,20 @@ class StatsTeamsTable extends React.Component {
 					<button className='button is-text' onClick={() => this.displayCol(30)}>reb</button>
 					<button className='button is-text' onClick={() => this.displayCol(31)}>reb-Avg</button>
 					<button className='button is-text' onClick={() => this.displayCol(32)}>ast</button>
+					<button className='button is-text' onClick={() => this.displayCol(33)}>ast-Avg</button>
+					<button className='button is-text' onClick={() => this.displayCol(34)}>pts</button>
+					<button className='button is-text' onClick={() => this.displayCol(35)}>pts-Avg</button>
+					<button className='button is-text' onClick={() => this.displayCol(36)}>tov</button>
+					<button className='button is-text' onClick={() => this.displayCol(37)}>tov-Avg</button>
+					<button className='button is-text' onClick={() => this.displayCol(38)}>stl</button>
+					<button className='button is-text' onClick={() => this.displayCol(39)}>stl-Avg</button>
+					<button className='button is-text' onClick={() => this.displayCol(40)}>blk</button>
+					<button className='button is-text' onClick={() => this.displayCol(41)}>blk-Avg</button>
+					<button className='button is-text' onClick={() => this.displayCol(42)}>blkAgainst</button>
+					<button className='button is-text' onClick={() => this.displayCol(43)}>blkAgainst-Avg</button>
+					<button className='button is-text' onClick={() => this.displayCol(44)}>ptsAgainst</button>
+					<button className='button is-text' onClick={() => this.displayCol(45)}>ptsAgainst-Avg</button>
+					<button className='button is-text' onClick={() => this.displayCol(46)}>gamesBack</button>
 				</div>
 				<br />
         <StatsTeamDraggableTable
