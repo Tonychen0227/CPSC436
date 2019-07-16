@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import ReactTable, { ReactTableDefaults } from "react-table";
 import "react-table/react-table.css";
 import Popup from "reactjs-popup";
-import SinglePlayerGraph from "./SinglePlayerGraph";
+import SingleTeamGraph from "./SingleTeamGraph";
 
 Object.assign(ReactTableDefaults, {
   defaultPageSize: 10,
@@ -63,7 +63,6 @@ class StatsPlayerDraggableTable extends Component {
 
   render() {
     const { rows, columns } = this.props;
-
     const cols = columns.map(col => ({
       ...col,
       Header: <span className="draggable-header">{col.Header}</span>
@@ -80,18 +79,19 @@ class StatsPlayerDraggableTable extends Component {
           data={rows}
           columns={cols}
           SubComponent={row => {
-            console.log(row)
             var selectedInfo = row.original;
             var newData = [];
             Object.keys(selectedInfo).forEach((e) => {
-              if (typeof selectedInfo[e] !== 'string') {
+              if (e === 'astPerGame' || e === 'blkPerGame' || e === 'fg2PtMadePerGame' ||
+                  e === 'fg3PtMadePerGame' || e === 'ftMadePerGame' || e === 'defRebPerGame' ||
+                  e === 'offRebPerGame' || e === 'stlPerGame') {
                 newData.push({stats: e.toString(), cost: selectedInfo[e]})
               }
             });
             console.log(newData);
             return (
               <div>
-              <SinglePlayerGraph selectedPlayerInfo={newData} />
+                <SingleTeamGraph selectedTeamInfo={newData} />
               </div>
             )
           }}

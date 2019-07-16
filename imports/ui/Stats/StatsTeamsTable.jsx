@@ -368,6 +368,13 @@ class StatsTeamsTable extends React.Component {
 				show: false,
 				width: 100,
 				filterable: true
+			},
+			{
+				Header: "gamesPlayed",
+				accessor: "gamesPlayed",
+				show: false,
+				width: 100,
+				filterable: true
 			}
 	  ],
 		teams: []
@@ -502,6 +509,7 @@ class StatsTeamsTable extends React.Component {
 					<button className='button is-text' onClick={() => this.displayCol(44)}>ptsAgainst</button>
 					<button className='button is-text' onClick={() => this.displayCol(45)}>ptsAgainst-Avg</button>
 					<button className='button is-text' onClick={() => this.displayCol(46)}>gamesBack</button>
+					<button className='button is-text' onClick={() => this.displayCol(47)}>gamesPlayed</button>
 				</div>
 				<br />
         <StatsTeamDraggableTable
