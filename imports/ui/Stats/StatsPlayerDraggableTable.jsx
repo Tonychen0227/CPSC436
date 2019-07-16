@@ -104,7 +104,7 @@ class StatsPlayerDraggableTable extends Component {
             });
             return (
               <div className="row">
-                <div className="col-sm-2">
+                <div className="col-sm-3">
                   <div className="card text-white bg-secondary border-secondary mb-3">
                     <ul className="list-group list-group-flush">
                       {playerInfo.map(info => (

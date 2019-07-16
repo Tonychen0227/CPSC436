@@ -62,6 +62,55 @@ class StatsPlayersTable extends React.Component {
 						<option value="2017-18Regular">2017-18Regular</option>
 					</select>
 			},
+			{
+	      Header: "total-%",
+	      accessor: "fgPct",
+	      show: true,
+	      width: 100,
+				filterable: true
+	    },
+			{
+	      Header: "blk",
+	      accessor: "blk",
+	      show: true,
+	      width: 100,
+				filterable: true
+	    },
+			{
+	      Header: "stl",
+	      accessor: "stl",
+	      show: true,
+	      width: 100,
+				filterable: true
+	    },
+			{
+	      Header: "gamesPlayed",
+	      accessor: "gamesPlayed",
+	      show: true,
+	      width: 120,
+				filterable: true
+	    },
+			{
+	      Header: "ast",
+	      accessor: "ast",
+	      show: true,
+	      width: 100,
+				filterable: true
+	    },
+			{
+	      Header: "pts",
+	      accessor: "pts",
+	      show: true,
+	      width: 100,
+				filterable: true
+	    },
+			{
+	      Header: "reb",
+	      accessor: "reb",
+	      show: true,
+	      width: 100,
+				filterable: true
+	    },
 	    {
 	      Header: "2-Attempt",
 	      accessor: "fg2PtAtt",
@@ -161,13 +210,6 @@ class StatsPlayersTable extends React.Component {
 				filterable: true
 	    },
 			{
-	      Header: "total-%",
-	      accessor: "fgPct",
-	      show: true,
-	      width: 100,
-				filterable: true
-	    },
-			{
 	      Header: "1-Attempt",
 	      accessor: "ftAtt",
 	      show: false,
@@ -217,13 +259,6 @@ class StatsPlayersTable extends React.Component {
 				filterable: true
 	    },
 			{
-	      Header: "blk",
-	      accessor: "blk",
-	      show: true,
-	      width: 100,
-				filterable: true
-	    },
-			{
 	      Header: "blkAgainst",
 	      accessor: "blkAgainst",
 	      show: false,
@@ -234,13 +269,6 @@ class StatsPlayersTable extends React.Component {
 	      Header: "blkAgainst-Avg",
 	      accessor: "blkAgainstPerGame",
 	      show: false,
-	      width: 100,
-				filterable: true
-	    },
-			{
-	      Header: "stl",
-	      accessor: "stl",
-	      show: true,
 	      width: 100,
 				filterable: true
 	    },
@@ -266,30 +294,9 @@ class StatsPlayersTable extends React.Component {
 				filterable: true
 	    },
 			{
-	      Header: "gamesPlayed",
-	      accessor: "gamesPlayed",
-	      show: true,
-	      width: 100,
-				filterable: true
-	    },
-			{
-	      Header: "ast",
-	      accessor: "ast",
-	      show: true,
-	      width: 100,
-				filterable: true
-	    },
-			{
 	      Header: "ast-Avg",
 	      accessor: "astPerGame",
 	      show: false,
-	      width: 100,
-				filterable: true
-	    },
-			{
-	      Header: "pts",
-	      accessor: "pts",
-	      show: true,
 	      width: 100,
 				filterable: true
 	    },
@@ -325,13 +332,6 @@ class StatsPlayersTable extends React.Component {
 	      Header: "offReb-Avg",
 	      accessor: "offRebPerGame",
 	      show: false,
-	      width: 100,
-				filterable: true
-	    },
-			{
-	      Header: "reb",
-	      accessor: "reb",
-	      show: true,
 	      width: 100,
 				filterable: true
 	    },
@@ -424,45 +424,45 @@ class StatsPlayersTable extends React.Component {
 					<button className='button is-text' onClick={() => this.displayCol(0)}>First Name</button>
 					<button className='button is-text' onClick={() => this.displayCol(1)}>Last Name</button>
 					<button className='button is-text' onClick={() => this.displayCol(2)}>season</button>
-					<button className='button is-text' onClick={() => this.displayCol(3)}>2-Attempt</button>
-					<button className='button is-text' onClick={() => this.displayCol(4)}>2-Att-Avg</button>
-					<button className='button is-text' onClick={() => this.displayCol(5)}>2-Made</button>
-					<button className='button is-text' onClick={() => this.displayCol(6)}>2-Made-Avg</button>
-					<button className='button is-text' onClick={() => this.displayCol(7)}>2-%</button>
-					<button className='button is-text' onClick={() => this.displayCol(8)}>3-Attempt</button>
-					<button className='button is-text' onClick={() => this.displayCol(9)}>3-Att-Avg</button>
-					<button className='button is-text' onClick={() => this.displayCol(10)}>3-Made</button>
-					<button className='button is-text' onClick={() => this.displayCol(11)}>3-Made-Avg</button>
-					<button className='button is-text' onClick={() => this.displayCol(12)}>3-%</button>
-					<button className='button is-text' onClick={() => this.displayCol(13)}>total-Attempt</button>
-					<button className='button is-text' onClick={() => this.displayCol(14)}>total-Att-Avg</button>
-					<button className='button is-text' onClick={() => this.displayCol(15)}>total-Made</button>
-					<button className='button is-text' onClick={() => this.displayCol(16)}>total-Made-Avg</button>
-					<button className='button is-text' onClick={() => this.displayCol(17)}>total-%</button>
-					<button className='button is-text' onClick={() => this.displayCol(18)}>1-Attempt</button>
-					<button className='button is-text' onClick={() => this.displayCol(19)}>1-Att-Avg</button>
-					<button className='button is-text' onClick={() => this.displayCol(20)}>1-Made</button>
-					<button className='button is-text' onClick={() => this.displayCol(21)}>1-Made-Avg</button>
-					<button className='button is-text' onClick={() => this.displayCol(22)}>1-%</button>
-					<button className='button is-text' onClick={() => this.displayCol(23)}>height</button>
-					<button className='button is-text' onClick={() => this.displayCol(24)}>weight</button>
-					<button className='button is-text' onClick={() => this.displayCol(25)}>blk</button>
-					<button className='button is-text' onClick={() => this.displayCol(26)}>blkAgainst</button>
-					<button className='button is-text' onClick={() => this.displayCol(27)}>blkAgainst-Avg</button>
-					<button className='button is-text' onClick={() => this.displayCol(28)}>stl</button>
-					<button className='button is-text' onClick={() => this.displayCol(29)}>stl-Avg</button>
-					<button className='button is-text' onClick={() => this.displayCol(30)}>tov</button>
-					<button className='button is-text' onClick={() => this.displayCol(31)}>tov-Avg</button>
-					<button className='button is-text' onClick={() => this.displayCol(32)}>gamePlayed</button>
-					<button className='button is-text' onClick={() => this.displayCol(33)}>ast</button>
-					<button className='button is-text' onClick={() => this.displayCol(34)}>ast-Avg</button>
-					<button className='button is-text' onClick={() => this.displayCol(35)}>pts</button>
-					<button className='button is-text' onClick={() => this.displayCol(36)}>pts-Avg</button>
-					<button className='button is-text' onClick={() => this.displayCol(37)}>defReb</button>
-					<button className='button is-text' onClick={() => this.displayCol(38)}>defReb-Avg</button>
-					<button className='button is-text' onClick={() => this.displayCol(39)}>offReb</button>
-					<button className='button is-text' onClick={() => this.displayCol(40)}>offReb-Avg</button>
-					<button className='button is-text' onClick={() => this.displayCol(41)}>reb</button>
+					<button className='button is-text' onClick={() => this.displayCol(3)}>total-%</button>
+					<button className='button is-text' onClick={() => this.displayCol(4)}>blk</button>
+					<button className='button is-text' onClick={() => this.displayCol(5)}>stl</button>
+					<button className='button is-text' onClick={() => this.displayCol(6)}>gamePlayed</button>
+					<button className='button is-text' onClick={() => this.displayCol(7)}>ast</button>
+					<button className='button is-text' onClick={() => this.displayCol(8)}>pts</button>
+					<button className='button is-text' onClick={() => this.displayCol(9)}>reb</button>
+					<button className='button is-text' onClick={() => this.displayCol(10)}>2-Attempt</button>
+					<button className='button is-text' onClick={() => this.displayCol(11)}>2-Att-Avg</button>
+					<button className='button is-text' onClick={() => this.displayCol(12)}>2-Made</button>
+					<button className='button is-text' onClick={() => this.displayCol(13)}>2-Made-Avg</button>
+					<button className='button is-text' onClick={() => this.displayCol(14)}>2-%</button>
+					<button className='button is-text' onClick={() => this.displayCol(15)}>3-Attempt</button>
+					<button className='button is-text' onClick={() => this.displayCol(16)}>3-Att-Avg</button>
+					<button className='button is-text' onClick={() => this.displayCol(17)}>3-Made</button>
+					<button className='button is-text' onClick={() => this.displayCol(18)}>3-Made-Avg</button>
+					<button className='button is-text' onClick={() => this.displayCol(19)}>3-%</button>
+					<button className='button is-text' onClick={() => this.displayCol(20)}>total-Attempt</button>
+					<button className='button is-text' onClick={() => this.displayCol(21)}>total-Att-Avg</button>
+					<button className='button is-text' onClick={() => this.displayCol(22)}>total-Made</button>
+					<button className='button is-text' onClick={() => this.displayCol(23)}>total-Made-Avg</button>
+					<button className='button is-text' onClick={() => this.displayCol(24)}>1-Attempt</button>
+					<button className='button is-text' onClick={() => this.displayCol(25)}>1-Att-Avg</button>
+					<button className='button is-text' onClick={() => this.displayCol(26)}>1-Made</button>
+					<button className='button is-text' onClick={() => this.displayCol(27)}>1-Made-Avg</button>
+					<button className='button is-text' onClick={() => this.displayCol(28)}>1-%</button>
+					<button className='button is-text' onClick={() => this.displayCol(29)}>height</button>
+					<button className='button is-text' onClick={() => this.displayCol(30)}>weight</button>
+					<button className='button is-text' onClick={() => this.displayCol(31)}>blkAgainst</button>
+					<button className='button is-text' onClick={() => this.displayCol(32)}>blkAgainst-Avg</button>
+					<button className='button is-text' onClick={() => this.displayCol(33)}>stl-Avg</button>
+					<button className='button is-text' onClick={() => this.displayCol(34)}>tov</button>
+					<button className='button is-text' onClick={() => this.displayCol(35)}>tov-Avg</button>
+					<button className='button is-text' onClick={() => this.displayCol(36)}>ast-Avg</button>
+					<button className='button is-text' onClick={() => this.displayCol(37)}>pts-Avg</button>
+					<button className='button is-text' onClick={() => this.displayCol(38)}>defReb</button>
+					<button className='button is-text' onClick={() => this.displayCol(39)}>defReb-Avg</button>
+					<button className='button is-text' onClick={() => this.displayCol(40)}>offReb</button>
+					<button className='button is-text' onClick={() => this.displayCol(41)}>offReb-Avg</button>
 					<button className='button is-text' onClick={() => this.displayCol(42)}>reb-Avg</button>
 				</div>
 				<br />
