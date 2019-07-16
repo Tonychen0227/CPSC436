@@ -38,7 +38,7 @@ Shape.registerShape('point', 'pointer', {
 const cols = {
   value: {
     min: 0,
-    max: 9,
+    max: 10,
     tickInterval: 1,
     nice: false,
   },
@@ -49,12 +49,15 @@ export default class TeamPctGraph extends React.Component {
     const { pct, type } = this.props;
     console.log(pct);
     console.log(type);
-    const data = [
-      { value: pct*10 }
-    ]
+    const data = [];
+    if (type === 'winPct') {
+      data.push({ value: pct*10 })
+    } else {
+      data.push({ value: pct/10 })
+    }
     return (
       <Chart height={window.innerHeight} data={data} scale={cols} padding={[0, 0, 100, 0]} forceFit>
-        <Coord type="polar" startAngle={-9 / 8 * Math.PI} endAngle={1 / 8 * Math.PI} radius={0.25} />
+        <Coord type="polar" startAngle={-10 / 8 * Math.PI} endAngle={1 / 8 * Math.PI} radius={0.25} />
         <Axis
           name="value"
           zIndex={2}
@@ -62,7 +65,7 @@ export default class TeamPctGraph extends React.Component {
           label={{
             offset: -16,
             textStyle: {
-              fontSize: 18,
+              fontSize: 12,
               textAlign: 'center',
               textBaseline: 'middle',
             },
@@ -87,7 +90,7 @@ export default class TeamPctGraph extends React.Component {
             end={[10, 0.965]}
             style={{
               stroke: '#CBCBCB',
-              lineWidth: 18,
+              lineWidth: 9,
             }}
           />
           <Arc
@@ -96,12 +99,12 @@ export default class TeamPctGraph extends React.Component {
             end={[data[0].value, 0.965]}
             style={{
               stroke: '#1890FF',
-              lineWidth: 18,
+              lineWidth: 9,
             }}
           />
           <Html
-            position={['50%', '95%']}
-            html={() => (`<div style="width: 300px;text-align: center;font-size: 12px!important;"><p style="font-size: 1.75em; color: rgba(0,0,0,0.43);margin: 0;">${type}</p><p style="font-size: 3em;color: rgba(0,0,0,0.85);margin: 0;">${data[0].value * 10}%</p></div>`)}
+            position={['50%', '75%']}
+            html={() => (`<div style="width: 100px;text-align: center;font-size: 8px!important;"><p style="font-size: 1.75em; color: rgba(0,0,0,0.43);margin: 0;">${type}</p><p style="font-size: 3em;color: rgba(0,0,0,0.85);margin: 0;">${data[0].value * 10}%</p></div>`)}
           />
         </Guide>
         <Geom

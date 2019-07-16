@@ -90,9 +90,17 @@ class StatsPlayerDraggableTable extends Component {
             });
             console.log(newData);
             return (
-              <div>
-                <SingleTeamGraph selectedTeamInfo={newData} />
-                <TeamPctGraph pct={selectedInfo["winPct"]} type={"winPct"} />
+              <div className="row">
+                <div className="col-sm-14">
+                  <SingleTeamGraph selectedTeamInfo={newData} />
+                </div>
+                <div className="col-sm-6">
+                  <TeamPctGraph pct={selectedInfo["winPct"]} type={"winPct"} />
+                  <TeamPctGraph pct={selectedInfo["fg2PtPct"]} type={"fg2PtPct"} />
+                  <TeamPctGraph pct={selectedInfo["fg3PtPct"]} type={"fg3PtPct"} />
+                  <TeamPctGraph pct={selectedInfo["fgPct"]} type={"fgPct"} />
+                  <TeamPctGraph pct={selectedInfo["ftPct"]} type={"ftPct"} />
+                </div>
               </div>
             )
           }}
