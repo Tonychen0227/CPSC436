@@ -4,6 +4,7 @@ import styled from "@emotion/styled";
 import { options } from "./options";
 import MyTeamStats from './MyTeamStats';
 import Select from "react-dropdown-select";
+import axios from 'axios';
 
 export class DropdownSearchBar extends React.Component {
   constructor(props) {
@@ -24,8 +25,18 @@ export class DropdownSearchBar extends React.Component {
       keepSelectedInList: true,
       dropdownPosition: "auto",
       direction: "ltr",
-      dropdownHeight: "300px"
+      dropdownHeight: "300px",
+      players: []
     };
+  }
+
+  componentWillMount() {
+    axios.get('https://cpsc436basketballapi.herokuapp.com/data/getPlayers')
+      .then(res => {
+        this.setState({
+          players: res.data
+        })
+      });
   }
 
   setValues = selectValues => this.setState({ selectValues });
@@ -38,7 +49,22 @@ export class DropdownSearchBar extends React.Component {
     );
   };
 
+  getPlayerNames = players => {
+    var playerNames = [];
+    players.map(function (player) {
+      var fullName = player["player"]["firstName"] + " " + player["player"]["lastName"];
+      playerNames.push({id: player["player"]["id"], name: fullName, season: player["season"]});
+      return;
+    });
+    return playerNames;
+  }
+
   render() {
+    let { players } = this.state;
+    console.log(players);
+    console.log(this.state);
+    var playerNames = this.getPlayerNames(players);
+    console.log(playerNames);
     return (
       <div className={this.props.className}>
         <div>
@@ -54,10 +80,9 @@ export class DropdownSearchBar extends React.Component {
               dropdownHeight={this.state.dropdownHeight}
               direction={this.state.direction}
               multi={this.state.multi}
-              values={[options.find(opt => opt.name === "S Curry")]}
               labelField={this.state.labelField}
               valueField={this.state.valueField}
-              options={options}
+              options={this.getPlayerNames(players)}
               dropdownGap={5}
               keepSelectedInList={this.state.keepSelectedInList}
               onDropdownOpen={() => undefined}
