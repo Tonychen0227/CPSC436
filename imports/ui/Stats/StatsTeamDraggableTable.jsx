@@ -82,11 +82,10 @@ class StatsPlayerDraggableTable extends Component {
             var selectedInfo = row.original;
             var newData = [];
             Object.keys(selectedInfo).forEach((e) => {
-              if (e === 'astPerGame' || e === 'blkPerGame' || e === 'fg2PtMadePerGame' ||
-                  e === 'fg3PtMadePerGame' || e === 'ftMadePerGame' || e === 'defRebPerGame' ||
-                  e === 'offRebPerGame' || e === 'stlPerGame') {
-                newData.push({stats: e.toString(), cost: selectedInfo[e]})
-              }
+              if (e != 'teamCity' && e != 'teamName' && e != 'season' && e != 'wins' &&
+                  e != 'losses' && e != 'winPct' && e != 'gamesBack' && e != 'gamesPlayed') {
+                    newData.push({name: e.toString(), data: selectedInfo[e]})
+                  }
             });
             console.log(newData);
             return (
