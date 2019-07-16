@@ -3,6 +3,7 @@ import ReactTable, { ReactTableDefaults } from "react-table";
 import "react-table/react-table.css";
 import Popup from "reactjs-popup";
 import SingleTeamGraph from "./SingleTeamGraph";
+import TeamPctGraph from "./TeamPctGraph";
 
 Object.assign(ReactTableDefaults, {
   defaultPageSize: 10,
@@ -91,6 +92,7 @@ class StatsPlayerDraggableTable extends Component {
             return (
               <div>
                 <SingleTeamGraph selectedTeamInfo={newData} />
+                <TeamPctGraph pct={selectedInfo["winPct"]} type={"winPct"} />
               </div>
             )
           }}
