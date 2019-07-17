@@ -84,7 +84,9 @@ class StatsPlayerDraggableTable extends Component {
             var newData = [];
             Object.keys(selectedInfo).forEach((e) => {
               if (e != 'teamCity' && e != 'teamName' && e != 'season' && e != 'wins' &&
-                  e != 'losses' && e != 'winPct' && e != 'gamesBack' && e != 'gamesPlayed') {
+                  e != 'losses' && e != 'winPct' && e != 'gamesBack' && e != 'gamesPlayed' &&
+                  e != 'winPct' && e != 'fg2PtPct' && e != 'fg3PtPct' && e != 'fgPct' &&
+                  e != 'ftPct') {
                     newData.push({name: e.toString(), data: selectedInfo[e]})
                   }
             });
@@ -94,12 +96,22 @@ class StatsPlayerDraggableTable extends Component {
                 <div className="col-sm-14">
                   <SingleTeamGraph selectedTeamInfo={newData} />
                 </div>
-                <div className="col-sm-6">
-                  <TeamPctGraph pct={selectedInfo["winPct"]} type={"winPct"} />
-                  <TeamPctGraph pct={selectedInfo["fg2PtPct"]} type={"fg2PtPct"} />
-                  <TeamPctGraph pct={selectedInfo["fg3PtPct"]} type={"fg3PtPct"} />
-                  <TeamPctGraph pct={selectedInfo["fgPct"]} type={"fgPct"} />
-                  <TeamPctGraph pct={selectedInfo["ftPct"]} type={"ftPct"} />
+                <div className="row">
+                  <div className="col-sm-2">
+                    <TeamPctGraph pct={selectedInfo["winPct"]} type={"winPct"} />
+                  </div>
+                  <div className="col-sm-2">
+                    <TeamPctGraph pct={selectedInfo["fg2PtPct"]} type={"fg2PtPct"} />
+                  </div>
+                  <div className="col-sm-2">
+                    <TeamPctGraph pct={selectedInfo["fg3PtPct"]} type={"fg3PtPct"} />
+                  </div>
+                  <div className="col-sm-2">
+                    <TeamPctGraph pct={selectedInfo["fgPct"]} type={"fgPct"} />
+                  </div>
+                  <div className="col-sm-2">
+                    <TeamPctGraph pct={selectedInfo["ftPct"]} type={"ftPct"} />
+                  </div>
                 </div>
               </div>
             )

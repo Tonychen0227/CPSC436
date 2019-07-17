@@ -56,8 +56,8 @@ export default class TeamPctGraph extends React.Component {
       data.push({ value: pct/10 })
     }
     return (
-      <Chart height={window.innerHeight} data={data} scale={cols} padding={[0, 0, 100, 0]} forceFit>
-        <Coord type="polar" startAngle={-10 / 8 * Math.PI} endAngle={1 / 8 * Math.PI} radius={0.25} />
+      <Chart height={500} data={data} scale={cols} padding={[0, 150, 300, 0]} >
+        <Coord type="polar" startAngle={-10 / 8 * Math.PI} endAngle={1 / 8 * Math.PI} radius={0.55} />
         <Axis
           name="value"
           zIndex={2}
@@ -103,8 +103,8 @@ export default class TeamPctGraph extends React.Component {
             }}
           />
           <Html
-            position={['50%', '75%']}
-            html={() => (`<div style="width: 100px;text-align: center;font-size: 8px!important;"><p style="font-size: 1.75em; color: rgba(0,0,0,0.43);margin: 0;">${type}</p><p style="font-size: 3em;color: rgba(0,0,0,0.85);margin: 0;">${data[0].value * 10}%</p></div>`)}
+            position={['50%', '70%']}
+            html={() => (`<div style="width: 100px;text-align: center;font-size: 8px!important;"><p style="font-size: 1.75em; color: rgba(0,0,0,0.43);margin: 0;">${type}</p><p style="font-size: 1em;color: rgba(0,0,0,0.85);margin: 0;">${data[0].value * 10}%</p></div>`)}
           />
         </Guide>
         <Geom
