@@ -103,7 +103,7 @@ export default class TeamPctGraph extends React.Component {
             }}
           />
           <Html
-            position={['50%', '70%']}
+            position={['50%', '90%']}
             html={() => (`<div style="width: 100px;text-align: center;font-size: 8px!important;"><p style="font-size: 1.75em; color: rgba(0,0,0,0.43);margin: 0;">${type}</p><p style="font-size: 1em;color: rgba(0,0,0,0.85);margin: 0;">${data[0].value * 10}%</p></div>`)}
           />
         </Guide>
