@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import ReactTable, { ReactTableDefaults } from "react-table";
 import "react-table/react-table.css";
 import Popup from "reactjs-popup";
-import SinglePlayerGraph from "./SinglePlayerGraph";
+import SingleTeamGraph from "./SingleTeamGraph";
+import TeamPctGraph from "./TeamPctGraph";
 
 Object.assign(ReactTableDefaults, {
   defaultPageSize: 10,
@@ -63,7 +64,6 @@ class StatsPlayerDraggableTable extends Component {
 
   render() {
     const { rows, columns } = this.props;
-
     const cols = columns.map(col => ({
       ...col,
       Header: <span className="draggable-header">{col.Header}</span>
@@ -80,18 +80,39 @@ class StatsPlayerDraggableTable extends Component {
           data={rows}
           columns={cols}
           SubComponent={row => {
-            console.log(row)
             var selectedInfo = row.original;
             var newData = [];
             Object.keys(selectedInfo).forEach((e) => {
-              if (typeof selectedInfo[e] !== 'string') {
-                newData.push({stats: e.toString(), cost: selectedInfo[e]})
-              }
+              if (e != 'teamCity' && e != 'teamName' && e != 'season' && e != 'wins' &&
+                  e != 'losses' && e != 'winPct' && e != 'gamesBack' && e != 'gamesPlayed' &&
+                  e != 'winPct' && e != 'fg2PtPct' && e != 'fg3PtPct' && e != 'fgPct' &&
+                  e != 'ftPct') {
+                    newData.push({name: e.toString(), data: selectedInfo[e]})
+                  }
             });
             console.log(newData);
             return (
-              <div>
-              <SinglePlayerGraph selectedPlayerInfo={newData} />
+              <div className="row">
+                <div className="col-sm-14">
+                  <SingleTeamGraph selectedTeamInfo={newData} />
+                </div>
+                <div className="row">
+                  <div className="col-sm-2">
+                    <TeamPctGraph pct={selectedInfo["winPct"]} type={"winPct"} />
+                  </div>
+                  <div className="col-sm-2">
+                    <TeamPctGraph pct={selectedInfo["fg2PtPct"]} type={"fg2PtPct"} />
+                  </div>
+                  <div className="col-sm-2">
+                    <TeamPctGraph pct={selectedInfo["fg3PtPct"]} type={"fg3PtPct"} />
+                  </div>
+                  <div className="col-sm-2">
+                    <TeamPctGraph pct={selectedInfo["fgPct"]} type={"fgPct"} />
+                  </div>
+                  <div className="col-sm-2">
+                    <TeamPctGraph pct={selectedInfo["ftPct"]} type={"ftPct"} />
+                  </div>
+                </div>
               </div>
             )
           }}
