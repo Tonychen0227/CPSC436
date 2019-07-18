@@ -1,16 +1,32 @@
 import React from 'react';
-import LoremIpsum from '../LoremIpsum';
 import '../../css/UserDetails.css';
 import { connect } from 'react-redux';
+//import ImageUploader from '../../ui/HackedReactImage';
 
 class UserDetails extends React.Component {
+	/*
+	constructor(props) {
+        super(props);
+		this.state = { picture: null };
+		this.onDrop = this.onDrop.bind(this);
+	}
+
+	
+	onDrop(picture) {
+		console.log(picture)
+        this.setState({
+            pictures: picture,
+        });
+	}
+	*/
+	
 	render() {
 		console.log(this.props.userState)
 		return (
 			<div>
 			<h4> User Details for {this.props.userState.DisplayName} </h4>
 			<div>
-			<img className="profile" src="https://www.myinstants.com/media/instants_images/1340305905201.png"/>
+			<img className="profile" src={"data:image/jpeg;base64," + this.props.userState.ProfileBase64}/>
 				<div> 
 					<br/>
 					<p> Favorite team: <img className="team" src={'logos/' + this.props.userState.FavoriteTeam + '.png'} alt={this.props.userState.FavoriteTeam}/> </p>
