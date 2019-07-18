@@ -17,7 +17,7 @@ class NavBar extends Component {
     <nav className="navbar">
       <div className="navbar-brand">
         <div className="navbar-item">
-          <Link to='/home'><img className="NbaLogo" src="http://backgrounddownload.com/wp-content/uploads/2018/09/nba-logo-transparent-background.jpg" /></Link>
+          <Link to='/'><img className="NbaLogo" src="http://backgrounddownload.com/wp-content/uploads/2018/09/nba-logo-transparent-background.jpg" /></Link>
         </div>
       </div>
       <div className="navbar-menu">
