@@ -52,7 +52,7 @@ class About extends React.Component {
 
 							<article className="tile is-child notification is-light">
 								<div className="profile">
-								<img className="profile" src="https://www.myinstants.com/media/instants_images/1340305905201.png"/>
+								<img className="profile" src="http://cms-bucket.nosdn.127.net/catchpic/C/C6/C67A71CB17A4299127F598CA5E4E40F1.jpg"/>
 								<br/>
 									<h6>YUTING WEN</h6>
 									<p>这货不会打篮球</p>
