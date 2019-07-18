@@ -1,8 +1,8 @@
 const axios = require('axios');
 var sha256 = require('js-sha256');
 
-var url = 'https://cpsc436basketballapi.herokuapp.com'
-//var url = 'http://localhost:3001'
+//var url = 'https://cpsc436basketballapi.herokuapp.com'
+var url = 'http://localhost:3001'
 
 export const flipPage = newPage => {
   return {
@@ -30,6 +30,39 @@ const loginStarted = () => ({
 const loginFailure = error => ({
   type: "LOG_IN_FAILURE",
   payload: error
+});
+
+export const userUploadProfilePicture = (email, password, base64) => {
+  console.log(email, password, base64);
+  return dispatch => {
+    dispatch(uploadStarted());
+    axios
+      .post(url + '/users/uploadProfile', {
+        email: email,
+        password: password,
+        base64: base64
+      })
+      .then(res => {
+        dispatch(uploadSuccess(res.data));
+      })
+      .catch(err => {
+        dispatch(uploadFailure(err.response.data));
+      });
+  };
+};
+
+const uploadStarted = () => ({
+  type: "UPLOAD_STARTED"
+});
+
+const uploadFailure = error => ({
+  type: "UPLOAD_FAILURE",
+  payload: error
+});
+
+const uploadSuccess = (data) => ({
+  type: "UPLOAD_SUCCESS",
+  payload: data
 });
 
 export const userLogIn = (email, password, jwt) => {

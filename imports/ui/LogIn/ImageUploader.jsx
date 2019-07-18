@@ -1,18 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './index.css';
-import FlipMove from 'react-flip-move';
-import UploadIcon from './UploadIcon.svg';
 
 const styles = {
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
   flexWrap: "wrap",
-  width: "100%"
+  width: "100%",
+  margin: "50px"
 };
 
-class ReactImageUploadComponent extends React.Component {
+class ImageUploader extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -157,11 +155,11 @@ class ReactImageUploadComponent extends React.Component {
   /*
    Render the upload icon
    */
-  renderIcon() {
+  /*renderIcon() {
     if (this.props.withIcon) {
       return <img src={UploadIcon} className="uploadIcon"	alt="Upload Icon" />;
     }
-  }
+  }*/
 
   /*
    Render label
@@ -211,7 +209,6 @@ class ReactImageUploadComponent extends React.Component {
     return (
       <div className={"fileUploader " + this.props.className} style={this.props.style}>
         <div className="fileContainer" style={this.props.fileContainerStyle}>
-          {this.renderIcon()}
           {this.renderLabel()}
           <div className="errorsContainer">
             {this.renderErrors()}
@@ -240,7 +237,7 @@ class ReactImageUploadComponent extends React.Component {
   }
 }
 
-ReactImageUploadComponent.defaultProps = {
+ImageUploader.defaultProps = {
   className: '',
   fileContainerStyle: {},
   buttonClassName: "",
@@ -252,11 +249,11 @@ ReactImageUploadComponent.defaultProps = {
   buttonText: "Choose images",
   buttonType: "button",
   withLabel: true,
-  label: "Max file size: 5mb, accepted: jpg|gif|png",
+  label: "Max file size: 5mb, accepted: jpg, png, jpeg",
   labelStyles: {},
   labelClass: "",
-  imgExtension: ['.jpg', '.jpeg', '.gif', '.png'],
-  maxFileSize: 5242880,
+  imgExtension: ['.jpg', '.jpeg', '.png'],
+  maxFileSize: 5000000,
   fileSizeError: " file size is too big",
   fileTypeError: " is not a supported file extension",
   errorClass: "",
@@ -267,7 +264,7 @@ ReactImageUploadComponent.defaultProps = {
   defaultImages: []
 };
 
-ReactImageUploadComponent.propTypes = {
+ImageUploader.propTypes = {
   style: PropTypes.object,
   fileContainerStyle: PropTypes.object,
   className: PropTypes.string,
@@ -295,4 +292,4 @@ ReactImageUploadComponent.propTypes = {
   defaultImages: PropTypes.array
 };
 
-export default ReactImageUploadComponent;
+export default ImageUploader;

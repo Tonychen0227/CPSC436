@@ -28,6 +28,14 @@ const userState = (userState={isLoggedIn: false, loginAttempted: 0, userData: {}
       jwt: action.payloadJWT,
       errorMessage: null};
   }
+  if (action.type === 'UPLOAD_SUCCESS') {
+    return { ...userState, 
+      userData: action.payload};
+  }
+  if (action.type === 'UPLOAD_FAILURE') {
+    console.log(action.payload);
+    return { ...userState};
+  }
   if (action.type === 'FACEBOOK_LOGIN_SUCCESS') {
     return { ...userState, 
       isLoggedIn: true,
