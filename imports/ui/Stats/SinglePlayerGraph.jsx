@@ -22,7 +22,7 @@ import createG2 from 'g2-react';
       itemWrap: true
     });
     chart.interval().position('stats*cost')
-      .color('stats','rgb(252,143,72)-rgb(255,215,135)')
+      .color('stats','rgb(153,153,255)-rgb(0,0,204)')
       .label('cost',{offset: -15,label: {textAlign: 'center', fontWeight: 'bold'}})
       .style({
         lineWidth: 1,

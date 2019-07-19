@@ -105,14 +105,14 @@ class StatsPlayerDraggableTable extends Component {
             return (
               <div className="row">
                 <div className="col-sm-3">
-                  <div className="card text-white bg-secondary border-secondary mb-3">
+                  <div className="card text-white bg-primary border-secondary mb-3">
                     <ul className="list-group list-group-flush">
                       {playerInfo.map(info => (
                         <li key={info.type}>{info.type} : {info.value}</li>
                       ))}
                     </ul>
                   </div>
-                  <div className="card bg-dark mb-3 text-white">
+                  <div className="card bg-primary mb-3 text-white">
                     <p> Fundamental Stats </p>
                     <SinglePlayerFundeDataGraph data={foundaData} />
                   </div>

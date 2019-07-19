@@ -22,8 +22,8 @@ export default class SingleTeamGraph extends Component {
         <Tooltip />
         <Legend verticalAlign="top" wrapperStyle={{ lineHeight: '40px' }} />
         <ReferenceLine y={0} stroke="#000" />
-        <Brush dataKey="name" height={30} stroke="#8884d8" />
-        <Bar dataKey="data" fill="#8884d8" />
+        <Brush dataKey="name" height={30} stroke="#2071F5" />
+        <Bar dataKey="data" fill="#2044F5" />
       </BarChart>
     );
   }
