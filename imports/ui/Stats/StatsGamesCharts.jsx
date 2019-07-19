@@ -136,14 +136,14 @@ export default class StatsGamesCharts extends Component {
           <YAxis />
           <Tooltip />
           <Legend />
-          <Bar dataKey="a1s" stackId="a" fill="#8884d8" name="away team Q1 score" />
-          <Bar dataKey="a2s" stackId="a" fill="#159DA6" name="away team Q2 score"/>
-          <Bar dataKey="a3s" stackId="a" fill="#15A643" name="away team Q3 score"/>
-          <Bar dataKey="a4s" stackId="a" fill="#99D33A" name="away team Q4 score"/>
-          <Bar dataKey="h1s" stackId="b" fill="#82ca9d" name="home team Q1 score"/>
-          <Bar dataKey="h2s" stackId="b" fill="#CC3AD3" name="home team Q2 score"/>
-          <Bar dataKey="h2s" stackId="b" fill="#8C1879" name="home team Q3 score"/>
-          <Bar dataKey="h2s" stackId="b" fill="#C21F3F" name="home team Q4 score"/>
+          <Bar dataKey="a1s" stackId="a" fill="#80bff2" name="away team Q1 score" />
+          <Bar dataKey="a2s" stackId="a" fill="#3295e6" name="away team Q2 score"/>
+          <Bar dataKey="a3s" stackId="a" fill="#2569e6" name="away team Q3 score"/>
+          <Bar dataKey="a4s" stackId="a" fill="#17408B" name="away team Q4 score"/>
+          <Bar dataKey="h1s" stackId="b" fill="#f0a8b5" name="home team Q1 score"/>
+          <Bar dataKey="h2s" stackId="b" fill="#cc7282" name="home team Q2 score"/>
+          <Bar dataKey="h2s" stackId="b" fill="#C7465C" name="home team Q3 score"/>
+          <Bar dataKey="h2s" stackId="b" fill="#C9082A" name="home team Q4 score"/>
         </BarChart>
       </div>
     );
