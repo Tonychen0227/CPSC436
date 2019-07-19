@@ -34,7 +34,7 @@ class StatsPlayersTable extends React.Component {
 				}
 	    },
 			{
-				Header: "season",
+				Header: "Season",
 				accessor: "season",
 				show: true,
 				width: 180,
@@ -63,161 +63,161 @@ class StatsPlayersTable extends React.Component {
 					</select>
 			},
 			{
-	      Header: "total-%",
+	      Header: "Total %",
 	      accessor: "fgPct",
 	      show: true,
 	      width: 100,
 				filterable: true
 	    },
 			{
-	      Header: "blk",
+	      Header: "Block",
 	      accessor: "blk",
 	      show: true,
 	      width: 100,
 				filterable: true
 	    },
 			{
-	      Header: "stl",
+	      Header: "Steal",
 	      accessor: "stl",
 	      show: true,
 	      width: 100,
 				filterable: true
 	    },
 			{
-	      Header: "gamesPlayed",
+	      Header: "Games Played",
 	      accessor: "gamesPlayed",
 	      show: true,
 	      width: 120,
 				filterable: true
 	    },
 			{
-	      Header: "ast",
+	      Header: "Assist",
 	      accessor: "ast",
 	      show: true,
 	      width: 100,
 				filterable: true
 	    },
 			{
-	      Header: "pts",
+	      Header: "Points",
 	      accessor: "pts",
 	      show: true,
 	      width: 100,
 				filterable: true
 	    },
 			{
-	      Header: "reb",
+	      Header: "Rebound",
 	      accessor: "reb",
 	      show: true,
 	      width: 100,
 				filterable: true
 	    },
 	    {
-	      Header: "2-Attempt",
+	      Header: "2pt Att",
 	      accessor: "fg2PtAtt",
 	      show: false,
 	      width: 100,
 				filterable: true
 	    },
 	    {
-	      Header: "2-Att-Avg",
+	      Header: "2pt Att Avg",
 	      accessor: "fg2PtAttPerGame",
 	      show: false,
 	      width: 100,
 				filterable: true
 	    },
 	    {
-	      Header: "2-Made",
+	      Header: "2 Made",
 	      accessor: "fg2PtMade",
 	      show: false,
 	      width: 100,
 				filterable: true
 	    },
 	    {
-	      Header: "2-Made-Avg",
+	      Header: "2 Made Avg",
 	      accessor: "fg2PtMadePerGame",
 	      show: false,
 	      width: 100,
 				filterable: true
 	    },
 	    {
-	      Header: "2-%",
+	      Header: "2pt %",
 	      accessor: "fg2PtPct",
 	      show: false,
 	      width: 100,
 				filterable: true
 	    },
 	    {
-	      Header: "3-Attempt",
+	      Header: "3pt Att",
 	      accessor: "fg3PtAtt",
 	      show: false,
 	      width: 100,
 				filterable: true
 	    },
 			{
-	      Header: "3-Att-Avg",
+	      Header: "3 Att Avg",
 	      accessor: "fg3PtAttPerGame",
 	      show: false,
 	      width: 100,
 				filterable: true
 	    },
 			{
-	      Header: "3-Made",
+	      Header: "3 Made",
 	      accessor: "fg3PtMade",
 	      show: false,
 	      width: 100,
 				filterable: true
 	    },
 			{
-	      Header: "3-Made-Avg",
+	      Header: "3 Made Avg",
 	      accessor: "fg3PtMadePerGame",
 	      show: false,
 	      width: 100,
 				filterable: true
 	    },
 			{
-	      Header: "3-%",
+	      Header: "3pt %",
 	      accessor: "fg3PtPct",
 	      show: false,
 	      width: 100,
 				filterable: true
 	    },
 			{
-	      Header: "total-Attempt",
+	      Header: "Total Att",
 	      accessor: "fgAtt",
 	      show: false,
 	      width: 100,
 				filterable: true
 	    },
 			{
-	      Header: "total-Att-Avg",
+	      Header: "Total Att Avg",
 	      accessor: "fgAttPerGame",
 	      show: false,
 	      width: 100,
 				filterable: true
 	    },
 			{
-	      Header: "total-Made",
+	      Header: "Total Pt Made",
 	      accessor: "fgMade",
 	      show: false,
 	      width: 100,
 				filterable: true
 	    },
 			{
-	      Header: "total-Made-Avg",
+	      Header: "Total Pt Made Avg",
 	      accessor: "fgMadePerGame",
 	      show: false,
 	      width: 100,
 				filterable: true
 	    },
 			{
-	      Header: "1-Attempt",
+	      Header: "1pt Att",
 	      accessor: "ftAtt",
 	      show: false,
 	      width: 100,
 				filterable: true
 	    },
 			{
-	      Header: "1-Att-Avg",
+	      Header: "1pt Att Avg",
 	      accessor: "ftAttPerGame",
 	      show: false,
 	      width: 100,
@@ -238,105 +238,105 @@ class StatsPlayersTable extends React.Component {
 				filterable: true
 	    },
 			{
-	      Header: "1-%",
+	      Header: "1pt %",
 	      accessor: "ftPct",
 	      show: false,
 	      width: 100,
 				filterable: true
 	    },
 			{
-	      Header: "height",
+	      Header: "Height",
 	      accessor: "height",
 	      show: false,
 	      width: 100,
 				filterable: true
 	    },
 			{
-	      Header: "weight",
+	      Header: "Wight",
 	      accessor: "weight",
 	      show: false,
 	      width: 100,
 				filterable: true
 	    },
 			{
-	      Header: "blkAgainst",
+	      Header: "Blk Against",
 	      accessor: "blkAgainst",
 	      show: false,
 	      width: 100,
 				filterable: true
 	    },
 			{
-	      Header: "blkAgainst-Avg",
+	      Header: "Blk Against Avg",
 	      accessor: "blkAgainstPerGame",
 	      show: false,
 	      width: 100,
 				filterable: true
 	    },
 			{
-	      Header: "stl-Avg",
+	      Header: "Stl Avg",
 	      accessor: "stlPerGame",
 	      show: false,
 	      width: 100,
 				filterable: true
 	    },
 			{
-	      Header: "tov",
+	      Header: "Turnover",
 	      accessor: "tov",
 	      show: false,
 	      width: 100,
 				filterable: true
 	    },
 			{
-	      Header: "tov-Avg",
+	      Header: "Tov Avg",
 	      accessor: "tovPerGame",
 	      show: false,
 	      width: 100,
 				filterable: true
 	    },
 			{
-	      Header: "ast-Avg",
+	      Header: "Ast Avg",
 	      accessor: "astPerGame",
 	      show: false,
 	      width: 100,
 				filterable: true
 	    },
 			{
-	      Header: "pts-Avg",
+	      Header: "Pts Avg",
 	      accessor: "ptsPerGame",
 	      show: false,
 	      width: 100,
 				filterable: true
 	    },
 			{
-	      Header: "defReb",
+	      Header: "DefReb",
 	      accessor: "defReb",
 	      show: false,
 	      width: 100,
 				filterable: true
 	    },
 			{
-	      Header: "defReb-Avg",
+	      Header: "DefReb Avg",
 	      accessor: "defRebPerGame",
 	      show: false,
 	      width: 100,
 				filterable: true
 	    },
 			{
-	      Header: "offReb",
+	      Header: "OffReb",
 	      accessor: "offReb",
 	      show: false,
 	      width: 100,
 				filterable: true
 	    },
 			{
-	      Header: "offReb-Avg",
+	      Header: "OffReb Avg",
 	      accessor: "offRebPerGame",
 	      show: false,
 	      width: 100,
 				filterable: true
 	    },
 			{
-	      Header: "reb-Avg",
+	      Header: "Reb Avg",
 	      accessor: "rebPerGame",
 	      show: false,
 	      width: 100,
@@ -361,6 +361,10 @@ class StatsPlayersTable extends React.Component {
 		this.setState({
 			columns: cols
 		});
+	}
+
+	checkShow(i) {
+		return this.state.columns[i].show ? 'button is-info is-small' : 'button is-small';
 	}
 
 	createPlayerObj = players => {
@@ -421,49 +425,49 @@ class StatsPlayersTable extends React.Component {
     return (
 			<div>
 				<div>
-					<button className='button is-text' onClick={() => this.displayCol(0)}>First Name</button>
-					<button className='button is-text' onClick={() => this.displayCol(1)}>Last Name</button>
-					<button className='button is-text' onClick={() => this.displayCol(2)}>season</button>
-					<button className='button is-text' onClick={() => this.displayCol(3)}>total-%</button>
-					<button className='button is-text' onClick={() => this.displayCol(4)}>blk</button>
-					<button className='button is-text' onClick={() => this.displayCol(5)}>stl</button>
-					<button className='button is-text' onClick={() => this.displayCol(6)}>gamePlayed</button>
-					<button className='button is-text' onClick={() => this.displayCol(7)}>ast</button>
-					<button className='button is-text' onClick={() => this.displayCol(8)}>pts</button>
-					<button className='button is-text' onClick={() => this.displayCol(9)}>reb</button>
-					<button className='button is-text' onClick={() => this.displayCol(10)}>2-Attempt</button>
-					<button className='button is-text' onClick={() => this.displayCol(11)}>2-Att-Avg</button>
-					<button className='button is-text' onClick={() => this.displayCol(12)}>2-Made</button>
-					<button className='button is-text' onClick={() => this.displayCol(13)}>2-Made-Avg</button>
-					<button className='button is-text' onClick={() => this.displayCol(14)}>2-%</button>
-					<button className='button is-text' onClick={() => this.displayCol(15)}>3-Attempt</button>
-					<button className='button is-text' onClick={() => this.displayCol(16)}>3-Att-Avg</button>
-					<button className='button is-text' onClick={() => this.displayCol(17)}>3-Made</button>
-					<button className='button is-text' onClick={() => this.displayCol(18)}>3-Made-Avg</button>
-					<button className='button is-text' onClick={() => this.displayCol(19)}>3-%</button>
-					<button className='button is-text' onClick={() => this.displayCol(20)}>total-Attempt</button>
-					<button className='button is-text' onClick={() => this.displayCol(21)}>total-Att-Avg</button>
-					<button className='button is-text' onClick={() => this.displayCol(22)}>total-Made</button>
-					<button className='button is-text' onClick={() => this.displayCol(23)}>total-Made-Avg</button>
-					<button className='button is-text' onClick={() => this.displayCol(24)}>1-Attempt</button>
-					<button className='button is-text' onClick={() => this.displayCol(25)}>1-Att-Avg</button>
-					<button className='button is-text' onClick={() => this.displayCol(26)}>1-Made</button>
-					<button className='button is-text' onClick={() => this.displayCol(27)}>1-Made-Avg</button>
-					<button className='button is-text' onClick={() => this.displayCol(28)}>1-%</button>
-					<button className='button is-text' onClick={() => this.displayCol(29)}>height</button>
-					<button className='button is-text' onClick={() => this.displayCol(30)}>weight</button>
-					<button className='button is-text' onClick={() => this.displayCol(31)}>blkAgainst</button>
-					<button className='button is-text' onClick={() => this.displayCol(32)}>blkAgainst-Avg</button>
-					<button className='button is-text' onClick={() => this.displayCol(33)}>stl-Avg</button>
-					<button className='button is-text' onClick={() => this.displayCol(34)}>tov</button>
-					<button className='button is-text' onClick={() => this.displayCol(35)}>tov-Avg</button>
-					<button className='button is-text' onClick={() => this.displayCol(36)}>ast-Avg</button>
-					<button className='button is-text' onClick={() => this.displayCol(37)}>pts-Avg</button>
-					<button className='button is-text' onClick={() => this.displayCol(38)}>defReb</button>
-					<button className='button is-text' onClick={() => this.displayCol(39)}>defReb-Avg</button>
-					<button className='button is-text' onClick={() => this.displayCol(40)}>offReb</button>
-					<button className='button is-text' onClick={() => this.displayCol(41)}>offReb-Avg</button>
-					<button className='button is-text' onClick={() => this.displayCol(42)}>reb-Avg</button>
+					<button className={this.checkShow(0)} onClick={() => this.displayCol(0)}>First Name</button>
+					<button className={this.checkShow(1)} onClick={() => this.displayCol(1)}>Last Name</button>
+					<button className={this.checkShow(2)} onClick={() => this.displayCol(2)}>Season</button>
+					<button className={this.checkShow(3)} onClick={() => this.displayCol(3)}>Total %</button>
+					<button className={this.checkShow(4)} onClick={() => this.displayCol(4)}>Block</button>
+					<button className={this.checkShow(5)} onClick={() => this.displayCol(5)}>Steal</button>
+					<button className={this.checkShow(6)} onClick={() => this.displayCol(6)}>Game Played</button>
+					<button className={this.checkShow(7)} onClick={() => this.displayCol(7)}>Assist</button>
+					<button className={this.checkShow(8)} onClick={() => this.displayCol(8)}>Points</button>
+					<button className={this.checkShow(9)} onClick={() => this.displayCol(9)}>Rebound</button>
+					<button className={this.checkShow(10)} onClick={() => this.displayCol(10)}>2pt Att</button>
+					<button className={this.checkShow(11)} onClick={() => this.displayCol(11)}>2pt Att Avg</button>
+					<button className={this.checkShow(12)} onClick={() => this.displayCol(12)}>2 Made</button>
+					<button className={this.checkShow(13)} onClick={() => this.displayCol(13)}>2 Made Avg</button>
+					<button className={this.checkShow(14)} onClick={() => this.displayCol(14)}>2pt %</button>
+					<button className={this.checkShow(15)} onClick={() => this.displayCol(15)}>3pt Att</button>
+					<button className={this.checkShow(16)} onClick={() => this.displayCol(16)}>3 Att Avg</button>
+					<button className={this.checkShow(17)} onClick={() => this.displayCol(17)}>3 Made</button>
+					<button className={this.checkShow(18)} onClick={() => this.displayCol(18)}>3 Made Avg</button>
+					<button className={this.checkShow(19)} onClick={() => this.displayCol(19)}>3pt %</button>
+					<button className={this.checkShow(20)} onClick={() => this.displayCol(20)}>Total Att</button>
+					<button className={this.checkShow(21)} onClick={() => this.displayCol(21)}>Total Att Avg</button>
+					<button className={this.checkShow(22)} onClick={() => this.displayCol(22)}>Total Pt Made</button>
+					<button className={this.checkShow(23)} onClick={() => this.displayCol(23)}>Total Pt Made Avg</button>
+					<button className={this.checkShow(24)} onClick={() => this.displayCol(24)}>1pt Att</button>
+					<button className={this.checkShow(25)} onClick={() => this.displayCol(25)}>1 Att Avg</button>
+					<button className={this.checkShow(26)} onClick={() => this.displayCol(26)}>1 Made</button>
+					<button className={this.checkShow(27)} onClick={() => this.displayCol(27)}>1 Made Avg</button>
+					<button className={this.checkShow(28)} onClick={() => this.displayCol(28)}>1pt %</button>
+					<button className={this.checkShow(29)} onClick={() => this.displayCol(29)}>Height</button>
+					<button className={this.checkShow(30)} onClick={() => this.displayCol(30)}>Weight</button>
+					<button className={this.checkShow(31)} onClick={() => this.displayCol(31)}>Blk Against</button>
+					<button className={this.checkShow(32)} onClick={() => this.displayCol(32)}>Blk Against Avg</button>
+					<button className={this.checkShow(33)} onClick={() => this.displayCol(33)}>Stl Avg</button>
+					<button className={this.checkShow(34)} onClick={() => this.displayCol(34)}>Turnover</button>
+					<button className={this.checkShow(35)} onClick={() => this.displayCol(35)}>Tov Avg</button>
+					<button className={this.checkShow(36)} onClick={() => this.displayCol(36)}>Ast Avg</button>
+					<button className={this.checkShow(37)} onClick={() => this.displayCol(37)}>Pts Avg</button>
+					<button className={this.checkShow(38)} onClick={() => this.displayCol(38)}>DefReb</button>
+					<button className={this.checkShow(39)} onClick={() => this.displayCol(39)}>DefReb Avg</button>
+					<button className={this.checkShow(40)} onClick={() => this.displayCol(40)}>OffReb</button>
+					<button className={this.checkShow(41)} onClick={() => this.displayCol(41)}>OffReb Avg</button>
+					<button className={this.checkShow(42)} onClick={() => this.displayCol(42)}>Reb Avg</button>
 				</div>
 				<br />
         <StatsPlayerDraggableTable
