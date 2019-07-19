@@ -1,8 +1,8 @@
 const axios = require('axios');
 var sha256 = require('js-sha256');
 
-var url = 'https://cpsc436basketballapi.herokuapp.com'
-//var url = 'http://localhost:3001'
+//var url = 'https://cpsc436basketballapi.herokuapp.com'
+var url = 'http://localhost:3001'
 
 export const flipPage = newPage => {
   return {
@@ -32,10 +32,43 @@ const loginFailure = error => ({
   payload: error
 });
 
-export const userUploadProfilePicture = (email, password, base64) => {
-  console.log(email, password, base64);
+export const userUpdateDisplay = (email, password, name, team) => {
   return dispatch => {
-    dispatch(uploadStarted());
+    dispatch(updateStarted());
+    axios
+      .post(url + '/users/updateDisplay', {
+        email: email,
+        password: password,
+        name: name,
+        team: team
+      })
+      .then(res => {
+        dispatch(updateSuccess(res.data));
+      })
+      .catch(err => {
+        dispatch(updateFailure(err.response.data));
+      });
+  };
+};
+
+const updateStarted = () => ({
+  type: "UPDATE_STARTED"
+});
+
+const updateFailure = error => ({
+  type: "UPDATE_FAILURE",
+  payload: error
+});
+
+const updateSuccess = (data) => ({
+  type: "UPDATE_SUCCESS",
+  payload: data
+});
+
+export const userUploadProfilePicture = (email, password, base64) => {
+  console.log(base64);
+  return dispatch => {
+    dispatch(updateStarted());
     axios
       .post(url + '/users/uploadProfile', {
         email: email,
@@ -43,10 +76,10 @@ export const userUploadProfilePicture = (email, password, base64) => {
         base64: base64
       })
       .then(res => {
-        dispatch(uploadSuccess(res.data));
+        dispatch(updateSuccess(res.data));
       })
       .catch(err => {
-        dispatch(uploadFailure(err.response.data));
+        dispatch(updateFailure(err.response.data));
       });
   };
 };

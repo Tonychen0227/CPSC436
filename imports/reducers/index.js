@@ -28,11 +28,11 @@ const userState = (userState={isLoggedIn: false, loginAttempted: 0, userData: {}
       jwt: action.payloadJWT,
       errorMessage: null};
   }
-  if (action.type === 'UPLOAD_SUCCESS') {
+  if (action.type === 'UPDATE_SUCCESS') {
     return { ...userState, 
       userData: action.payload};
   }
-  if (action.type === 'UPLOAD_FAILURE') {
+  if (action.type === 'UPDATE_FAILURE') {
     console.log(action.payload);
     return { ...userState};
   }

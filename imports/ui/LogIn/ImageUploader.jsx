@@ -52,6 +52,7 @@ class ImageUploader extends React.Component {
    Handle file validation
    */
   onDropFile(e) {
+    console.log("checking");
     const files = e.target.files;
     const allFilePromises = [];
 
@@ -132,7 +133,7 @@ class ImageUploader extends React.Component {
   renderErrors() {
     let notAccepted = '';
     if (this.state.notAcceptedFileType.length > 0) {
-      notAccepted = this.state.notAcceptedFileType.map((error, index) => {
+      notAccepted = this.state.notAcceptedFileType.slice(-1).map((error, index) => {
         return (
           <div className={'errorMessage ' + this.props.errorClass} key={index} style={this.props.errorStyle}>
             * {error} {this.props.fileTypeError}
@@ -221,7 +222,7 @@ class ImageUploader extends React.Component {
           >
             {this.props.buttonText}
           </button>
-          <input
+          <input hidden
             type="file"
             ref={input => this.inputElement = input}
             name={this.props.name}
