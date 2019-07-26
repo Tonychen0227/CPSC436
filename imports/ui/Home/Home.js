@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import '../../css/App.css';
-import '../../css/MyAccount.css';
+//import '../../css/App.css';
+//import '../../css/MyAccount.css';
 import NewsDashboard from '../LogIn/NewsDashboard'
 import { TwitterTimelineEmbed, TwitterShareButton, TwitterFollowButton, TwitterHashtagButton, TwitterMentionButton, TwitterTweetEmbed, TwitterMomentShare, TwitterDMButton, TwitterVideoEmbed, TwitterOnAirButton } from 'react-twitter-embed';
 
@@ -19,13 +19,15 @@ class Home extends React.Component {
 						</div>
 					</div>
 				</section>
-				<div className="center">
-					<div className="newsDashboard inner">
-						<NewsDashboard />
+				<div className="">
+					<div className="rowC">
+						<div className="newsDashboard">
+							<NewsDashboard />
+						</div>
+						<div>
+							<TwitterTimelineEmbed sourceType="URL" url="https://twitter.com/NBA" options={{ height: 450, width: 300 }} />
+						</div>
 					</div>
-				</div>
-				<div className="right box">
-					<TwitterTimelineEmbed sourceType="URL" url="https://twitter.com/NBA" options={{ height: 400 }} />
 				</div>
 			</div>
 		);
