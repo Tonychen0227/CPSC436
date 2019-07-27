@@ -32,7 +32,7 @@ class News extends React.Component {
       var h = 450;
       return (
         <div>
-          <Carousel showArrows={true} infiniteLoop={true} autoPlay={true} width={1000} interval={5000} transitionTime={350} showThumbs={false}>
+          <Carousel showArrows={true} infiniteLoop={true} autoPlay={true} width={"900 px"} interval={5000} transitionTime={350} showThumbs={false}>
             <div className = "HeadNews">
               <img style={{height: h, width:"auto"}} src={this.props.news[0].images[0].url} className="image " />
               <a style={{display: "table-cell"}} href={this.props.news[0].links.web.href} target="_blank">
