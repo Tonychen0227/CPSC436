@@ -97,6 +97,6 @@ export default combineReducers ({
   data,
   news: newsStore,
   userState: userState,
-  loading: loading,
+  loading: loading
   //anotherKey: anotherReducer (all your reducers should be combined)
 });
