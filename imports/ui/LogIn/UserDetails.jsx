@@ -46,6 +46,7 @@ class UserDetails extends React.Component {
 	handleSubmit() {
 		console.log("SUBMIT");
 		this.props.userUpdateDisplay(this.props.userState.Email, this.props.userState.Password, this.state.displayName, this.state.favTeam);
+		this.setState({editingName: false, editingTeam: false})
 	}
 
 	onDrop(picture) {

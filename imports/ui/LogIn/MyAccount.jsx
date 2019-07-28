@@ -2,42 +2,43 @@ import React from 'react';
 import Fragment from 'react';
 import UserDetails from './UserDetails';
 import NewsDashboard from './NewsDashboard';
-import PlayerStats from './PlayerStats';
+import TeamTwitter from './TeamTwitter';
 import MatchInformation from './MatchInformation';
 import { connect } from 'react-redux';
 import '../../css/MyAccount.css';
+import { TwitterTimelineEmbed, TwitterShareButton, TwitterFollowButton, TwitterHashtagButton, TwitterMentionButton, TwitterTweetEmbed, TwitterMomentShare, TwitterDMButton, TwitterVideoEmbed, TwitterOnAirButton } from 'react-twitter-embed';
 
 class MyAccount extends React.Component {
 	render() {
 		console.log("User state");
 		console.log(this.props.userState);
+		console.log(this.props.userState.FavoriteTeam);
 		return (
 			<div className="main">
 
 				<section className="hero is-link">
-				  <div className="hero-body">
-				    <div className="container">
-				      <h1 className="title">
-				        Welcome to your account page
+					<div className="hero-body">
+						<div className="container">
+							<h1 className="title">
+								Welcome to your account page
 				      </h1>
-				    </div>
-				  </div>
+						</div>
+					</div>
 				</section>
 
 				<div className="left">
-				<div className="newsDashboard inner">
-					<NewsDashboard/>
-				</div>
+					<div className="newsDashboard inner">
+						<TeamTwitter />
+					</div>
 					<div className="playerStats inner">
-						<PlayerStats/>
 					</div>
 				</div>
 				<div className="right">
 					<div className="userDetails inner">
-						<UserDetails/>
+						<UserDetails />
 					</div>
 					<div className="matchInformation inner">
-						<MatchInformation/>
+						<MatchInformation />
 					</div>
 				</div>
 			</div>
@@ -47,14 +48,14 @@ class MyAccount extends React.Component {
 
 const mapStateToProps = (state) => { //name is by convention
 	//state has entire state of app!!
-return {
-	userState: state.userState.userData
- }; //now it will appear as props
+	return {
+		userState: state.userState.userData
+	}; //now it will appear as props
 }
 
 const mapDispatchToProps = dispatch => {
 	return {
 	};
-  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(MyAccount);
