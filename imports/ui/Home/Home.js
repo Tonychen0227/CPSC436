@@ -27,11 +27,7 @@ class Home extends React.Component {
 						<div>
 							<TwitterTimelineEmbed sourceType="URL" url="https://twitter.com/NBA" options={{ height: 450, width: 300 }} />
 						</div>
-
 					</div>
-				</div>
-				<div className="right box">
-					<TwitterTimelineEmbed sourceType="URL" url="https://twitter.com/NBA" options={{ height: 400 }} />
 				</div>
 			</div>
 		);
