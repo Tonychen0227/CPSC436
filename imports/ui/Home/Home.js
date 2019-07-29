@@ -20,11 +20,11 @@ class Home extends React.Component {
 					</div>
 				</section>
 				<div className="">
-					<div className="rowC">
-						<div className="newsDashboard">
+					<div className="media">
+						<div className="media-content">
 							<NewsDashboard />
 						</div>
-						<div>
+						<div className="media-right">
 							<TwitterTimelineEmbed sourceType="URL" url="https://twitter.com/NBA" options={{ height: 450, width: 300 }} />
 						</div>
 					</div>
