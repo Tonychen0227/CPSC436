@@ -9,11 +9,11 @@ const renderActiveShape = (props) => {
   } = props;
   const sin = Math.sin(-RADIAN * midAngle);
   const cos = Math.cos(-RADIAN * midAngle);
-  const sx = cx + (outerRadius + 10) * cos;
-  const sy = cy + (outerRadius + 10) * sin;
-  const mx = cx + (outerRadius + 30) * cos;
-  const my = cy + (outerRadius + 30) * sin;
-  const ex = mx + (cos >= 0 ? 1 : -1) * 22;
+  const sx = cx + (outerRadius + 5) * cos;
+  const sy = cy + (outerRadius + 5) * sin;
+  const mx = cx + (outerRadius + 15) * cos;
+  const my = cy + (outerRadius + 15) * sin;
+  const ex = mx + (cos >= 0 ? 1 : -1) * 11;
   const ey = my;
   const textAnchor = cos >= 0 ? 'start' : 'end';
 
@@ -34,22 +34,22 @@ const renderActiveShape = (props) => {
         cy={cy}
         startAngle={startAngle}
         endAngle={endAngle}
-        innerRadius={outerRadius + 6}
-        outerRadius={outerRadius + 10}
+        innerRadius={outerRadius + 1}
+        outerRadius={outerRadius + 2}
         fill={fill}
       />
       <path d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`} stroke={fill} fill="none" />
       <circle cx={ex} cy={ey} r={2} fill={fill} stroke="none" />
-      <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} textAnchor={textAnchor} fill="#0EF4E6">{`${value}`}</text>
+      <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} textAnchor={textAnchor} fill="#0EF4E6">{`${value.toFixed(2)}`}</text>
       <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} dy={18} textAnchor={textAnchor} fill="#999">
-        {`(${(percent * 100).toFixed(2)}%)`}
+        {`(${(percent * 50).toFixed(2)}%)`}
       </text>
     </g>
   );
 };
 
 
-export default class Example extends PureComponent {
+export default class SinglePlayerFundeDataGraph extends PureComponent {
 
   state = {
     activeIndex: 0,
@@ -64,16 +64,16 @@ export default class Example extends PureComponent {
   render() {
     const { data } = this.props;
     return (
-      <PieChart width={600} height={400}>
+      <PieChart width={330} height={250}>
         <Pie
           activeIndex={this.state.activeIndex}
           activeShape={renderActiveShape}
           data={data}
-          cx={200}
-          cy={200}
+          cx={165}
+          cy={100}
           innerRadius={50}
-          outerRadius={70}
-          fill="#8884d8"
+          outerRadius={60}
+          fill="#0c9ac9"
           dataKey="value"
           onMouseEnter={this.onPieEnter}
         />

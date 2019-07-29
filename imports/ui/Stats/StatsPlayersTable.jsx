@@ -65,49 +65,49 @@ class StatsPlayersTable extends React.Component {
 			{
 	      Header: "Total %",
 	      accessor: "fgPct",
-	      show: true,
+	      show: false,
 	      width: 100,
 				filterable: true
 	    },
 			{
 	      Header: "Block",
 	      accessor: "blk",
-	      show: true,
+	      show: false,
 	      width: 100,
 				filterable: true
 	    },
 			{
 	      Header: "Steal",
 	      accessor: "stl",
-	      show: true,
+	      show: false,
 	      width: 100,
 				filterable: true
 	    },
 			{
 	      Header: "Games Played",
 	      accessor: "gamesPlayed",
-	      show: true,
+	      show: false,
 	      width: 120,
 				filterable: true
 	    },
 			{
 	      Header: "Assist",
 	      accessor: "ast",
-	      show: true,
+	      show: false,
 	      width: 100,
 				filterable: true
 	    },
 			{
 	      Header: "Points",
 	      accessor: "pts",
-	      show: true,
+	      show: false,
 	      width: 100,
 				filterable: true
 	    },
 			{
 	      Header: "Rebound",
 	      accessor: "reb",
-	      show: true,
+	      show: false,
 	      width: 100,
 				filterable: true
 	    },
@@ -341,6 +341,41 @@ class StatsPlayersTable extends React.Component {
 	      show: false,
 	      width: 100,
 				filterable: true
+	    },
+			{
+	      Header: "PF Avg",
+	      accessor: "pf",
+	      show: false,
+	      width: 100,
+				filterable: true
+	    },
+			{
+	      Header: "EFF",
+	      accessor: "eff",
+	      show: false,
+	      width: 100,
+				filterable: true
+	    },
+			{
+	      Header: "GmSc",
+	      accessor: "gmsc",
+	      show: false,
+	      width: 100,
+				filterable: true
+	    },
+			{
+	      Header: "eFG",
+	      accessor: "efg",
+	      show: false,
+	      width: 100,
+				filterable: true
+	    },
+			{
+	      Header: "TS",
+	      accessor: "ts",
+	      show: false,
+	      width: 100,
+				filterable: true
 	    }
 	  ],
 		players: []
@@ -370,52 +405,77 @@ class StatsPlayersTable extends React.Component {
 	createPlayerObj = players => {
 		var playersData = []
 		players.map(function (player) {
+			// 基础数据
+			var PTS = player["stats"]["offense"]["pts"];
+			var REB = player["stats"]["rebounds"]["reb"];
+			var DREB = player["stats"]["rebounds"]["defReb"];
+			var OREB = player["stats"]["rebounds"]["offReb"];
+			var AST = player["stats"]["offense"]["ast"];
+			var STL = player["stats"]["defense"]["stl"];
+			var BLK = player["stats"]["defense"]["blk"];
+			var TOV = player["stats"]["defense"]["tov"];
+			var PF = player["stats"]["miscellaneous"]["foul"];
+			var FGA = player["stats"]["fieldGoals"]["fgAtt"];
+			var FGM = player["stats"]["fieldGoals"]["fgMade"];
+			var FTA = player["stats"]["freeThrows"]["ftAtt"];
+			var FTM = player["stats"]["freeThrows"]["ftMade"];
+
+			var EFF = (PTS + REB + AST + STL + BLK) - (FGA - FGM) - (FTA - FTM) - TOV;
+			var GmSc = (PTS + 0.7*OREB + 0.3*DREB + 0.7*AST + STL + 0.7*BLK) + 0.4*FGM - 0.7*FGA - 0.4*(FTA-FTM) - TOV - 0.4*PF;
+			var eFG = (FGM + 0.5*player["stats"]["fieldGoals"]["fg3PtMadePerGame"]) / FGA;
+			var TS = PTS / (2* (FGA + 0.44*FTA));
+
 			playersData.push({
-					birthDate: player["player"]["birthDate"],
-					firstName: player["player"]["firstName"],
-					lastName: player["player"]["lastName"],
-					height: player["player"]["height"],
-					weight: player["player"]["weight"],
-					season: player["season"],
-					blk: player["stats"]["defense"]["blk"],
-					blkAgainst: player["stats"]["defense"]["blkAgainst"],
-					blkAgainstPerGame: player["stats"]["defense"]["blkAgainstPerGame"],
-					stl: player["stats"]["defense"]["stl"],
-					stlPerGame: player["stats"]["defense"]["stlPerGame"],
-					tov: player["stats"]["defense"]["tov"],
-					tovPerGame: player["stats"]["defense"]["tovPerGame"],
-					fg2PtAtt: player["stats"]["fieldGoals"]["fg2PtAtt"],
-					fg2PtAttPerGame: player["stats"]["fieldGoals"]["fg2PtAttPerGame"],
-					fg2PtMade: player["stats"]["fieldGoals"]["fg2PtMade"],
-					fg2PtMadePerGame: player["stats"]["fieldGoals"]["fg2PtMadePerGame"],
-					fg2PtPct: player["stats"]["fieldGoals"]["fg2PtPct"],
-					fg3PtAtt: player["stats"]["fieldGoals"]["fg3PtAtt"],
-					fg3PtAttPerGame: player["stats"]["fieldGoals"]["fg3PtAttPerGame"],
-					fg3PtMade: player["stats"]["fieldGoals"]["fg3PtMade"],
-					fg3PtMadePerGame: player["stats"]["fieldGoals"]["fg3PtMadePerGame"],
-					fg3PtPct: player["stats"]["fieldGoals"]["fg3PtPct"],
-					fgAtt: player["stats"]["fieldGoals"]["fgAtt"],
-					fgAttPerGame: player["stats"]["fieldGoals"]["fgAttPerGame"],
-					fgMade: player["stats"]["fieldGoals"]["fgMade"],
-					fgMadePerGame: player["stats"]["fieldGoals"]["fgMadePerGame"],
-					fgPct: player["stats"]["fieldGoals"]["fgMadePerGame"],
-					gamesPlayed: player["stats"]["gamesPlayed"],
-					ftAtt: player["stats"]["freeThrows"]["ftAtt"],
-					ftAttPerGame: player["stats"]["freeThrows"]["ftAttPerGame"],
-					ftMade: player["stats"]["freeThrows"]["ftMade"],
-					ftMadePerGame: player["stats"]["freeThrows"]["ftMadePerGame"],
-					ftPct: player["stats"]["freeThrows"]["ftPct"],
-					ast: player["stats"]["offense"]["ast"],
-					astPerGame: player["stats"]["offense"]["astPerGame"],
-					pts: player["stats"]["offense"]["pts"],
-					ptsPerGame: player["stats"]["offense"]["ptsPerGame"],
-					defReb: player["stats"]["rebounds"]["defReb"],
-					defRebPerGame: player["stats"]["rebounds"]["defRebPerGame"],
-					offReb: player["stats"]["rebounds"]["offReb"],
-					offRebPerGame: player["stats"]["rebounds"]["offRebPerGame"],
-					reb: player["stats"]["rebounds"]["reb"],
-					rebPerGame: player["stats"]["rebounds"]["rebPerGame"]
-				});
+				birthDate: player["player"]["birthDate"],
+				firstName: player["player"]["firstName"],
+				lastName: player["player"]["lastName"],
+				height: player["player"]["height"],
+				weight: player["player"]["weight"],
+				season: player["season"],
+				blk: player["stats"]["defense"]["blk"],
+				blkAgainst: player["stats"]["defense"]["blkAgainst"],
+				blkAgainstPerGame: player["stats"]["defense"]["blkAgainstPerGame"],
+				stl: player["stats"]["defense"]["stl"],
+				stlPerGame: player["stats"]["defense"]["stlPerGame"],
+				tov: player["stats"]["defense"]["tov"],
+				tovPerGame: player["stats"]["defense"]["tovPerGame"],
+				fg2PtAtt: player["stats"]["fieldGoals"]["fg2PtAtt"],
+				fg2PtAttPerGame: player["stats"]["fieldGoals"]["fg2PtAttPerGame"],
+				fg2PtMade: player["stats"]["fieldGoals"]["fg2PtMade"],
+				fg2PtMadePerGame: player["stats"]["fieldGoals"]["fg2PtMadePerGame"],
+				fg2PtPct: player["stats"]["fieldGoals"]["fg2PtPct"],
+				fg3PtAtt: player["stats"]["fieldGoals"]["fg3PtAtt"],
+				fg3PtAttPerGame: player["stats"]["fieldGoals"]["fg3PtAttPerGame"],
+				fg3PtMade: player["stats"]["fieldGoals"]["fg3PtMade"],
+				fg3PtMadePerGame: player["stats"]["fieldGoals"]["fg3PtMadePerGame"],
+				fg3PtPct: player["stats"]["fieldGoals"]["fg3PtPct"],
+				fgAtt: player["stats"]["fieldGoals"]["fgAtt"],
+				fgAttPerGame: player["stats"]["fieldGoals"]["fgAttPerGame"],
+				fgMade: player["stats"]["fieldGoals"]["fgMade"],
+				fgMadePerGame: player["stats"]["fieldGoals"]["fgMadePerGame"],
+				fgPct: player["stats"]["fieldGoals"]["fgMadePerGame"],
+				gamesPlayed: player["stats"]["gamesPlayed"],
+				ftAtt: player["stats"]["freeThrows"]["ftAtt"],
+				ftAttPerGame: player["stats"]["freeThrows"]["ftAttPerGame"],
+				ftMade: player["stats"]["freeThrows"]["ftMade"],
+				ftMadePerGame: player["stats"]["freeThrows"]["ftMadePerGame"],
+				ftPct: player["stats"]["freeThrows"]["ftPct"],
+				ast: player["stats"]["offense"]["ast"],
+				astPerGame: player["stats"]["offense"]["astPerGame"],
+				pts: player["stats"]["offense"]["pts"],
+				ptsPerGame: player["stats"]["offense"]["ptsPerGame"],
+				defReb: player["stats"]["rebounds"]["defReb"],
+				defRebPerGame: player["stats"]["rebounds"]["defRebPerGame"],
+				offReb: player["stats"]["rebounds"]["offReb"],
+				offRebPerGame: player["stats"]["rebounds"]["offRebPerGame"],
+				reb: player["stats"]["rebounds"]["reb"],
+				rebPerGame: player["stats"]["rebounds"]["rebPerGame"],
+				pf: PF,
+				eff: EFF,
+				gmsc: GmSc,
+				eFG: eFG,
+				ts: TS
+			});
 			return;
 		});
 		return playersData;
@@ -468,6 +528,11 @@ class StatsPlayersTable extends React.Component {
 					<button className={this.checkShow(40)} onClick={() => this.displayCol(40)}>OffReb</button>
 					<button className={this.checkShow(41)} onClick={() => this.displayCol(41)}>OffReb Avg</button>
 					<button className={this.checkShow(42)} onClick={() => this.displayCol(42)}>Reb Avg</button>
+					<button className={this.checkShow(43)} onClick={() => this.displayCol(43)}>PF</button>
+					<button className={this.checkShow(44)} onClick={() => this.displayCol(44)}>EFF</button>
+					<button className={this.checkShow(45)} onClick={() => this.displayCol(45)}>GmSc</button>
+					<button className={this.checkShow(46)} onClick={() => this.displayCol(46)}>eFG</button>
+					<button className={this.checkShow(47)} onClick={() => this.displayCol(47)}>TS</button>
 				</div>
 				<br />
         <StatsPlayerDraggableTable

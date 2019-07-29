@@ -219,3 +219,4 @@ export const loadNews = (news) => {
     payload: news.articles
   }
 }
+

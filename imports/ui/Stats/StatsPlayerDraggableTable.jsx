@@ -4,6 +4,7 @@ import "react-table/react-table.css";
 import Popup from "reactjs-popup";
 import SinglePlayerGraph from "./SinglePlayerGraph";
 import SinglePlayerFundeDataGraph from './SinglePlayerFundeDataGraph';
+import DropdownSearchBar from './DropdownSearchBar';
 
 Object.assign(ReactTableDefaults, {
   defaultPageSize: 10,
@@ -71,7 +72,7 @@ class StatsPlayerDraggableTable extends Component {
 
     //run all reorder events
     this.reorder.forEach(o => cols.splice(o.a, 0, cols.splice(o.b, 1)[0]));
-
+    console.log(rows);
     //render
     return (
       <div className="esr-table">
@@ -81,45 +82,70 @@ class StatsPlayerDraggableTable extends Component {
           columns={cols}
           SubComponent={row => {
             var selectedInfo = row.original;
-            var newData = [];
-            var playerInfo = [];
-            var foundaData = [];
+            var PTSA = [];
+            var THREEPTSA = [];
+            var TOTALPTSA = [];
+            var REBA = [];
+            var ATA = [];
+            var TSA = [];
             Object.keys(selectedInfo).forEach((e) => {
-              if (e === 'blkAgainstPerGame' || e === 'stlPerGame' || e === 'tovPerGame' ||
-                  e === 'fg2PtAttPerGame' || e === 'fg2PtMadePerGame' || e === 'fg3PtAttPerGame' ||
-                  e === 'fg3PtMadePerGame' || e === 'fgAttPerGame' || e === 'fgMadePerGame' ||
-                  e === 'ftAttPerGame' || e === 'ftMadePerGame' || e === 'astPerGame' ||
-                  e === 'ptsPerGame' || e === 'defRebPerGame' || e === 'offRebPerGame' ||
-                  e === 'rebPerGame') {
-                newData.push({stats: e.toString(), cost: selectedInfo[e]});
-              };
-              if (e === 'height' || e === 'weight' || e === 'season' ||
-                  e === 'gamesPlayed' || e === 'firstName' ||
-                  e === 'lastName' || e === 'birthDate') {
-                playerInfo.push({type: e.toString(), value: selectedInfo[e]});
-              };
-              if (e === 'blk' || e === 'stl' || e === 'pts' || e === 'ast' || e === 'reb') {
-                foundaData.push({name: e.toString(), value: selectedInfo[e]});
+              if (e === 'fg2PtMade') {
+                PTSA.push({name: '2PTMade', value: selectedInfo[e]});
+              }
+              if (e === 'fg2PtAtt') {
+                PTSA.push({name: '2PTMissed', value: selectedInfo[e] - selectedInfo['fg2PtMade']})
+              }
+              if (e === 'fg3PtMade') {
+                THREEPTSA.push({name: '3PTMade', value: selectedInfo[e]});
+              }
+              if (e === 'fg3PtAtt') {
+                THREEPTSA.push({name: '3PTMissed', value: selectedInfo[e] - selectedInfo['fg3PtMade']});
+              }
+              if (e === 'fgMade') {
+                TOTALPTSA.push({name: 'totalPTMade', value: selectedInfo[e]});
+              }
+              if (e === 'fgAtt') {
+                TOTALPTSA.push({name: 'totalPTMissed', value: selectedInfo[e] - selectedInfo['fgMade']});
+              }
+              if (e === 'defReb') {
+                REBA.push({name: 'offensiveReb', value: selectedInfo[e]});
+              }
+              if (e === 'offReb') {
+                REBA.push({name: 'defensiveReb', value: selectedInfo[e]});
+              }
+              if (e === 'ast') {
+                ATA.push({name: 'assist', value: selectedInfo[e]});
+              }
+              if (e === 'tov') {
+                ATA.push({name: 'turnover', value: selectedInfo[e]});
+              }
+              if (e === 'ts') {
+                TSA.push({name: 'trueShooting', value: selectedInfo[e]});
+                TSA.push({name: 'trueLosing', value: 1-selectedInfo[e]});
               }
             });
             return (
-              <div className="row">
-                <div className="col-sm-3">
-                  <div className="card text-white bg-primary border-secondary mb-3">
-                    <ul className="list-group list-group-flush">
-                      {playerInfo.map(info => (
-                        <li key={info.type}>{info.type} : {info.value}</li>
-                      ))}
-                    </ul>
+              <div>
+                <div className="row">
+                  <div className="col-sm-4">
+                    <SinglePlayerFundeDataGraph data={PTSA} />
                   </div>
-                  <div className="card bg-primary mb-3 text-white">
-                    <p> Fundamental Stats </p>
-                    <SinglePlayerFundeDataGraph data={foundaData} />
+                  <div className="col-sm-4">
+                    <SinglePlayerFundeDataGraph data={THREEPTSA} />
+                  </div>
+                  <div className="col-sm-4">
+                    <SinglePlayerFundeDataGraph data={TOTALPTSA} />
                   </div>
                 </div>
-                <div className="col-sm-6">
-                  <div className="card bg-light mb-3 border-light">
-                    <SinglePlayerGraph selectedPlayerInfo={newData} />
+                <div className="row">
+                  <div className="col-sm-4">
+                    <SinglePlayerFundeDataGraph data={REBA} />
+                  </div>
+                  <div className="col-sm-4">
+                    <SinglePlayerFundeDataGraph data={ATA} />
+                  </div>
+                  <div className="col-sm-4">
+                    <SinglePlayerFundeDataGraph data={TSA} />
                   </div>
                 </div>
               </div>

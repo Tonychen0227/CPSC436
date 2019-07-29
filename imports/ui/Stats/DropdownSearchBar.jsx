@@ -2,9 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom";
 import styled from "@emotion/styled";
 import { options } from "./options";
-import MyTeamStats from './MyTeamStats';
 import Select from "react-dropdown-select";
 import axios from 'axios';
+import MinorComparison from './MinorComparison';
+import MajorComparison from './MajorComparison';
 
 export class DropdownSearchBar extends React.Component {
   constructor(props) {
@@ -59,16 +60,60 @@ export class DropdownSearchBar extends React.Component {
     return playerNames;
   }
 
+  getDisplayDataRegular = (data, selectValues) => {
+    var displayData = [];
+    // single displayCol
+    if (selectValues.length === 1) {
+      displayData = data.filter(function (player) {
+        return player["player"]["firstName"] + " " + player["player"]["lastName"] === selectValues[0]["name"]
+                && player["season"] === "2018-19Regular"
+      })
+    } else if (selectValues.length > 1) {
+      selectValues.map(function (name) {
+        data.filter(function (player) {
+          if (player["player"]["firstName"] + " " + player["player"]["lastName"] === name["name"]
+              && player["season"] === "2018-19Regular") {
+            displayData.push(player);
+          }
+          return;
+        });
+        return;
+      });
+    }
+    return displayData;
+  }
+
+  getDisplayDataPlayOff = (data, selectValues) => {
+    var displayData = [];
+    // single displayCol
+    if (selectValues.length === 1) {
+      displayData = data.filter(function (player) {
+        return player["player"]["firstName"] + " " + player["player"]["lastName"] === selectValues[0]["name"]
+                && player["season"] === "2018-19Playoff"
+      })
+    } else if (selectValues.length > 1) {
+      selectValues.map(function (name) {
+        data.filter(function (player) {
+          if (player["player"]["firstName"] + " " + player["player"]["lastName"] === name["name"]
+              && player["season"] === "2018-19Playoff") {
+            displayData.push(player);
+          }
+          return;
+        });
+        return;
+      });
+    }
+    return displayData;
+  }
+
   render() {
-    let { players } = this.state;
-    console.log(players);
-    console.log(this.state);
-    var playerNames = this.getPlayerNames(players);
-    console.log(playerNames);
+    const { data } = this.props;
+    const displayDataRegular = this.getDisplayDataRegular(data, this.state.selectValues);
+    const displayDataPlayOff = this.getDisplayDataPlayOff(data, this.state.selectValues);
     return (
       <div className={this.props.className}>
         <div>
-          <div style={{ maxWidth: "350px", margin: "0 auto" }}>
+          <div style={{ maxWidth: "1080px", margin: "0 auto" }}>
             <StyledSelect
               placeholder="Select peoples"
               addPlaceholder={this.state.addPlaceholder}
@@ -82,7 +127,7 @@ export class DropdownSearchBar extends React.Component {
               multi={this.state.multi}
               labelField={this.state.labelField}
               valueField={this.state.valueField}
-              options={this.getPlayerNames(players)}
+              options={options}
               dropdownGap={5}
               keepSelectedInList={this.state.keepSelectedInList}
               onDropdownOpen={() => undefined}
@@ -100,7 +145,25 @@ export class DropdownSearchBar extends React.Component {
             />
           </div>
         </div>
-        <MyTeamStats selectValues={this.state.selectValues} />
+        <br/>
+        <br/>
+        <br/>
+        <div>
+          {this.state.selectValues.length === 2 ? (
+            <div>
+              <MinorComparison players={displayDataRegular} />
+              <MinorComparison players={displayDataPlayOff} />
+            </div>
+          ) : (
+            <div>
+              <MajorComparison
+                count={this.state.selectValues.length}
+                dataR={displayDataRegular}
+                dataP={displayDataPlayOff}
+              />
+            </div>
+          )}
+        </div>
       </div>
     );
   }
