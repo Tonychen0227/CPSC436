@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import ReactTable, { ReactTableDefaults } from "react-table";
 import "react-table/react-table.css";
 import Popup from "reactjs-popup";
-import SingleTeamGraph from "./SingleTeamGraph";
-import TeamPctGraph from "./TeamPctGraph";
+import SingleTeamGameGraph from './SingleTeamGameGraph';
 
 Object.assign(ReactTableDefaults, {
   defaultPageSize: 10,
@@ -81,38 +80,9 @@ class StatsPlayerDraggableTable extends Component {
           columns={cols}
           SubComponent={row => {
             var selectedInfo = row.original;
-            var newData = [];
-            Object.keys(selectedInfo).forEach((e) => {
-              if (e != 'teamCity' && e != 'teamName' && e != 'season' && e != 'wins' &&
-                  e != 'losses' && e != 'winPct' && e != 'gamesBack' && e != 'gamesPlayed' &&
-                  e != 'winPct' && e != 'fg2PtPct' && e != 'fg3PtPct' && e != 'fgPct' &&
-                  e != 'ftPct') {
-                    newData.push({name: e.toString(), data: selectedInfo[e]})
-                  }
-            });
-            console.log(newData);
             return (
-              <div className="row">
-                <div className="col-sm-14">
-                  <SingleTeamGraph selectedTeamInfo={newData} />
-                </div>
-                <div className="row">
-                  <div className="col-sm-2">
-                    <TeamPctGraph pct={selectedInfo["winPct"]} type={"winPct"} />
-                  </div>
-                  <div className="col-sm-2">
-                    <TeamPctGraph pct={selectedInfo["fg2PtPct"]} type={"fg2PtPct"} />
-                  </div>
-                  <div className="col-sm-2">
-                    <TeamPctGraph pct={selectedInfo["fg3PtPct"]} type={"fg3PtPct"} />
-                  </div>
-                  <div className="col-sm-2">
-                    <TeamPctGraph pct={selectedInfo["fgPct"]} type={"fgPct"} />
-                  </div>
-                  <div className="col-sm-2">
-                    <TeamPctGraph pct={selectedInfo["ftPct"]} type={"ftPct"} />
-                  </div>
-                </div>
+              <div>
+                <SingleTeamGameGraph teamAbbr={selectedInfo["teamAbbr"]} />
               </div>
             )
           }}

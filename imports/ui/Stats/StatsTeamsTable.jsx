@@ -453,6 +453,7 @@ class StatsTeamsTable extends React.Component {
 				losses: team["stats"]["standings"]["losses"],
 				winPct: team["stats"]["standings"]["winPct"],
 				gamesBack: team["stats"]["standings"]["gamesBack"],
+				teamAbbr: team["teamAbbr"]
 			});
 			return;
 		});

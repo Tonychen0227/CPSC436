@@ -14,7 +14,6 @@ class MajorComparison extends React.Component {
     } else if (count === 0) {
       return (
         <div className="container">
-          <p>ggg</p>
         </div>
       )
     } else {
