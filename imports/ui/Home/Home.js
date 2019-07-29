@@ -1,24 +1,32 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import '../../css/App.css';
-import '../../css/MyAccount.css';
+//import '../../css/App.css';
+//import '../../css/MyAccount.css';
 import NewsDashboard from '../LogIn/NewsDashboard'
+import { TwitterTimelineEmbed, TwitterShareButton, TwitterFollowButton, TwitterHashtagButton, TwitterMentionButton, TwitterTweetEmbed, TwitterMomentShare, TwitterDMButton, TwitterVideoEmbed, TwitterOnAirButton } from 'react-twitter-embed';
+
+
 class Home extends React.Component {
 	render() {
 		return (
 			<div className="Home">
-			<section className="hero is-link">
-			  <div className="hero-body">
-			    <div className="container">
-			      <h1 className="title">
-			        Home
+				<section className="hero is-link">
+					<div className="hero-body">
+						<div className="container">
+							<h1 className="title">
+								Home
 			      </h1>
-			    </div>
-			  </div>
-			</section>
-				<div className="center">
-					<div className="newsDashboard inner">
-						<NewsDashboard />
+						</div>
+					</div>
+				</section>
+				<div className="">
+					<div className="rowC">
+						<div className="newsDashboard">
+							<NewsDashboard />
+						</div>
+						<div>
+							<TwitterTimelineEmbed sourceType="URL" url="https://twitter.com/NBA" options={{ height: 450, width: 300 }} />
+						</div>
 					</div>
 				</div>
 			</div>

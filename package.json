@@ -31,11 +31,11 @@
     "namor": "^1.1.2",
     "perfect-scrollbar": "^1.4.0",
     "radar-chart": "^1.0.6",
-    "react": "^16.5.0",
+    "react": "^16.8.6",
     "react-bootstrap": "^1.0.0-beta.9",
     "react-chartjs-2": "^2.7.6",
     "react-date-picker": "^7.7.0",
-    "react-dom": "^16.5.0",
+    "react-dom": "^16.8.6",
     "react-dropdown-select": "^3.1.0",
     "react-facebook-login": "^4.1.1",
     "react-flip-move": "^3.0.3",
@@ -53,6 +53,7 @@
     "react-select-search": "^0.9.6",
     "react-social-icons": "^4.1.0",
     "react-table": "^6.10.0",
+    "react-twitter-embed": "^2.0.8",
     "reactjs-popup": "^1.4.1",
     "reactstrap": "^8.0.0",
     "recharts": "^1.6.2",
@@ -68,5 +69,10 @@
       "server": "server/main.js"
     },
     "testModule": "tests/main.js"
+  },
+  "devDependencies": {
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "uglifyjs-webpack-plugin": "^2.1.3"
   }
 }

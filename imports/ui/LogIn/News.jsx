@@ -22,47 +22,49 @@ class News extends React.Component {
     console.log(body);
     return body;
   }
+  //style={{height: h, width:"auto"}}
 
 	render() {
     console.log("In the news component");
     console.log(this.props.news);
     var key = 0;
     if(this.props.news && (this.props.news).length){
+      var h = 450;
       return (
         <div>
-          <Carousel showArrows={true} infiniteLoop={true} autoPlay={true} interval={5000} transitionTime={350}>
+          <Carousel showArrows={true} infiniteLoop={true} autoPlay={true} width={"900 px"} interval={5000} transitionTime={350} showThumbs={false}>
             <div className = "HeadNews">
-              <img src={this.props.news[0].images[0].url} className="image " />
+              <img style={{height: h, width:"auto"}} src={this.props.news[0].images[0].url} className="image " />
               <a style={{display: "table-cell"}} href={this.props.news[0].links.web.href} target="_blank">
                 <p className="legend">{this.props.news[0].headline}</p>
               </a>
             </div>
             <div className = "HeadNews">
-              <img src={this.props.news[1].images[0].url} className="image " />
+              <img style={{height: h, width:"auto"}} src={this.props.news[1].images[0].url} className="image " />
               <a style={{display: "table-cell"}} href={this.props.news[1].links.web.href} target="_blank">
                 <p className="legend">{this.props.news[1].headline}</p>
               </a>
             </div>
             <div className = "HeadNews">
-              <img src={this.props.news[2].images[0].url} className="image " />
+              <img style={{height: h, width:"auto"}} src={this.props.news[2].images[0].url} className="image " />
               <a style={{display: "table-cell"}} href={this.props.news[2].links.web.href} target="_blank">
                 <p className="legend">{this.props.news[2].headline}</p>
               </a>
             </div>
             <div className = "HeadNews">
-              <img src={this.props.news[3].images[0].url} className="image " />
+              <img style={{height: h, width:"auto"}} src={this.props.news[3].images[0].url} className="image " />
               <a style={{display: "table-cell"}} href={this.props.news[3].links.web.href} target="_blank">
                 <p className="legend">{this.props.news[3].headline}</p>
               </a>
             </div>
             <div className = "HeadNews">
-              <img src={this.props.news[4].images[0].url} className="image " />
+              <img style={{height: h, width:"auto"}} src={this.props.news[4].images[0].url} className="image " />
               <a style={{display: "table-cell"}} href={this.props.news[4].links.web.href} target="_blank">
                 <p className="legend">{this.props.news[4].headline}</p>
               </a>
             </div>
             <div className = "HeadNews">
-              <img src={this.props.news[5].images[0].url} className="image " />
+              <img style={{height: h, width:"auto"}} src={this.props.news[5].images[0].url} className="image " />
               <a style={{display: "table-cell"}} href={this.props.news[5].links.web.href} target="_blank">
                 <p className="legend">{this.props.news[5].headline}</p>
               </a>
