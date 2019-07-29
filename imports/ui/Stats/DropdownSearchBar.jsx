@@ -113,7 +113,7 @@ export class DropdownSearchBar extends React.Component {
     return (
       <div className={this.props.className}>
         <div>
-          <div style={{ maxWidth: "350px", margin: "0 auto" }}>
+          <div style={{ maxWidth: "1080px", margin: "0 auto" }}>
             <StyledSelect
               placeholder="Select peoples"
               addPlaceholder={this.state.addPlaceholder}
@@ -145,6 +145,9 @@ export class DropdownSearchBar extends React.Component {
             />
           </div>
         </div>
+        <br/>
+        <br/>
+        <br/>
         <div>
           {this.state.selectValues.length === 2 ? (
             <div>
