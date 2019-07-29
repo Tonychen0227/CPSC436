@@ -6,18 +6,18 @@ export default class MultipleDisplay extends React.Component {
 
   createPlayerObj = ( dataR, dataP ) => {
     var displayData = [];
-    var blkPerGame = { type: "blkPerGame" };
-    var stlPerGame = { type: "stlPerGame" };
-    var tovPerGame = { type: "tovPerGame" };
-    var fg2PtMadePerGame = { type: "fg2PtMadePerGame" };
-    var fg3PtMadePerGame = { type: "fg3PtMadePerGame" };
-    var ftMadePerGame = { type: "ftMadePerGame" };
-    var astPerGame = { type: "astPerGame" };
-    var ptsPerGame = { type: "ptsPerGame" };
-    var defRebPerGame = { type: "defRebPerGame" };
-    var offRebPerGame = { type: "offRebPerGame" };
-    var eFG = { type: "eFG" };
-    var TS = { type: "TS" };
+    var blkPerGame = { statstype: "blkPerGame" };
+    var stlPerGame = { statstype: "stlPerGame" };
+    var tovPerGame = { statstype: "tovPerGame" };
+    var fg2PtMadePerGame = { statstype: "fg2PtMadePerGame" };
+    var fg3PtMadePerGame = { statstype: "fg3PtMadePerGame" };
+    var ftMadePerGame = { statstype: "ftMadePerGame" };
+    var astPerGame = { statstype: "astPerGame" };
+    var ptsPerGame = { statstype: "ptsPerGame" };
+    var defRebPerGame = { statstype: "defRebPerGame" };
+    var offRebPerGame = { statstype: "offRebPerGame" };
+    var eFG = { statstype: "eFG" };
+    var TS = { statstype: "TS" };
     dataR.map(function (player) {
       const name = player["player"]["firstName"] + " " + player["player"]["lastName"] + " " + player["season"];
       const blk = { [name]: player["stats"]["defense"]["blkPerGame"] };
@@ -104,73 +104,69 @@ export default class MultipleDisplay extends React.Component {
     return types;
   }
 
-  createColorMap = ( types ) => {
-    for (let [key, value] of Object.entries(types)) {
-
-    }
+  createColorMap = kinds => {
+    var colorGroup = [];
+    colorGroup.push("#E3F4BF","#BEF7C8","#86E6C8","#36CFC9","#209BDD","#1581E6","#0860BF","#0543a6","#472f9e","#4e08a8","#7d35b8","#a824c9","#d119ce","#d40890","#bf045b","#bf0429","#bf0404");
+    var loop = 0;
+    var colorMap = {};
+    kinds.map(function (kind) {
+      Object.assign(colorMap, { [kind]: colorGroup[loop]});
+      loop++;
+      if (loop > 16) {
+        loop = 0;
+      }
+      return;
+    });
+    return colorMap;
   }
 
   render() {
     const { dataR, dataP } = this.props;
     const { DataView } = DataSet;
     const data = this.createPlayerObj(dataR, dataP);
-    console.log(data)
-    const types = this.createTypes(dataR, dataP);
-    console.log(types);
+    const kinds = this.createTypes(dataR, dataP);
+    const colorMap = this.createColorMap(kinds);
     const dv = new DataView();
-    var gg = 0;
     dv.source(data)
       .transform({
         type: "fold",
-        fields: types,
-        key: "type",
-        value: "value",
-        retains: ["type"]
+        fields: kinds,
+        key: "kind",
+        value: "stats",
+        retains: ["statstype"]
       })
       .transform({
         type: "map",
         callback: obj => {
-          const key = obj.type;
-          let type;
-
-          if (
-            key.includes("2018-19Regular")
-          ) {
-            type = "a";
-          } else if (key.includes("2018-19Playoff")) {
-            type = "b";
+          const key = obj.kind;
+          let temp;
+          if (key.includes('Regular')) {
+            temp = 'a';
+          } else {
+            temp = 'b';
           }
-
-          obj.type = type;
+          obj.type = temp;
           return obj;
         }
       });
 
-    const colorMap = {
-      "Under 5 Years": "#E3F4BF",
-      "5 to 13 Years": "#BEF7C8",
-      "14 to 17 Years": "#86E6C8",
-      "18 to 24 Years": "#36CFC9",
-      "25 to 44 Years": "#209BDD",
-      "45 to 64 Years": "#1581E6",
-      "65 Years and Over": "#0860BF"
-    };
     const cols = {
       population: {
         tickInterval: 1000000
       }
     };
+    console.log(dv);
     return (
       <div>
         <Chart
           height={600}
           data={dv}
           scale={cols}
-          padding={[20, 160, 80, 60]}
+          padding="auto"
           forceFit
         >
           <Axis
-            name="value"
+            name="stats"
             label={{
               formatter: function(val) {
                 return val / 1000000 + "M";
@@ -181,19 +177,19 @@ export default class MultipleDisplay extends React.Component {
           <Tooltip />
           <Geom
             type="interval"
-            position="type*value"
+            position="statstype*stats"
             color={[
-              "type",
-              function(type) {
-                return colorMap[type];
+              "kind",
+              function(kind) {
+                return colorMap[kind];
               }
             ]}
             tooltip={[
-              "type*value",
-              (type, value) => {
+              "kind*stats",
+              (kind, stats) => {
                 return {
-                  name: type,
-                  value: value
+                  name: kind,
+                  value: stats
                 };
               }
             ]}
