@@ -72,7 +72,7 @@ class TeamTwitter extends React.Component {
 	render() {
 		return (
 			<div>
-				<TwitterTimelineEmbed sourceType="URL" url={this.teamTwitterLink(this.props.userState.FavoriteTeam)} options={{ height: 450, width: 700 }} />
+				<TwitterTimelineEmbed sourceType="URL" url={this.teamTwitterLink(this.props.userState.FavoriteTeam)} options={{ height: 700, width: parent }} />
 			</div>
 		);
 	}
