@@ -34,7 +34,6 @@ class NavBar extends Component {
                 <Link to='/stats/players' className="navbar-item">Players</Link>
                 <Link to='/stats/teams' className="navbar-item">Teams</Link>
                 <Link to='/stats/analysis' className="navbar-item">Analysis</Link>
-                <Link to='/stats/games' className="navbar-item">Games</Link>
             </div>
           </div>
 
