@@ -82,7 +82,7 @@ class StatsPlayerDraggableTable extends Component {
             var selectedInfo = row.original;
             return (
               <div>
-                <SingleTeamGameGraph teamAbbr={selectedInfo["teamAbbr"]} />
+                <SingleTeamGameGraph teamAbbr={selectedInfo["teamAbbr"]} season={selectedInfo["season"]}/>
               </div>
             )
           }}

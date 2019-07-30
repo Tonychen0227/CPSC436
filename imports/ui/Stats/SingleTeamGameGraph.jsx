@@ -1,6 +1,5 @@
 import React from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Brush, AreaChart, Area,
-} from 'recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Brush, AreaChart, Area, BarChart, Bar } from 'recharts';
 import axios from 'axios';
 
 const CustomTooltip = ({ active, payload, label }) => {
@@ -33,12 +32,17 @@ export default class SingleTeamGameGraph extends React.Component {
       });
   }
 
-  createRegularGamesObj = (games, teamAbbr) => {
+  createRegularGamesObj = (games, teamAbbr, season) => {
+    let temp;
+    if (season === "2018-19Regular") temp = "2018-19Regular";
+    else if (season === "2018-19Playoff") temp = "2018-19Playoff";
+    else if (season === "2017-18Regular") temp = "2017-18Regular";
+    else temp = "2017-18Playoff";
     var gamesData = [];
     games.map(function (game) {
       if ((game["schedule"]["homeTeam"]["abbreviation"] === teamAbbr
           || game["schedule"]["awayTeam"]["abbreviation"] === teamAbbr) &&
-          game["season"] === "2018-19Regular") {
+          game["season"] === temp) {
         var homeTeam = game["schedule"]["homeTeam"]["abbreviation"];
         var awayTeam = game["schedule"]["awayTeam"]["abbreviation"];
         var homeTeamScore = game["score"]["homeScoreTotal"];
@@ -82,8 +86,8 @@ export default class SingleTeamGameGraph extends React.Component {
   }
 
   render() {
-    const { teamAbbr } = this.props;
-    var regularGames = this.createRegularGamesObj(this.state.games, teamAbbr);
+    const { teamAbbr, season } = this.props;
+    var regularGames = this.createRegularGamesObj(this.state.games, teamAbbr, season);
     console.log(regularGames);
     return (
       <div>
@@ -97,7 +101,7 @@ export default class SingleTeamGameGraph extends React.Component {
           <YAxis type="number" domain={[70, 150]} allowDataOverflow={true} />
           <Tooltip content={<CustomTooltip />} />
           <Line type="monotone" dataKey="hs" stroke="#3073ba" fill="#3ca0cf" />
-          <Brush />
+          <Brush datakey="time" height={5} stroke="#4e83e6" />
         </LineChart>
       </div>
     );
