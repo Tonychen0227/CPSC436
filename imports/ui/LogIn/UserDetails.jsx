@@ -75,13 +75,13 @@ class UserDetails extends React.Component {
 					<p className="padded"> Name: {!this.state.editingName ? <strong>{this.props.userState.DisplayName}</strong>: 
 					<input className="nameSelect" onChange={this.handleChangeName} value={this.state.displayName}></input>}
 					<button className="editButton button is-light is-small" onClick={this.handleEditNameClick}>Edit</button>
-					<span>{this.state.displayName != this.props.userState.DisplayName ? <button onClick={this.handleSubmit}>Submit</button>:""}</span></p>
+					<span>{this.state.displayName != this.props.userState.DisplayName ? <button className="editButton button is-light is-small" onClick={this.handleSubmit}>Submit</button>:""}</span></p>
 					<p> Favorite team: {!this.state.editingTeam ? 
 					<img className="team" src={'logos/' + this.props.userState.FavoriteTeam + '.png'} alt={this.props.userState.FavoriteTeam}/>
 					: <select className="favTeamSelect" onChange={this.handleChangeTeam} value={this.state.favTeam}>
 					{NBATeams.map((x) => <option key={x}>{x}</option>)}
 					</select> } <button className="editButton button is-light is-small" onClick={this.handleEditTeamClick}>Edit</button>     
-					{this.state.favTeam != this.props.userState.FavoriteTeam ? <button onClick={this.handleSubmit}>Submit</button>:""} </p>
+					{this.state.favTeam != this.props.userState.FavoriteTeam ? <button className="editButton button is-light is-small" onClick={this.handleSubmit}>Submit</button>:""} </p>
 					<p className="padded"> Account Type: {this.props.userState.Password == "Facebook"? "Facebook":"Email/Password"} </p>
 				</div>
 				<ImageUploader
