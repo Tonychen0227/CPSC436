@@ -22,6 +22,11 @@ class StatsAnalysis extends Component {
     return (
       <div className="container">
         <DropdownSearchBar data={this.state.players}/>
+        <footer className="footer">
+			  <div className="content has-text-centered">
+						<p>Copy right© by Tony Chen, Peter Han and Yuting Wen</p>
+			  </div>
+			</footer>
       </div>
     )
   }
