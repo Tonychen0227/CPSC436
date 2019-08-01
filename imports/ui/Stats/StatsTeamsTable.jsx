@@ -483,7 +483,6 @@ class StatsTeamsTable extends React.Component {
 								<a className={this.checkShow(3)} onClick={() => this.displayCol(3)}>Wins</a>
 								<a className={this.checkShow(4)} onClick={() => this.displayCol(4)}>Losses</a>
 								<a className={this.checkShow(5)} onClick={() => this.displayCol(5)}>Win%</a>
-
 								<a className={this.checkShow(46)} onClick={() => this.displayCol(46)}>Games Back</a>
 								<a className={this.checkShow(47)} onClick={() => this.displayCol(47)}>Games Played</a>
 							</div>
