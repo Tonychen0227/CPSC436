@@ -7,7 +7,7 @@ var url = 'https://cpsc436basketballapi.herokuapp.com'
 export const flipPage = newPage => {
   return {
     type: 'NEW_PAGE',
-    payload: newPage
+    payload: newPage  
   }
 }
 

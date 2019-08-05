@@ -3,7 +3,7 @@ import Fragment from 'react';
 import UserDetails from './UserDetails';
 import NewsDashboard from './NewsDashboard';
 import TeamTwitter from './TeamTwitter';
-import MatchInformation from './MatchInformation';
+import ForumPosts from './ForumPosts';
 import { connect } from 'react-redux';
 import '../../css/MyAccount.css';
 import { TwitterTimelineEmbed, TwitterShareButton, TwitterFollowButton, TwitterHashtagButton, TwitterMentionButton, TwitterTweetEmbed, TwitterMomentShare, TwitterDMButton, TwitterVideoEmbed, TwitterOnAirButton } from 'react-twitter-embed';
@@ -15,7 +15,6 @@ class MyAccount extends React.Component {
 		console.log(this.props.userState.FavoriteTeam);
 		return (
 			<div className="main">
-
 				<section className="hero is-link">
 					<div className="hero-body">
 						<div className="container">
@@ -30,15 +29,13 @@ class MyAccount extends React.Component {
 					<div className="newsDashboard inner">
 						<TeamTwitter />
 					</div>
-					<div className="playerStats inner">
-					</div>
 				</div>
 				<div className="right">
 					<div className="userDetails inner">
 						<UserDetails />
 					</div>
 					<div className="matchInformation inner">
-						<MatchInformation />
+						<ForumPosts />
 					</div>
 				</div>
 			</div>
