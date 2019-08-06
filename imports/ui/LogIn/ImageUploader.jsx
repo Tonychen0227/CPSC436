@@ -52,7 +52,6 @@ class ImageUploader extends React.Component {
    Handle file validation
    */
   onDropFile(e) {
-    console.log("checking");
     const files = e.target.files;
     const allFilePromises = [];
 

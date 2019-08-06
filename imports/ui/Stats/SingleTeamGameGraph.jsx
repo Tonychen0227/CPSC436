@@ -88,7 +88,6 @@ export default class SingleTeamGameGraph extends React.Component {
   render() {
     const { teamAbbr, season } = this.props;
     var regularGames = this.createRegularGamesObj(this.state.games, teamAbbr, season);
-    console.log(regularGames);
     return (
       <div>
         <LineChart width={928} height={600} data={regularGames} syncId="anyId"

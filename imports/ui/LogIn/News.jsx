@@ -19,14 +19,10 @@ class News extends React.Component {
     const response = await fetch('https://site.api.espn.com/apis/site/v2/sports/basketball/nba/news');
     const body = await response.json();
     if(response.status !== 200){throw Error(body.message)}
-    console.log(body);
     return body;
   }
-  //style={{height: h, width:"auto"}}
 
 	render() {
-    console.log("In the news component");
-    console.log(this.props.news);
     var key = 0;
     if(this.props.news && (this.props.news).length){
       var h = 450;

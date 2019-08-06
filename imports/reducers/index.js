@@ -18,6 +18,31 @@ const loading = (loading = false, action) => {
   return loading
 }
 
+const forumState = (forumState = {full: [], selected: null, error: null}, action) => {
+  if (action.type === 'GET_FORUM_SUCCESS') {
+    return { ...forumState, 
+      full: action.payload};
+  }
+  if (action.type === 'NEW_COMMENT_SUCCESS') {
+    return {
+      ...forumState,
+      selected: action.payload
+    }
+  }
+  if (action.type === 'DISPLAY_POST') {
+    console.log(forumState.full);
+    return {
+      ... forumState,
+      selected: forumState.full.find(x => x._id == action.payload)
+    }
+  }
+  if (action.type === 'GET_FORUM_FAILURE' || action.type === "NEW_COMMENT_FAILURE") {
+    return { ...forumState, 
+      error: action.payload};
+  }
+  return forumState;
+}
+
 const userState = (userState={isLoggedIn: false, loginAttempted: 0, userData: {}, jwt: "", errorMessage: null}, action) => {
   if (action.type === 'LOG_IN_SUCCESS' || action.type === 'REGISTER_SUCCESS') {
     localStorage.setItem("CachedJWT", action.payloadJWT)
@@ -33,7 +58,6 @@ const userState = (userState={isLoggedIn: false, loginAttempted: 0, userData: {}
       userData: action.payload};
   }
   if (action.type === 'UPDATE_FAILURE') {
-    console.log(action.payload);
     return { ...userState};
   }
   if (action.type === 'FACEBOOK_LOGIN_SUCCESS') {
@@ -76,18 +100,7 @@ const userState = (userState={isLoggedIn: false, loginAttempted: 0, userData: {}
 
 const newsStore = (news = [], action) => {
   if(action.type === "LOAD_NEWS") {
-    /*var key = 0;
-    var topSixNews = action.payload.articles; // to to get the array
-    Array.from(topSixNews).forEach((currentNews) =>{
-        news.push({key: key, image: currentNews.images[0].url, headline: currentNews.headline, link: currentNews.links.web.href});
-        key++;
-        console.log("from the loop")
-        console.log(news);
-    });*/
-    console.log("from the reducer: ")
-    console.log(news);
     return action.payload;
-    //return action.payload;
   }
   return news;
 }
@@ -97,6 +110,7 @@ export default combineReducers ({
   data,
   news: newsStore,
   userState: userState,
-  loading: loading
+  loading: loading,
+  forumState: forumState
   //anotherKey: anotherReducer (all your reducers should be combined)
 });

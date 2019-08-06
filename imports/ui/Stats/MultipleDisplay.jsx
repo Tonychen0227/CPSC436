@@ -155,7 +155,6 @@ export default class MultipleDisplay extends React.Component {
         tickInterval: 1000000
       }
     };
-    console.log(dv);
     return (
       <div>
         <Chart
