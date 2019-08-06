@@ -66,7 +66,6 @@ const updateSuccess = (data) => ({
 });
 
 export const userUploadProfilePicture = (email, password, base64) => {
-  console.log(base64);
   return dispatch => {
     dispatch(updateStarted());
     axios
@@ -212,11 +211,129 @@ export const facebookLogIn = (id, email, token) => {
 };
 
 export const loadNews = (news) => {
-  console.log("from the action: ")
-  console.log(news);
   return {
     type:'LOAD_NEWS',
     payload: news.articles
   }
 }
 
+const getForumSuccess = data => ({
+  type: "GET_FORUM_SUCCESS",
+  payload: data
+});
+
+const getForumStarted = () => ({
+  type: "GET_FORUM_STARTED"
+});
+
+const getForumFailure = error => ({
+  type: "GET_FORUM_FAILURE",
+  payload: error
+});
+
+export const getForumPosts = () => {
+  return dispatch => {
+    dispatch(getForumStarted());
+    axios
+      .get(url + '/discussion', {
+      })
+      .then(res => {
+        dispatch(getForumSuccess(res.data));
+      })
+      .catch(err => {
+        dispatch(getForumFailure(err.response.data));
+      });
+    };
+};
+
+export const displayForumPost = (id) => {
+  return {
+    type:'DISPLAY_POST',
+    payload: id
+  }
+}
+
+export const makeNewPost = (title, body, token) => {
+  return dispatch => {
+    dispatch(getForumStarted());
+    axios
+      .post(url + '/discussion', {
+        body: body,
+        title: title,
+        token: token
+      })
+      .then(res => {
+        dispatch(getForumSuccess(res.data));
+      })
+      .catch(err => {
+        dispatch(getForumFailure(err.response.data));
+      });
+    };
+};
+
+const newCommentSuccess = data => ({
+  type: "NEW_COMMENT_SUCCESS",
+  payload: data
+});
+
+const newCommentStarted = () => ({
+  type: "NEW_COMMENT_STARTED"
+});
+
+const newCommentFailure = error => ({
+  type: "NEW_COMMENT_FAILURE",
+  payload: error
+});
+
+export const makeNewComment = (id, body, token) => {
+  console.log("id", id, "body", body, "token", token);
+  return dispatch => {
+    dispatch(newCommentStarted());
+    axios
+      .post(url + '/discussion' + '/' + id, {
+        body: body,
+        token: token
+      })
+      .then(res => {
+        dispatch(newCommentSuccess(res.data));
+      })
+      .catch(err => {
+        dispatch(newCommentFailure(err.response.data));
+      });
+    };
+};
+
+export const deleteComment = (postId, commentId, token) => {
+  console.log("postId", postId, "commentId", commentId, "token", token);
+  return dispatch => {
+    dispatch(newCommentStarted());
+    axios
+      .delete(url + '/discussion' + '/' + postId + '/comment/' + commentId, {
+        data: {token: token}
+      })
+      .then(res => {
+        dispatch(newCommentSuccess(res.data));
+      })
+      .catch(err => {
+        dispatch(newCommentFailure(err.response.data));
+      });
+    };
+};
+
+export const editComment = (postId, commentId, body, token) => {
+  console.log("postId", postId, "commentId", commentId, "body", body, "token", token);
+  return dispatch => {
+    dispatch(newCommentStarted());
+    axios
+      .patch(url + '/discussion' + '/' + postId + '/comment/' + commentId, {
+        body: body,
+        token: token
+      })
+      .then(res => {
+        dispatch(newCommentSuccess(res.data));
+      })
+      .catch(err => {
+        dispatch(newCommentFailure(err.response.data));
+      });
+    };
+};

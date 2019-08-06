@@ -3,16 +3,13 @@ import Fragment from 'react';
 import UserDetails from './UserDetails';
 import NewsDashboard from './NewsDashboard';
 import TeamTwitter from './TeamTwitter';
-import UserForumPosts from './UserForumPosts';
+import UserForumPosts from '../Discussion/UserPostList';
 import { connect } from 'react-redux';
 import '../../css/MyAccount.css';
 import { TwitterTimelineEmbed, TwitterShareButton, TwitterFollowButton, TwitterHashtagButton, TwitterMentionButton, TwitterTweetEmbed, TwitterMomentShare, TwitterDMButton, TwitterVideoEmbed, TwitterOnAirButton } from 'react-twitter-embed';
 
 class MyAccount extends React.Component {
 	render() {
-		console.log("User state");
-		console.log(this.props.userState);
-		console.log(this.props.userState.FavoriteTeam);
 		return (
 			<div className="main">
 				<section className="hero is-link">
@@ -35,6 +32,7 @@ class MyAccount extends React.Component {
 						<UserDetails />
 					</div>
 					<div className="matchInformation inner">
+						<h3>Discussions I'm involved in</h3>
 						<UserForumPosts />
 					</div>
 				</div>

@@ -44,7 +44,6 @@ class UserDetails extends React.Component {
 	}
 	
 	handleSubmit() {
-		console.log("SUBMIT");
 		this.props.userUpdateDisplay(this.props.userState.Email, this.props.userState.Password, this.state.displayName, this.state.favTeam);
 		this.setState({editingName: false, editingTeam: false})
 	}
@@ -66,7 +65,6 @@ class UserDetails extends React.Component {
 		'nets', 'nuggets', 'pacers', 'pelicans', 'pistons', 'raptors',
 		'rockets', 'spurs', 'suns', 'thunder', 'timberwolves', 'warriors',
 		'wizards']
-		console.log(this.state)
 		return (
 			<div className="main">
 			<div>

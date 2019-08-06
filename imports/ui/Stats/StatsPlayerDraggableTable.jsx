@@ -72,7 +72,6 @@ class StatsPlayerDraggableTable extends Component {
 
     //run all reorder events
     this.reorder.forEach(o => cols.splice(o.a, 0, cols.splice(o.b, 1)[0]));
-    console.log(rows);
     //render
     return (
       <div className="esr-table">
