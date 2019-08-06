@@ -128,6 +128,7 @@ export class DropdownSearchBar extends React.Component {
               labelField={this.state.labelField}
               valueField={this.state.valueField}
               options={options}
+              values={[{name:'Russell Westbrook'},{name:'James Harden'}]}
               dropdownGap={5}
               keepSelectedInList={this.state.keepSelectedInList}
               onDropdownOpen={() => undefined}

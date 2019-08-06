@@ -8,6 +8,7 @@ import StatsPlayerDraggableTable from "./StatsPlayerDraggableTable";
 import { fetchData } from '../../actions'
 import { connect } from 'react-redux';
 import axios from 'axios';
+import LoadingOverlay from 'react-loading-overlay';
 import "../../../node_modules/bulma/css/bulma.css";
 
 class StatsPlayersTable extends React.Component {
@@ -54,7 +55,7 @@ class StatsPlayersTable extends React.Component {
 					<select
 						onChange={event => onChange(event.target.value)}
 						style={{ width: "100%" }}
-						value={filter ? filter.value : ""}
+						value={filter ? filter.value : "2018-19Playoff"}
 					>
 						<option value="2018-19Playoff">2018-19Playoff</option>
 						<option value="2018-19Regular">2018-19Regular</option>
@@ -86,28 +87,28 @@ class StatsPlayersTable extends React.Component {
 			{
 				Header: "Games Played",
 				accessor: "gamesPlayed",
-				show: false,
+				show: true,
 				width: 120,
 				filterable: true
 			},
 			{
 				Header: "Assist",
 				accessor: "ast",
-				show: false,
+				show: true,
 				width: 100,
 				filterable: true
 			},
 			{
 				Header: "Points",
 				accessor: "pts",
-				show: false,
+				show: true,
 				width: 100,
 				filterable: true
 			},
 			{
 				Header: "Rebound",
 				accessor: "reb",
-				show: false,
+				show: true,
 				width: 100,
 				filterable: true
 			},
@@ -498,6 +499,8 @@ class StatsPlayersTable extends React.Component {
 							<div className="dropdown-content">
 								<a className={this.checkShow(0)} onClick={() => this.displayCol(0)}>First Name</a>
 								<a className={this.checkShow(1)} onClick={() => this.displayCol(1)}>Last Name</a>
+								<a className={this.checkShow(29)} onClick={() => this.displayCol(29)}>Height</a>
+								<a className={this.checkShow(30)} onClick={() => this.displayCol(30)}>Weight</a>
 								<a className={this.checkShow(2)} onClick={() => this.displayCol(2)}>Season</a>
 								<a className={this.checkShow(3)} onClick={() => this.displayCol(3)}>Total %</a>
 								<a className={this.checkShow(6)} onClick={() => this.displayCol(6)}>Game Played</a>
@@ -615,7 +618,7 @@ class StatsPlayersTable extends React.Component {
 					<div className="dropdown is-hoverable">
 						<div className="dropdown-trigger">
 							<button className="button" aria-haspopup="true" aria-controls="dropdown-menu">
-								<span>Miscellaneous</span>
+								<span>Advanced</span>
 								<span className="icon is-small">
 									<i className="fas fa-angle-down" aria-hidden="true"></i>
 								</span>
@@ -623,8 +626,6 @@ class StatsPlayersTable extends React.Component {
 						</div>
 						<div className="dropdown-menu" id="dropdown-menu" role="menu">
 							<div className="dropdown-content">
-								<a className={this.checkShow(29)} onClick={() => this.displayCol(29)}>Height</a>
-								<a className={this.checkShow(30)} onClick={() => this.displayCol(30)}>Weight</a>
 								<a className={this.checkShow(43)} onClick={() => this.displayCol(43)}>PF</a>
 								<a className={this.checkShow(44)} onClick={() => this.displayCol(44)}>EFF</a>
 								<a className={this.checkShow(45)} onClick={() => this.displayCol(45)}>GmSc</a>
@@ -636,10 +637,16 @@ class StatsPlayersTable extends React.Component {
 					</div>
 				</div>
 				<br />
+				<LoadingOverlay
+					active={this.state.players.length === 0}
+					spinner
+					text=
+						'loading Data... Tip: you can use <, >, = to filter!!'
+				>
 				<StatsPlayerDraggableTable
 					rows={this.createPlayerObj(this.state.players)}
 					columns={this.state.columns}
-					defaultPageSize={10}
+					defaultPageSize={20}
 					defaultFilterMethod={(filter, row) => {
 						if (filter.value.includes(">=")) {
 							return row[filter.id] >= filter.value.slice(2);
@@ -666,6 +673,7 @@ class StatsPlayersTable extends React.Component {
 						};
 					}}
 				/>
+				</LoadingOverlay>
 				<br />
 			</div>
 		);

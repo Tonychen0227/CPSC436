@@ -7,6 +7,7 @@ import { makeData } from "./StatsMaker";
 import StatsTeamDraggableTable from "./StatsTeamDraggableTable";
 import { fetchData } from '../../actions'
 import { connect } from 'react-redux';
+import LoadingOverlay from 'react-loading-overlay';
 import axios from 'axios';
 
 class StatsTeamsTable extends React.Component {
@@ -599,10 +600,15 @@ class StatsTeamsTable extends React.Component {
 					</div>
 				</div>
 				<br />
+				<LoadingOverlay
+					active={this.state.teams.length === 0}
+					spinner
+					text="loading Data... Tip: use <, >, = to filter!"
+				>
 				<StatsTeamDraggableTable
 					rows={this.createTeamObj(this.state.teams)}
 					columns={this.state.columns}
-					defaultPageSize={10}
+					defaultPageSize={20}
 					defaultFilterMethod={(filter, row) => {
 						if (filter.value.includes(">=")) {
 							return row[filter.id] >= filter.value.slice(2);
@@ -629,6 +635,7 @@ class StatsTeamsTable extends React.Component {
 						};
 					}}
 				/>
+				</LoadingOverlay>
 				<br />
 			</div>
 		);

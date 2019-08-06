@@ -1,5 +1,6 @@
 import React from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Brush, AreaChart, Area, BarChart, Bar } from 'recharts';
+import LoadingOverlay from 'react-loading-overlay';
 import axios from 'axios';
 
 const CustomTooltip = ({ active, payload, label }) => {
@@ -20,14 +21,16 @@ const CustomTooltip = ({ active, payload, label }) => {
 export default class SingleTeamGameGraph extends React.Component {
 
   state = {
-    games: []
+    games: [],
+    fetching: false
   }
 
   componentDidMount() {
     axios.get('https://cpsc436basketballapi.herokuapp.com/data/getGames')
       .then(res => {
         this.setState({
-          games: res.data
+          games: res.data,
+          fetching: true
         })
       });
   }
@@ -90,6 +93,11 @@ export default class SingleTeamGameGraph extends React.Component {
     var regularGames = this.createRegularGamesObj(this.state.games, teamAbbr, season);
     return (
       <div>
+        <LoadingOverlay
+          active={!this.state.fetching}
+          spinner
+          text="loading Data..."
+        >
         <LineChart width={928} height={600} data={regularGames} syncId="anyId"
           margin={{
             top: 30, right: 0, left: 30, bottom: 30,
@@ -102,6 +110,7 @@ export default class SingleTeamGameGraph extends React.Component {
           <Line type="monotone" dataKey="hs" stroke="#3073ba" fill="#3ca0cf" />
           <Brush datakey="time" height={5} stroke="#4e83e6" />
         </LineChart>
+        </LoadingOverlay>
       </div>
     );
   }
