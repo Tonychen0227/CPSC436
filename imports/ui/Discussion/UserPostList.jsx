@@ -24,7 +24,6 @@ class UserForumPosts extends React.Component {
 	}
 
 	applyFilter(e) {
-		console.log(e);
 		this.setState({
 			filter: event.target.value.toLowerCase()
 		});

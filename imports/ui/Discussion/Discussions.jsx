@@ -21,7 +21,7 @@ class Discussions extends React.Component {
 
 	changeNewBody(e) {
 		this.setState({newBody: e.target.value})
-		this.validateSubmission();
+		this.validateSubmission(this.state.newTitle);
 	}
 	
 	changeNewTitle(e) {
@@ -55,7 +55,6 @@ class Discussions extends React.Component {
 	}
 
 	applyFilter(e) {
-		console.log(e);
 		this.setState({
 			filter: event.target.value.toLowerCase()
 		});
@@ -72,7 +71,6 @@ class Discussions extends React.Component {
 	}
 
 	render() {
-		console.log(this.props.userState);
 		var posts = [];
 		for (var i = 0; i < this.props.forumState.full.filter(x => x.postTitle.toLowerCase().indexOf(this.state.filter) != -1).length; i++) {
 			let element = this.props.forumState.full[i]

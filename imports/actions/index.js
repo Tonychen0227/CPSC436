@@ -286,7 +286,6 @@ const newCommentFailure = error => ({
 });
 
 export const makeNewComment = (id, body, token) => {
-  console.log("id", id, "body", body, "token", token);
   return dispatch => {
     dispatch(newCommentStarted());
     axios
@@ -304,7 +303,6 @@ export const makeNewComment = (id, body, token) => {
 };
 
 export const deleteComment = (postId, commentId, token) => {
-  console.log("postId", postId, "commentId", commentId, "token", token);
   return dispatch => {
     dispatch(newCommentStarted());
     axios
@@ -321,7 +319,6 @@ export const deleteComment = (postId, commentId, token) => {
 };
 
 export const editComment = (postId, commentId, body, token) => {
-  console.log("postId", postId, "commentId", commentId, "body", body, "token", token);
   return dispatch => {
     dispatch(newCommentStarted());
     axios
