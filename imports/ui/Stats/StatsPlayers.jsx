@@ -6,6 +6,11 @@ class StatsPlayers extends React.Component {
     return (
       <div className="container">
         <StatsPlayersTable />
+        <footer className="footer">
+			  <div className="content has-text-centered">
+						<p>Copy right© by Tony Chen, Peter Han and Yuting Wen</p>
+			  </div>
+			</footer>
     </div>
       );
   }
