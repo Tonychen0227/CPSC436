@@ -31,7 +31,7 @@ class StatsAnalysis extends Component {
         </LoadingOverlay>
         <footer className="footer">
 			  <div className="content has-text-centered">
-						<p>Copy right© by Tony Chen, Peter Han and Yuting Wen</p>
+						<p>Copyright© by Tony Chen, Peter Han and Yuting Wen</p>
 			  </div>
 			</footer>
       </div>

@@ -19,7 +19,7 @@ export class DropdownSearchBar extends React.Component {
       clearable: true,
       searchable: true,
       handle: true,
-      addPlaceholder: "+ compare more!!!",
+      addPlaceholder: "+ Compare More!!!",
       labelField: "name",
       valueField: "name",
       color: "#0074D9",
