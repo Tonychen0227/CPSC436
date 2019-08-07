@@ -17,7 +17,17 @@ class UserDiscussions extends React.Component {
 		this.changeNewTitle = this.changeNewTitle.bind(this);
 		this.confirmNew = this.confirmNew.bind(this);
 		this.resetState = this.resetState.bind(this);
-		this.state = {displayedId: 0, filter: "", newPostModal: false, discussionModal: false, newTitle: "", newBody: "", valid: false};
+		this.incrementOffset = this.incrementOffset.bind(this);
+		this.decrementOffset = this.decrementOffset.bind(this);
+		this.state = {displayedId: 0, filter: "", newPostModal: false, discussionModal: false, newTitle: "", newBody: "", valid: false, offset: 0};
+	}
+
+	incrementOffset() {
+		this.setState({offset: this.state.offset + 5})
+	}
+
+	decrementOffset() {
+		this.setState({offset: this.state.offset - 5})
 	}
 
 	resetState() {
@@ -77,11 +87,11 @@ class UserDiscussions extends React.Component {
 
 	render() {
 		var posts = [];
-		for (var i = 0; i < this.props.forumState.full.filter(x => x.postTitle.toLowerCase().indexOf(this.state.filter) != -1).length; i++) {
-			let element = this.props.forumState.full[i]
-			if (element.userId == this.props.userState._id) {
-				posts.push(<a className='list-item' key={element._id} onClick={(i) => this.display(element._id)}><strong>{element.postTitle}</strong> By {element.userName} at {element.postedDate} UTC</a>);
-			}
+		var tempPosts = this.props.forumState.full.filter(x => x.postTitle.toLowerCase().indexOf(this.state.filter) != -1);
+		tempPosts = tempPosts.filter(x => x.userId == this.props.userState._id || x.comments.find(x => x.userId == this.props.userState._id) != undefined)
+		for (var i = this.state.offset; i < tempPosts.length && i < this.state.offset + 5; i++) {
+			let element = tempPosts[i]
+			posts.push(<a className='list-item' key={element._id} onClick={(i) => this.display(element._id)}><strong>{element.postTitle}</strong> By {element.userName} at {element.postedDate} UTC</a>);
 		}
 		var mainList = (<div>
 							{this.props.userState.DisplayName != undefined ? 
@@ -106,6 +116,12 @@ class UserDiscussions extends React.Component {
 				<h3>Discussions I'm involved in</h3>
 				{(this.state.newPostModal || this.state.discussionModal) &&
 				<button className="userBackButton button is-light is-small" value="Back" onClick={this.resetState}>Back</button>}
+				{!this.state.newPostModal && !this.state.discussionModal &&
+				<div>
+						<button className="button is-light is-small" onClick={this.decrementOffset} disabled={this.state.offset == 0}>Prev</button>
+						<button className="button is-light is-small" onClick={this.incrementOffset} disabled={tempPosts.length - this.state.offset < 5}>Next</button>
+				</div>
+				}
 				{!this.state.newPostModal && !this.state.discussionModal && mainList}
 				<div>
 					{this.state.discussionModal && !this.state.newPostModal && 

@@ -16,7 +16,17 @@ class Discussions extends React.Component {
 		this.changeNewBody = this.changeNewBody.bind(this);
 		this.changeNewTitle = this.changeNewTitle.bind(this);
 		this.confirmNew = this.confirmNew.bind(this);
-		this.state = {displayedId: 0, filter: "", newPostModal: false, discussionModal: false, newTitle: "", newBody: "", valid: false};
+		this.incrementOffset = this.incrementOffset.bind(this);
+		this.decrementOffset = this.decrementOffset.bind(this);
+		this.state = {displayedId: 0, filter: "", newPostModal: false, discussionModal: false, newTitle: "", newBody: "", valid: false, offset: 0};
+	}
+
+	incrementOffset() {
+		this.setState({offset: this.state.offset + 10})
+	}
+
+	decrementOffset() {
+		this.setState({offset: this.state.offset - 10})
 	}
 
 	changeNewBody(e) {
@@ -56,7 +66,8 @@ class Discussions extends React.Component {
 
 	applyFilter(e) {
 		this.setState({
-			filter: event.target.value.toLowerCase()
+			filter: event.target.value.toLowerCase(),
+			offset: 0
 		});
 	}
 
@@ -72,8 +83,9 @@ class Discussions extends React.Component {
 
 	render() {
 		var posts = [];
-		for (var i = 0; i < this.props.forumState.full.filter(x => x.postTitle.toLowerCase().indexOf(this.state.filter) != -1).length; i++) {
-			let element = this.props.forumState.full[i]
+		var tempPosts = this.props.forumState.full.filter(x => x.postTitle.toLowerCase().indexOf(this.state.filter) != -1);
+		for (var i = this.state.offset; i < tempPosts.length && i < this.state.offset + 10; i++) {
+			let element = tempPosts[i]
 			posts.push(<a className='list-item' key={element._id} onClick={(i) => this.display(element._id)}><strong>{element.postTitle}</strong> By {element.userName} at {element.postedDate} UTC</a>);
 		}
 		return (
@@ -96,6 +108,10 @@ class Discussions extends React.Component {
 					<input className="input" type="text" value={this.state.value} onChange={this.applyFilter} placeholder="Filter by title"/>
 					<br/>
 					<br/>
+					<div>
+						<button className="button is-light is-small" onClick={this.decrementOffset} disabled={this.state.offset == 0}>Prev</button>
+						<button className="button is-light is-small" onClick={this.incrementOffset} disabled={posts.length - this.state.offset < 10}>Next</button>
+					</div>
 					<div className="list is-hoverable">
 						{posts}
 					</div>
