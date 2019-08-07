@@ -73,7 +73,7 @@ class About extends React.Component {
 						<h4> Basketball terminology for the non-basketball-savvy </h4>
 						<h6> <strong>KD</strong>: Will never win a championship again </h6>
 						<h6> <strong>KD</strong>: Get Well Soon 🙏 </h6>
-						<p>Copy right© by Tony Chen, Peter Han and Yuting Wen</p>
+						<p>Copyright© by Tony Chen, Peter Han and Yuting Wen</p>
 			  </div>
 			</footer>
 			</div>
