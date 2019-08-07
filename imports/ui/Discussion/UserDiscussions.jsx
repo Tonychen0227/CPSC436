@@ -95,13 +95,12 @@ class UserDiscussions extends React.Component {
 		}
 		var mainList = (<div>
 							{this.props.userState.DisplayName != undefined ? 
-							<div><input type="submit" className="button is-success" value="Create new post" onClick={this.createNew}/> <br/></div>
+							<div><input type="submit" className="button is-success" value="Create new post" onClick={this.createNew}/> <br/><br/></div>
 							: <p> Must be logged in to create a post. </p>}
 							<div>
 								<button className="button is-light is-small" onClick={this.decrementOffset} disabled={this.state.offset == 0}>Prev</button>
 								<button className="button is-light is-small" onClick={this.incrementOffset} disabled={tempPosts.length - this.state.offset < 5}>Next</button>
 							</div>
-							<br/>
 							<div className="list is-hoverable">
 								{posts}
 							</div>
