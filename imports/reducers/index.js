@@ -30,7 +30,6 @@ const forumState = (forumState = {full: [], selected: null, error: null}, action
     }
   }
   if (action.type === 'DISPLAY_POST') {
-    console.log(forumState.full);
     return {
       ... forumState,
       selected: forumState.full.find(x => x._id == action.payload)

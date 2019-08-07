@@ -3,7 +3,7 @@ import Fragment from 'react';
 import UserDetails from './UserDetails';
 import NewsDashboard from './NewsDashboard';
 import TeamTwitter from './TeamTwitter';
-import UserForumPosts from '../Discussion/UserPostList';
+import UserDiscussions from '../Discussion/UserDiscussions';
 import { connect } from 'react-redux';
 import '../../css/MyAccount.css';
 import { TwitterTimelineEmbed, TwitterShareButton, TwitterFollowButton, TwitterHashtagButton, TwitterMentionButton, TwitterTweetEmbed, TwitterMomentShare, TwitterDMButton, TwitterVideoEmbed, TwitterOnAirButton } from 'react-twitter-embed';
@@ -32,8 +32,7 @@ class MyAccount extends React.Component {
 						<UserDetails />
 					</div>
 					<div className="matchInformation inner">
-						<h3>Discussions I'm involved in</h3>
-						<UserForumPosts />
+						<UserDiscussions />
 					</div>
 				</div>
 			</div>

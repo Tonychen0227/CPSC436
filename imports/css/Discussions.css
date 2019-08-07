@@ -27,3 +27,8 @@
 .commentRow {
   line-height: 10px;
 }
+
+.userBackButton {
+  display: inline-block;
+  margin-bottom: 10px;
+}
