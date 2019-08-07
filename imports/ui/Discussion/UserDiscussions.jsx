@@ -97,6 +97,10 @@ class UserDiscussions extends React.Component {
 							{this.props.userState.DisplayName != undefined ? 
 							<div><input type="submit" className="button is-success" value="Create new post" onClick={this.createNew}/> <br/></div>
 							: <p> Must be logged in to create a post. </p>}
+							<div>
+								<button className="button is-light is-small" onClick={this.decrementOffset} disabled={this.state.offset == 0}>Prev</button>
+								<button className="button is-light is-small" onClick={this.incrementOffset} disabled={tempPosts.length - this.state.offset < 5}>Next</button>
+							</div>
 							<br/>
 							<div className="list is-hoverable">
 								{posts}
@@ -116,12 +120,6 @@ class UserDiscussions extends React.Component {
 				<h3>Discussions I'm involved in</h3>
 				{(this.state.newPostModal || this.state.discussionModal) &&
 				<button className="userBackButton button is-light is-small" value="Back" onClick={this.resetState}>Back</button>}
-				{!this.state.newPostModal && !this.state.discussionModal &&
-				<div>
-						<button className="button is-light is-small" onClick={this.decrementOffset} disabled={this.state.offset == 0}>Prev</button>
-						<button className="button is-light is-small" onClick={this.incrementOffset} disabled={tempPosts.length - this.state.offset < 5}>Next</button>
-				</div>
-				}
 				{!this.state.newPostModal && !this.state.discussionModal && mainList}
 				<div>
 					{this.state.discussionModal && !this.state.newPostModal && 
