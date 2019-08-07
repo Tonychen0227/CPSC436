@@ -23,8 +23,8 @@ export default class Groupedcolumn extends React.Component {
       var FTM = player["stats"]["freeThrows"]["ftMade"];
 
       var EFF = (PTS + REB + AST + STL + BLK) - (FGA - FGM) - (FTA - FTM) - TOV;
-      var GmSc = (PTS + 0.7*OREB + 0.3*DREB + 0.7*AST + STL + 0.7*BLK) + 0.4*FGM - 0.7*FGA - 0.4*(FTA-FTM) - TOV - 0.4*PF;
-      var eFG = (FGM + 0.5*player["stats"]["fieldGoals"]["fg3PtMadePerGame"]) / FGA;
+      var GMSC = (PTS + 0.7*OREB + 0.3*DREB + 0.7*AST + STL + 0.7*BLK) + 0.4*FGM - 0.7*FGA - 0.4*(FTA-FTM) - TOV - 0.4*PF;
+      var EFG = (FGM + 0.5*player["stats"]["fieldGoals"]["fg3PtMadePerGame"]) / FGA;
       var TS = PTS / (2* (FGA + 0.44*FTA));
 
       playersData.push({
@@ -70,8 +70,8 @@ export default class Groupedcolumn extends React.Component {
         rebPerGame: player["stats"]["rebounds"]["rebPerGame"],
         pf: PF,
         eff: EFF,
-        gmsc: GmSc,
-        eFG: eFG,
+        gmsc: GMSC,
+        eFG: EFG,
         ts: TS
       });
       return;

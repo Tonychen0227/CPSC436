@@ -344,7 +344,7 @@ class StatsPlayersTable extends React.Component {
 				filterable: true
 			},
 			{
-				Header: "PF Avg",
+				Header: "PF",
 				accessor: "pf",
 				show: false,
 				width: 100,
@@ -366,7 +366,7 @@ class StatsPlayersTable extends React.Component {
 			},
 			{
 				Header: "eFG",
-				accessor: "efg",
+				accessor: "eFG",
 				show: false,
 				width: 100,
 				filterable: true
@@ -415,15 +415,15 @@ class StatsPlayersTable extends React.Component {
 			var STL = player["stats"]["defense"]["stl"];
 			var BLK = player["stats"]["defense"]["blk"];
 			var TOV = player["stats"]["defense"]["tov"];
-			var PF = player["stats"]["miscellaneous"]["foul"];
+			var PF = player["stats"]["miscellaneous"]["fouls"];
 			var FGA = player["stats"]["fieldGoals"]["fgAtt"];
 			var FGM = player["stats"]["fieldGoals"]["fgMade"];
 			var FTA = player["stats"]["freeThrows"]["ftAtt"];
 			var FTM = player["stats"]["freeThrows"]["ftMade"];
 
 			var EFF = (PTS + REB + AST + STL + BLK) - (FGA - FGM) - (FTA - FTM) - TOV;
-			var GmSc = (PTS + 0.7 * OREB + 0.3 * DREB + 0.7 * AST + STL + 0.7 * BLK) + 0.4 * FGM - 0.7 * FGA - 0.4 * (FTA - FTM) - TOV - 0.4 * PF;
-			var eFG = (FGM + 0.5 * player["stats"]["fieldGoals"]["fg3PtMadePerGame"]) / FGA;
+			var GMSC = (PTS + 0.7 * OREB + 0.3 * DREB + 0.7 * AST + STL + 0.7 * BLK) + 0.4 * FGM - 0.7 * FGA - 0.4 * (FTA - FTM) - TOV - 0.4 * PF;
+			var EFG = (FGM + 0.5 * player["stats"]["fieldGoals"]["fg3PtMadePerGame"]) / FGA;
 			var TS = PTS / (2 * (FGA + 0.44 * FTA));
 
 			playersData.push({
@@ -454,7 +454,7 @@ class StatsPlayersTable extends React.Component {
 				fgAttPerGame: player["stats"]["fieldGoals"]["fgAttPerGame"],
 				fgMade: player["stats"]["fieldGoals"]["fgMade"],
 				fgMadePerGame: player["stats"]["fieldGoals"]["fgMadePerGame"],
-				fgPct: player["stats"]["fieldGoals"]["fgMadePerGame"],
+				fgPct: player["stats"]["fieldGoals"]["fgPct"],
 				gamesPlayed: player["stats"]["gamesPlayed"],
 				ftAtt: player["stats"]["freeThrows"]["ftAtt"],
 				ftAttPerGame: player["stats"]["freeThrows"]["ftAttPerGame"],
@@ -473,8 +473,8 @@ class StatsPlayersTable extends React.Component {
 				rebPerGame: player["stats"]["rebounds"]["rebPerGame"],
 				pf: PF,
 				eff: EFF,
-				gmsc: GmSc,
-				eFG: eFG,
+				gmsc: GMSC,
+				eFG: EFG,
 				ts: TS
 			});
 			return;
@@ -656,6 +656,8 @@ class StatsPlayersTable extends React.Component {
 							return row[filter.id] <= filter.value.slice(2);
 						} else if (filter.value.includes("<")) {
 							return row[filter.id] < filter.value.slice(1);
+						} else if (filter.value.includes("=")) {
+							return row[filter.id] == filter.value.slice(1);
 						} else {
 							return row[filter.id] == filter.value;
 						}
