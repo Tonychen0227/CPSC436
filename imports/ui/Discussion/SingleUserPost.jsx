@@ -4,7 +4,7 @@ import '../../css/Discussions.css';
 import "../../../node_modules/bulma/css/bulma.css";
 import {makeNewComment, deleteComment, editComment} from '../../actions';
 
-class SinglePost extends React.Component {
+class SingleUserPost extends React.Component {
 	constructor(props){
 		super(props);
 		this.validateSubmission = this.validateSubmission.bind(this);
@@ -75,9 +75,8 @@ class SinglePost extends React.Component {
 		return (
 			<div>
 			<p>{this.props.forumState.error}</p>
-			<h3> {this.props.post.postTitle} </h3> <h5> by {this.props.post.userName} at {this.props.post.postedDate} </h5> <br/>
+			<h3> {this.props.post.postTitle} </h3> <h5> by {this.props.post.userName} at {this.props.post.postedDate} </h5>
 				<p> {this.props.post.postBody}</p>
-				<br/>
 			<ul name="comments">
 				{this.props.post.comments.map((message, index) => (
 				<li className="commentRow" key={message.id}>
@@ -132,4 +131,4 @@ const mapDispatchToProps = dispatch => {
 	};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SinglePost);
+export default connect(mapStateToProps, mapDispatchToProps)(SingleUserPost);
