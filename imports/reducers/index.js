@@ -21,18 +21,21 @@ const loading = (loading = false, action) => {
 const forumState = (forumState = {full: [], selected: null, error: null}, action) => {
   if (action.type === 'GET_FORUM_SUCCESS') {
     return { ...forumState, 
-      full: action.payload};
+      full: action.payload,
+      error: null};
   }
   if (action.type === 'NEW_COMMENT_SUCCESS') {
     return {
       ...forumState,
-      selected: action.payload
+      selected: action.payload,
+      error: null
     }
   }
   if (action.type === 'DISPLAY_POST') {
     return {
       ... forumState,
-      selected: forumState.full.find(x => x._id == action.payload)
+      selected: forumState.full.find(x => x._id == action.payload),
+      error: null
     }
   }
   if (action.type === 'GET_FORUM_FAILURE' || action.type === "NEW_COMMENT_FAILURE") {
