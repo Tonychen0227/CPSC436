@@ -168,7 +168,7 @@ export default class MultipleDisplay extends React.Component {
             name="stats"
             label={{
               formatter: function(val) {
-                return val / 1000000 + "M";
+                return val;
               }
             }}
           />
