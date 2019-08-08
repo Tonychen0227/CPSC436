@@ -45,7 +45,7 @@ class About extends React.Component {
 									<div className="tile is-horizontal is-child">
 									<SocialIcon url="https://github.com/CorneliusHan" target="_blank"/>
 									<SocialIcon url="https://ca.linkedin.com/in/peter-han-7634b773?trk=pub-pbmap" target="_blank"/>
-									<SocialIcon url="mailto: nottellingya@void.com" target="_blank"/>
+									<SocialIcon url="mailto: hanzhaolong0410@gmail.com" target="_blank"/>
 									</div>
 								</div>
 							</article>
