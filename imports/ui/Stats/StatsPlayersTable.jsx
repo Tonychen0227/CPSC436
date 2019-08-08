@@ -253,7 +253,7 @@ class StatsPlayersTable extends React.Component {
 				filterable: true
 			},
 			{
-				Header: "Wight",
+				Header: "Weight",
 				accessor: "weight",
 				show: false,
 				width: 100,
@@ -344,35 +344,35 @@ class StatsPlayersTable extends React.Component {
 				filterable: true
 			},
 			{
-				Header: "PF",
+				Header: "Personal Fouls",
 				accessor: "pf",
 				show: false,
 				width: 100,
 				filterable: true
 			},
 			{
-				Header: "EFF",
+				Header: "Efficiency",
 				accessor: "eff",
 				show: false,
 				width: 100,
 				filterable: true
 			},
 			{
-				Header: "GmSc",
+				Header: "Game Score",
 				accessor: "gmsc",
 				show: false,
 				width: 100,
 				filterable: true
 			},
 			{
-				Header: "eFG",
+				Header: "Effective Field Goal",
 				accessor: "eFG",
 				show: false,
 				width: 100,
 				filterable: true
 			},
 			{
-				Header: "TS",
+				Header: "True Shooting",
 				accessor: "ts",
 				show: false,
 				width: 100,
@@ -626,11 +626,11 @@ class StatsPlayersTable extends React.Component {
 						</div>
 						<div className="dropdown-menu" id="dropdown-menu" role="menu">
 							<div className="dropdown-content">
-								<a className={this.checkShow(43)} onClick={() => this.displayCol(43)}>PF</a>
-								<a className={this.checkShow(44)} onClick={() => this.displayCol(44)}>EFF</a>
-								<a className={this.checkShow(45)} onClick={() => this.displayCol(45)}>GmSc</a>
-								<a className={this.checkShow(46)} onClick={() => this.displayCol(46)}>eFG</a>
-								<a className={this.checkShow(47)} onClick={() => this.displayCol(47)}>TS</a>
+								<a className={this.checkShow(43)} onClick={() => this.displayCol(43)}>Personal Fouls</a>
+								<a className={this.checkShow(44)} onClick={() => this.displayCol(44)}>Efficiency</a>
+								<a className={this.checkShow(45)} onClick={() => this.displayCol(45)}>Game Score</a>
+								<a className={this.checkShow(46)} onClick={() => this.displayCol(46)}>Effective Field Goal</a>
+								<a className={this.checkShow(47)} onClick={() => this.displayCol(47)}>True Shooting</a>
 
 							</div>
 						</div>
