@@ -57,9 +57,9 @@ class About extends React.Component {
 									<h6>YUTING WEN</h6>
 									<p>这货不会打篮球</p>
 									<div className="tile is-horizontal is-child">
-									<SocialIcon url="https://github.com/Tonychen0227" target="_blank"/>
-									<SocialIcon url="https://www.linkedin.com/in/tonychenubc/" target="_blank"/>
-									<SocialIcon url="mailto:tony.chen@outlook.com" target="_blank"/>
+									<SocialIcon url="https://github.com/blackalkane" target="_blank"/>
+									<SocialIcon url="https://www.linkedin.com/in/yuting-wen-2593b8149/" target="_blank"/>
+									<SocialIcon url="mailto: blackalkane@gmail.com" target="_blank"/>
 									</div>
 								</div>
 							</article>
