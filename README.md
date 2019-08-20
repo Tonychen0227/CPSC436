@@ -67,19 +67,31 @@ Our website will be a Basketball statistics database, with options for the user 
 </ul>
 <h4> Documentation </h4>
 <strong>Basic Technology Requirements:<strong>
+  <ul>
   <li>HTML/Styling</li>
-    <li>We styled our app using <a href="https://bulma.io/documentation/">Bulma.io</a>.
-     With Bulma we all the css were written for us already and we can simply change the class name according to their
-      documentation to have the desired visual effect. An example is we used a bulma template to style our login page, 
-      the code can be found <a href="https://github.com/Tonychen0227/CPSC436/blob/master/imports/ui/LogIn/LogIn.jsx">here</a></li>
+    <ul>
+      <li>We styled our app using <a href="https://bulma.io/documentation/">Bulma.io</a>.
+       With Bulma we all the css were written for us already and we can simply change the class name according to their
+        documentation to have the desired visual effect. An example is we used a bulma template to style our login page, 
+        the code can be found <a href="https://github.com/Tonychen0227/CPSC436/blob/master/imports/ui/LogIn/LogIn.jsx">here</a></li>
+      </ul>
   <li>Redux</li>
-    <li></li>
+    <ul>
+      <li></li>
+    </ul>
   <li>API</li>
-    <li></li>
+    <ul>
+      <li></li>
+    </ul>
   <li>MongoDB</li>
-    <li></li>
+    <ul>
+      <li></li>
+    </ul>
   <li>Deployment</li>
-    <li></li>
+    <ul>
+      <li></li>
+     </ul>
+ </ul>
 <strong> Basic Contribution Requirements </strong>
 
 <h5> Tony </h5>
