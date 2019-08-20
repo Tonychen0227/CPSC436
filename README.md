@@ -68,16 +68,16 @@ Our website will be a Basketball statistics database, with options for the user 
 <h4> Documentation </h4>
 <strong> Basic Contribution Requirements </strong>
 
-<strong> Tony </strong>
+<h5> Tony </h5>
 <p>I took charge of building an API for our project found here: https://github.com/Tonychen0227/CPSC436api
 The primary technologies I took charge in were Meteor (most of the setup and adding required middleware) and MongoDB, where I built most of our database operations such as user login/logout as well as discussion.</p>
 
-<strong> Yuting </strong>
+<h5> Yuting </h5>
 <p>Implemented Stats/Plays, Stats/Teams and Stats/Analysis using Recharts and BizCharts for data visualization
 Used axio to make call to our backend to retrieve teams and players data
 Implemented several data filter for users to select and filter data under Stats page</p>
 
-<strong> Peter </strong>
+<h5> Peter </h5>
 <p>Styled the app using Bulma.io. Implemented the Navbar and dropdown list for stats page.
 Implemented the news carousel component and integrated NBA twitter App and team twitter App into our website.
 Implemented backend calls to retrieve players and teams statistics from our database.</p>
