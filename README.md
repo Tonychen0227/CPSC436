@@ -66,32 +66,7 @@ Our website will be a Basketball statistics database, with options for the user 
   <li> Implement a fantasy draft system for users to play around with statistics from previous seasons. </li>
 </ul>
 <h4> Documentation </h4>
-<h5>Basic Technology Requirements:<h5>
-  <ul>
-  <li>HTML/Styling</li>
-    <ul>
-      <li>We styled our app using <a href="https://bulma.io/documentation/">Bulma.io</a>.
-       With Bulma we all the css were written for us already and we can simply change the class name according to their
-        documentation to have the desired visual effect. An example is we used a bulma template to style our login page, 
-        the code can be found <a href="https://github.com/Tonychen0227/CPSC436/blob/master/imports/ui/LogIn/LogIn.jsx">here</a></li>
-      </ul>
-  <li>Redux</li>
-    <ul>
-      <li></li>
-    </ul>
-  <li>API</li>
-    <ul>
-      <li></li>
-    </ul>
-  <li>MongoDB</li>
-    <ul>
-      <li></li>
-    </ul>
-  <li>Deployment</li>
-    <ul>
-      <li></li>
-     </ul>
- </ul>
+
 <strong> Basic Contribution Requirements </strong>
 
 <h5> Tony </h5>
