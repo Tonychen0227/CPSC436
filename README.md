@@ -72,6 +72,9 @@ I took charge of building an API for our project found here: https://github.com/
 The primary technologies I took charge in were Meteor (most of the setup and adding required middleware) and MongoDB, where I built most of our database operations such as user login/logout as well as discussion.
 <strong> Yuting </strong>
 <strong> Peter </strong>
+Styled the app using Bulma.io. Implemented the Navbar and dropdown list for stats page.
+Implemented the news carousel component and integrated NBA twitter App and team twitter App into our website.
+Implemented backend calls to retrieve players and teams statistics from our database.
 
 <strong> Functionality </strong>
 This project solves the problem of the lack of a overall hub for NBA fans that includes news, discussion, and stat analysis not found on the official stats nba website. To solve this problem, we added the following integrations all into one web application: Stats analysis and comparisons (which is actually not possible on the official NBA stats page), Discussion board which is user customizable, The ability to select a favorite team and have the UX be affected based on what team is selected, official twitter accounts, and news.
