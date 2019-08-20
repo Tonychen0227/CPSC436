@@ -64,7 +64,30 @@ Our website will be a Basketball statistics database, with options for the user 
   <li> Implement useful iframes such as ticket sales </li>
   <li> Draw heatmaps for players based on player performance and court activity. </li>
   <li> Implement a fantasy draft system for users to play around with statistics from previous seasons. </li>
+</ul>
+<h4> Documentation </h4>
+<strong> Basic Contribution Requirements </strong>
+<strong> Tony </strong>
+I took charge of building an API for our project found here: https://github.com/Tonychen0227/CPSC436api
+The primary technologies I took charge in were Meteor (most of the setup and adding required middleware) and MongoDB, where I built most of our database operations such as user login/logout as well as discussion.
+<strong> Yuting </strong>
+<strong> Peter </strong>
 
+<strong> Functionality </strong>
+This project solves the problem of the lack of a overall hub for NBA fans that includes news, discussion, and stat analysis not found on the official stats nba website. To solve this problem, we added the following integrations all into one web application: Stats analysis and comparisons (which is actually not possible on the official NBA stats page), Discussion board which is user customizable, The ability to select a favorite team and have the UX be affected based on what team is selected, official twitter accounts, and news.
+
+<strong> Challenges </strong>
+<ul>
+  <li>User Login was faced with several challenges. Facebook SDK is hard to work with, and there were some weird requirements there such as the need for a privacy policy. Halfway through implementation we kind of got screwed over due to Facebook SDK deprecating http support, so we had to migrate. Also a lot of user testing was required with that aspect, and there were some challenges faced there. I think our user login reached a good spot and none of the problems were impossible to deal with, given enough effort was spent to resolve them.</li>
+  <li></li>
+  <li></li>
+</ul>
+
+<strong> Above and beyond? </strong>
+<ul>
+  <li>Built the discussion board from scratch, using JWT token for login persistance, requiring email authentication, and allowing a user to log in via Facebook I think were all aspects that go above and beyond the basic requirements of a typical user login system. Additionally added profile picture support, which I think very few other teams were able to implement. </li>
+  <li></li>
+  <li></li>
 </ul>
 <h4> Prototypes </h4>
 <h6> Home Page </h6>
