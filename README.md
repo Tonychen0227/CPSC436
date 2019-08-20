@@ -66,7 +66,7 @@ Our website will be a Basketball statistics database, with options for the user 
   <li> Implement a fantasy draft system for users to play around with statistics from previous seasons. </li>
 </ul>
 <h4> Documentation </h4>
-<strong>Basic Technology Requirements:<strong>
+<h5>Basic Technology Requirements:<h5>
   <ul>
   <li>HTML/Styling</li>
     <ul>
