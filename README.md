@@ -114,14 +114,14 @@ Implemented backend calls to retrieve players and teams statistics from our data
 <strong> Challenges </strong>
 <ul>
   <li>User Login was faced with several challenges. Facebook SDK is hard to work with, and there were some weird requirements there such as the need for a privacy policy. Halfway through implementation we kind of got screwed over due to Facebook SDK deprecating http support, so we had to migrate. Also a lot of user testing was required with that aspect, and there were some challenges faced there. I think our user login reached a good spot and none of the problems were impossible to deal with, given enough effort was spent to resolve them.</li>
-  <li></li>
+  <li>Styling was one of our challenges. We were focusing to much on implementing the functionality of our app; when we have made the      skeleton of our web it was too hard for us to write the css file due to the complexity and the number of components in our app. We tried writing css with Sketch and Zeplin using drawn structure but different components wouldn't work well with each others. We have to adapt another method to do the styling. We found Bulma.io. It took us around 2 days to read through and understand the documentation and it was fairly easy to use. This tool has greatly decreased our development time. In order to solve styling conflict and difference in opinion. We decided to have one developer styling the entire app</li>
   <li></li>
 </ul>
 
 <strong> Above and beyond? </strong>
 <ul>
   <li>Built the discussion board from scratch, using JWT token for login persistance, requiring email authentication, and allowing a user to log in via Facebook I think were all aspects that go above and beyond the basic requirements of a typical user login system. Additionally added profile picture support, which I think very few other teams were able to implement. </li>
-  <li></li>
+  <li>We added media integration in our app. Our initial blueprint for the app is to be a statistic focused app where the sole purpose is for NBA stats enthusiasts to find and play with the data they want. Then we decided we want to make our app as an information hub for NBA fans. We have found API that provided news from ESPN and successfully retrieved the data using HTTP request and stored the news articles in redux state. We also integrated twitter into our app. We decided to map each twitter integration to each user given their favorite team. These features really took the advantage of redux state and made our app more tailored to user's preferences</li>
   <li></li>
 </ul>
 <h4> Prototypes </h4>
