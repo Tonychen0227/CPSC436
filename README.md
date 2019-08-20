@@ -66,6 +66,20 @@ Our website will be a Basketball statistics database, with options for the user 
   <li> Implement a fantasy draft system for users to play around with statistics from previous seasons. </li>
 </ul>
 <h4> Documentation </h4>
+<strong>Basic Technology Requirements:<strong>
+  <li>HTML/Styling</li>
+    <li>We styled our app using <a href="https://bulma.io/documentation/">Bulma.io</a>.
+     With Bulma we all the css were written for us already and we can simply change the class name according to their
+      documentation to have the desired visual effect. An example is we used a bulma template to style our login page, 
+      the code can be found <a href="https://github.com/Tonychen0227/CPSC436/blob/master/imports/ui/LogIn/LogIn.jsx">here</a></li>
+  <li>Redux</li>
+    <li></li>
+  <li>API</li>
+    <li></li>
+  <li>MongoDB</li>
+    <li></li>
+  <li>Deployment</li>
+    <li></li>
 <strong> Basic Contribution Requirements </strong>
 
 <h5> Tony </h5>
@@ -83,7 +97,7 @@ Implemented the news carousel component and integrated NBA twitter App and team 
 Implemented backend calls to retrieve players and teams statistics from our database.</p>
 
 <strong> Functionality </strong>
-This project solves the problem of the lack of a overall hub for NBA fans that includes news, discussion, and stat analysis not found on the official stats nba website. To solve this problem, we added the following integrations all into one web application: Stats analysis and comparisons (which is actually not possible on the official NBA stats page), Discussion board which is user customizable, The ability to select a favorite team and have the UX be affected based on what team is selected, official twitter accounts, and news.
+<p>This project solves the problem of the lack of a overall hub for NBA fans that includes news, discussion, and stat analysis not found on the official stats nba website. To solve this problem, we added the following integrations all into one web application: Stats analysis and comparisons (which is actually not possible on the official NBA stats page), Discussion board which is user customizable, The ability to select a favorite team and have the UX be affected based on what team is selected, official twitter accounts, and news.</p>
 
 <strong> Challenges </strong>
 <ul>
