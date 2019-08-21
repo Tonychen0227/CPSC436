@@ -70,7 +70,7 @@ Our website will be a Basketball statistics database, with options for the user 
   <ul>
     <li>HTML/Styling
       <ul>
-        <li>We styled our app using Bulma.io. With Bulma we all the css were written for us already and we can simply change the class name according to their documentation to have the desired visual effect. An example is we used a bulma template to style our login page, the code can be found here</li>
+        <li>We styled our app using Bulma.io. With Bulma we all the css were written for us already and we can simply change the class name according to their documentation to have the desired visual effect. An example is we used a bulma template to style our login page, the code can be found <a href="https://github.com/Tonychen0227/CPSC436/blob/master/imports/ui/LogIn/LogIn.jsx">here</a></li>
       </ul>
     </li>
     <li>Redux</li>
